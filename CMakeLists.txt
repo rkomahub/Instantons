@@ -42,7 +42,7 @@ endif()
 enable_testing()
 
 add_executable(test_action
-    tests/test_action.cpp
+    tests/test_01_action.cpp
     src/lattice.cpp
     src/metropolis.cpp
     src/potential.cpp
@@ -51,3 +51,23 @@ add_executable(test_action
 target_include_directories(test_action PRIVATE src)
 
 add_test(NAME action_tests COMMAND test_action)
+
+add_executable(test_potential_bc
+    tests/test_02_potential_and_bc.cpp
+    src/potential.cpp
+)
+
+target_include_directories(test_potential_bc PRIVATE src)
+
+add_test(NAME potential_bc_tests COMMAND test_potential_bc)
+
+add_executable(test_cooling_rule
+    tests/test_03_cooling_rule.cpp
+    src/lattice.cpp
+    src/metropolis.cpp
+    src/potential.cpp
+)
+
+target_include_directories(test_cooling_rule PRIVATE src)
+
+add_test(NAME cooling_rule_tests COMMAND test_cooling_rule)

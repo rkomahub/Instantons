@@ -10,7 +10,7 @@
 #include <vector>
 
 double total_action(const std::vector<double> &x) {
-  const int N = x.size();
+  const int N = static_cast<int>(x.size());
   double S = 0.0;
 
   for (int i = 0; i < N; ++i) {
@@ -23,7 +23,7 @@ double total_action(const std::vector<double> &x) {
 }
 
 double local_action(const std::vector<double> &x, int i) {
-  const int N = x.size();
+  const int N = static_cast<int>(x.size());
   int ip = (i + 1) % N;
   int im = (i - 1 + N) % N;
 
@@ -46,23 +46,28 @@ int main() {
 
     auto x = lat.get_path();
 
-    int site = 3;
+    const int site = 3;
+    const double dx = 0.01;
 
-    double old_local = local_action(x, site);
+    // ΔS for a proposal at "site" with baseline configuration
+    const double old_local = local_action(x, site);
+    const double x_old = x[site];
 
-    x[site] += 0.01;
-    double new_local = local_action(x, site);
+    x[site] = x_old + dx;
+    const double new_local = local_action(x, site);
+    const double dS1 = new_local - old_local;
 
-    double dS1 = new_local - old_local;
+    // Restore baseline value at site
+    x[site] = x_old;
 
-    // Modify distant site
+    // Modify a distant site (should not affect ΔS at "site")
     x[6] += 10.0;
 
-    double old_local2 = local_action(x, site);
-    x[site] += 0.02;
-    double new_local2 = local_action(x, site);
+    const double old_local2 = local_action(x, site);
 
-    double dS2 = new_local2 - old_local2;
+    x[site] = x_old + dx; // SAME proposal step
+    const double new_local2 = local_action(x, site);
+    const double dS2 = new_local2 - old_local2;
 
     assert(std::abs(dS1 - dS2) < 1e-12);
   }
@@ -73,11 +78,11 @@ int main() {
     Lattice lat(N, params::eta, true, gen);
     Metropolis evo(lat, gen);
 
-    double S_before = total_action(lat.get_path());
+    const double S_before = total_action(lat.get_path());
 
     evo.cool(1);
 
-    double S_after = total_action(lat.get_path());
+    const double S_after = total_action(lat.get_path());
 
     assert(S_after <= S_before + 1e-12);
   }

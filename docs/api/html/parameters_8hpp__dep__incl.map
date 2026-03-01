@@ -1,0 +1,8 @@
+<map id="/home/marcobenazzi/instantons/src/parameters.hpp" name="/home/marcobenazzi/instantons/src/parameters.hpp">
+<area shape="rect" id="node1" title="Global simulation parameters for the Euclidean lattice instanton simulation." alt="" coords="423,5,647,47"/>
+<area shape="rect" id="node2" href="$analysis__driver_8cpp.html" title=" " alt="" coords="5,95,180,151"/>
+<area shape="rect" id="node3" href="$ensemble_8cpp.html" title="Ensemble averaging of correlators and instanton observables." alt="" coords="204,102,416,143"/>
+<area shape="rect" id="node4" href="$lattice_8cpp.html" title=" " alt="" coords="441,102,630,143"/>
+<area shape="rect" id="node5" href="$metropolis_8cpp.html" title="Implementation of Metropolis updates for the Euclidean lattice action." alt="" coords="654,102,873,143"/>
+<area shape="rect" id="node6" href="$qmidens_8cpp.html" title=" " alt="" coords="897,102,1101,143"/>
+</map>
