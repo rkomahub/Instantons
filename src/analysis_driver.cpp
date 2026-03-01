@@ -12,6 +12,7 @@
 #include "qmidens.hpp"
 #include "rilm.hpp"
 
+#include <fstream>
 #include <iostream>
 #include <string>
 #include <vector>
@@ -146,8 +147,6 @@ void run_iilm_analysis() {
   std::cout << "[✓] IILM: placed " << n_inst << ", counted " << counted
             << ", density = " << density << "\n";
 }
-
-void run_qmidens_analysis() { ::run_qmidens_analysis(); }
 
 void run_cooling_eta_scan(const std::vector<double> &etas) {
   std::ofstream out("/mnt/data/cooling_eta_scan.csv");

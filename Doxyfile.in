@@ -1,0 +1,16 @@
+PROJECT_NAME           = "Monte Carlo Instantons"
+OUTPUT_DIRECTORY       = @CMAKE_SOURCE_DIR@/docs/api
+
+INPUT                  = @CMAKE_SOURCE_DIR@/src
+FILE_PATTERNS          = *.hpp *.cpp
+RECURSIVE              = YES
+
+EXTRACT_ALL            = YES
+EXTRACT_PRIVATE        = YES
+EXTRACT_STATIC         = YES
+
+GENERATE_HTML          = YES
+GENERATE_LATEX         = NO
+
+QUIET                  = YES
+WARN_IF_UNDOCUMENTED   = YES

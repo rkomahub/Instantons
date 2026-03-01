@@ -11,67 +11,106 @@
 #include <numeric>
 #include <vector>
 
+/**
+ * @file ensemble.cpp
+ * @brief Ensemble averaging of correlators and instanton observables.
+ *
+ * The function runs multiple independent Monte Carlo simulations,
+ * optionally applies cooling, and estimates expectation values by:
+ *
+ *   mean( C(τ) ) = (1/T) Σ_t C_t(τ)
+ *
+ * together with the standard error of the mean:
+ *
+ *   stderr( C(τ) ) = sqrt( Var(C(τ)) / T )
+ *
+ * where T = trials.
+ */
+
 void run_ensemble_average(int trials, bool cooled,
                           const std::string &output_prefix) {
-  int N = params::N;
-  double a = params::a;
-  double beta = N * a;
+  const int N = params::N;
+  const double a = params::a;
+  const double beta = N * a;
 
   std::vector<std::vector<double>> correlator_data(trials);
   std::vector<int> instanton_counts(trials);
 
+  // Generate an ensemble of (approximately) independent configurations.
   for (int t = 0; t < trials; ++t) {
-    Lattice lattice(N, params::eta, true); // hot start
+    Lattice lattice(N, params::eta, /*hot_start=*/true);
     Metropolis evolver(lattice);
 
-    for (int sweep = 0; sweep < params::sweeps; ++sweep)
+    for (int sweep = 0; sweep < params::sweeps; ++sweep) {
       evolver.step();
-
-    if (cooled) {
-      Lattice cooled = lattice;
-      Metropolis cooled_evolver(cooled);
-      cooled_evolver.cool(200);
-      lattice = cooled;
     }
 
-    auto path = lattice.get_path();
+    // Optionally cool before measuring observables.
+    if (cooled) {
+      Lattice cooled_lat = lattice;
+      Metropolis cooled_evolver(cooled_lat);
+      cooled_evolver.cool(200);
+      lattice = cooled_lat;
+    }
+
+    const auto &path = lattice.get_path();
     correlator_data[t] = compute_correlator(path);
     instanton_counts[t] = count_zero_crossings(path);
   }
 
-  // Compute mean and stderr
+  // Compute mean correlator and standard error of the mean for each τ.
   std::vector<double> mean(N, 0.0), stderr(N, 0.0);
 
   for (int i = 0; i < N; ++i) {
-    for (int t = 0; t < trials; ++t)
+    for (int t = 0; t < trials; ++t) {
       mean[i] += correlator_data[t][i];
-    mean[i] /= trials;
+    }
+    mean[i] /= static_cast<double>(trials);
 
-    for (int t = 0; t < trials; ++t)
-      stderr[i] += std::pow(correlator_data[t][i] - mean[i], 2);
-    stderr[i] = std::sqrt(stderr[i] / trials) / std::sqrt(trials);
+    double var = 0.0;
+    for (int t = 0; t < trials; ++t) {
+      const double d = correlator_data[t][i] - mean[i];
+      var += d * d;
+    }
+
+    // If trials > 1, use unbiased sample variance; else var = 0.
+    if (trials > 1) {
+      var /= static_cast<double>(trials - 1);
+    } else {
+      var = 0.0;
+    }
+
+    stderr[i] = std::sqrt(var / static_cast<double>(trials));
   }
 
-  // Save to CSV
+  // Save correlator statistics to CSV.
   std::ofstream out_corr(output_prefix + "_correlator_avg.csv");
   out_corr << "tau,mean,std_err\n";
-  for (int i = 0; i < N; ++i)
+  for (int i = 0; i < N; ++i) {
     out_corr << i * a << "," << mean[i] << "," << stderr[i] << "\n";
+  }
 
-  // Instanton stats
-  double inst_mean =
+  // Instanton density statistics from zero-crossing counts.
+  const double inst_mean =
       std::accumulate(instanton_counts.begin(), instanton_counts.end(), 0.0) /
-      trials;
-  double inst_density = inst_mean / beta;
+      static_cast<double>(trials);
 
-  double sumsq = 0.0;
-  for (int t = 0; t < trials; ++t)
-    sumsq += std::pow(correlator_data[t][i] - mean[i], 2);
+  const double inst_density = inst_mean / beta;
 
-  double var = sumsq / std::max(1, trials - 1); // unbiased sample variance
-  stderr[i] = std::sqrt(var / trials);          // standard error of the mean
+  double inst_var = 0.0;
+  for (int t = 0; t < trials; ++t) {
+    const double d = static_cast<double>(instanton_counts[t]) - inst_mean;
+    inst_var += d * d;
+  }
+  if (trials > 1) {
+    inst_var /= static_cast<double>(trials - 1);
+  } else {
+    inst_var = 0.0;
+  }
+
+  const double inst_stderr = std::sqrt(inst_var / static_cast<double>(trials));
 
   std::cout << "[✓] Ensemble (" << trials << " configs, cooled=" << cooled
-            << ")  avg instantons = " << inst_mean
-            << " → density = " << inst_density << "\n";
+            << ")  avg instantons = " << inst_mean << " ± " << inst_stderr
+            << "  → density = " << inst_density << "\n";
 }
