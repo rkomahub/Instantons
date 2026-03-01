@@ -57,6 +57,8 @@ The project includes:
 ---
 
 ## 3. Repository Structure
+
+```
 .
 ├── CMakeLists.txt # Build configuration
 ├── LICENSE
@@ -83,6 +85,7 @@ The project includes:
 ├── qmidens.* # Adiabatic switching density correction
 └── parameters.hpp # Simulation parameters
 ---
+```
 
 ## 4. Build Instructions
 
