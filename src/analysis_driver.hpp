@@ -1,4 +1,6 @@
 #pragma once
+#include <random>
+#include <vector>
 
 /**
  * @file analysis_driver.hpp
@@ -27,7 +29,7 @@
  *
  * Serves as the baseline full Monte Carlo study.
  */
-void run_basic_analysis();
+void run_basic_analysis(std::mt19937 &gen);
 
 /**
  * @brief Study instanton density under cooling.
@@ -36,7 +38,18 @@ void run_basic_analysis();
  * revealing separation between quantum noise
  * and semiclassical instanton structure.
  */
-void run_cooling_evolution_analysis();
+void run_cooling_evolution_analysis(std::mt19937 &gen);
+
+/**
+ * @brief Perform a scan of the instanton density as a function of eta.
+ *
+ * This routine is useful for studying how the semiclassical
+ * instanton density depends on the barrier height parameter.
+ *
+ * @param etas  List of eta values to scan.
+ * @param gen   Random number generator (injected).
+ */
+void run_cooling_eta_scan(const std::vector<double> &etas, std::mt19937 &gen);
 
 /**
  * @brief Perform ensemble averaging.
@@ -46,7 +59,7 @@ void run_cooling_evolution_analysis();
  *   - Uncooled configurations
  *   - Cooled configurations
  */
-void run_ensemble_analysis();
+void run_ensemble_analysis(std::mt19937 &gen);
 
 /**
  * @brief Random Instanton Liquid Model (RILM) analysis.
@@ -54,7 +67,7 @@ void run_ensemble_analysis();
  * Generates non-interacting multi-instanton configurations
  * and compares correlators with full Monte Carlo results.
  */
-void run_rilm_analysis();
+void run_rilm_analysis(std::mt19937 &gen);
 
 /**
  * @brief RILM with added Gaussian fluctuations (heating).
@@ -62,7 +75,7 @@ void run_rilm_analysis();
  * Studies the effect of short-distance quantum fluctuations
  * on semiclassical instanton ensembles.
  */
-void run_heated_rilm_analysis();
+void run_heated_rilm_analysis(std::mt19937 &gen);
 
 /**
  * @brief Interacting Instanton Liquid Model (IILM) analysis.
@@ -70,7 +83,7 @@ void run_heated_rilm_analysis();
  * Includes a short-range repulsive core between instantons,
  * improving semiclassical realism.
  */
-void run_iilm_analysis();
+void run_iilm_analysis(std::mt19937 &gen);
 
 /**
  * @brief Non-Gaussian correction to instanton density.
@@ -78,4 +91,4 @@ void run_iilm_analysis();
  * Uses adiabatic switching to compute corrections beyond
  * the Gaussian (one-loop) approximation.
  */
-void run_qmidens_analysis();
+void run_qmidens_analysis(std::mt19937 &gen);

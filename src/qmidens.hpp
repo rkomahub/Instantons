@@ -1,4 +1,5 @@
 #pragma once
+#include <random>
 
 /**
  * @file qmidens.hpp
@@ -29,8 +30,10 @@
  *   - I_fine, I_coarse
  *   - Richardson-extrapolated ΔS
  *   - n_gauss and n_corrected
+ *
+ * @param gen Random number generator (injected).
  */
-void run_qmidens_analysis();
+void run_qmidens_analysis(std::mt19937 &gen);
 
 /**
  * @brief Compute non-Gaussian corrected instanton density.
@@ -50,8 +53,10 @@ void run_qmidens_analysis();
  * @param dx_width       Proposal width for Metropolis updates.
  * @param n_alpha_fine   Number of α points for the fine Simpson grid (odd).
  * @param n_alpha_coarse Number of α points for the coarse Simpson grid (odd).
+ * @param gen            Random number generator (injected).
  *
  * @return Non-Gaussian corrected instanton density.
  */
 double compute_qmidens_corrected_density(int sweeps, double dx_width,
-                                         int n_alpha_fine, int n_alpha_coarse);
+                                         int n_alpha_fine, int n_alpha_coarse,
+                                         std::mt19937 &gen);

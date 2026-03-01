@@ -46,8 +46,8 @@ double S_alpha(const std::vector<double> &x, double a, double eta,
 }
 
 void metropolis_alpha(std::vector<double> &x, double a, double eta,
-                      double alpha, int sweeps, double dx_width) {
-  std::mt19937 gen(std::random_device{}());
+                      double alpha, int sweeps, double dx_width,
+                      std::mt19937 &gen) {
   std::normal_distribution<double> dx_dist(0.0, dx_width);
   std::uniform_real_distribution<double> prob_dist(0.0, 1.0);
   int N = x.size();
@@ -56,6 +56,9 @@ void metropolis_alpha(std::vector<double> &x, double a, double eta,
     for (int i = 0; i < N; ++i) {
       int ip = (i + 1) % N;
       int im = (i - 1 + N) % N;
+
+      (void)ip;
+      (void)im;
 
       double x_old = x[i];
       double dS_old = S_alpha(x, a, eta, alpha);
@@ -73,9 +76,9 @@ void metropolis_alpha(std::vector<double> &x, double a, double eta,
 
 // Generate a random path constrained to n zero-crossings
 std::vector<double> generate_constrained_path(int N, double eta,
-                                              int n_zero_crossings) {
+                                              int n_zero_crossings,
+                                              std::mt19937 &gen) {
   std::vector<double> x(N);
-  std::mt19937 gen(std::random_device{}());
   std::uniform_real_distribution<double> dist(-eta, eta);
 
   do {
@@ -88,13 +91,14 @@ std::vector<double> generate_constrained_path(int N, double eta,
 }
 
 // Compute <ΔS> at fixed α in sector with `n_inst` zero crossings
-double delta_S_alpha(int n_inst, double alpha, int sweeps, double dx_width) {
+double delta_S_alpha(int n_inst, double alpha, int sweeps, double dx_width,
+                     std::mt19937 &gen) {
   int N = params::N;
   double a = params::a;
   double eta = params::eta;
 
-  auto path = generate_constrained_path(N, eta, n_inst);
-  metropolis_alpha(path, a, eta, alpha, sweeps, dx_width);
+  auto path = generate_constrained_path(N, eta, n_inst, gen);
+  metropolis_alpha(path, a, eta, alpha, sweeps, dx_width, gen);
 
   double deltaS = S_full(path, a, eta) - S_gaussian(path, a, eta);
   return deltaS;
@@ -102,7 +106,7 @@ double delta_S_alpha(int n_inst, double alpha, int sweeps, double dx_width) {
 
 } // end anonymous namespace
 
-double simpson_integral(int n_alpha, int sweeps, double dx,
+double simpson_integral(int n_alpha, int sweeps, double dx, std::mt19937 &gen,
                         std::ofstream *log = nullptr) {
   if (n_alpha % 2 == 0)
     ++n_alpha; // Simpson’s rule requires odd
@@ -112,8 +116,8 @@ double simpson_integral(int n_alpha, int sweeps, double dx,
 
   for (int i = 0; i < n_alpha; ++i) {
     double alpha = static_cast<double>(i) / (n_alpha - 1);
-    double ds1 = delta_S_alpha(1, alpha, sweeps, dx);
-    double ds0 = delta_S_alpha(0, alpha, sweeps, dx);
+    double ds1 = delta_S_alpha(1, alpha, sweeps, dx, gen);
+    double ds0 = delta_S_alpha(0, alpha, sweeps, dx, gen);
     double diff = ds1 - ds0;
 
     if (log) {
@@ -131,7 +135,7 @@ double simpson_integral(int n_alpha, int sweeps, double dx,
   return result * h / 3.0;
 }
 
-void run_qmidens_analysis() {
+void run_qmidens_analysis(std::mt19937 &gen) {
   std::cout << "[📊] Running adiabatic switching (non-Gaussian correction)...\n";
 
   int sweeps = 1000;
@@ -144,8 +148,8 @@ void run_qmidens_analysis() {
   std::ofstream out("data/qmidens_integrand.csv");
   out << "alpha,DeltaS1,DeltaS0,diff\n";
 
-  double I_fine = simpson_integral(n_alpha_fine, sweeps, dx, &out);
-  double I_coarse = simpson_integral(n_alpha_coarse, sweeps, dx);
+  double I_fine = simpson_integral(n_alpha_fine, sweeps, dx, gen, &out);
+  double I_coarse = simpson_integral(n_alpha_coarse, sweeps, dx, gen);
 
   double deltaS_richardson =
       (16.0 * I_fine - I_coarse) / 15.0; // Richardson extrapolation
@@ -163,7 +167,8 @@ void run_qmidens_analysis() {
 }
 
 double compute_qmidens_corrected_density(int sweeps, double dx_width,
-                                         int n_alpha_fine, int n_alpha_coarse) {
+                                         int n_alpha_fine, int n_alpha_coarse,
+                                         std::mt19937 &gen) {
   // Ensure odd Simpson counts
   if (n_alpha_fine % 2 == 0)
     ++n_alpha_fine;
@@ -171,8 +176,8 @@ double compute_qmidens_corrected_density(int sweeps, double dx_width,
     ++n_alpha_coarse;
 
   // Fine + coarse Simpson, then Richardson
-  double I_fine = simpson_integral(n_alpha_fine, sweeps, dx_width);
-  double I_coarse = simpson_integral(n_alpha_coarse, sweeps, dx_width);
+  double I_fine = simpson_integral(n_alpha_fine, sweeps, dx_width, gen);
+  double I_coarse = simpson_integral(n_alpha_coarse, sweeps, dx_width, gen);
   double deltaS_richardson = (16.0 * I_fine - I_coarse) / 15.0;
 
   // Semiclassical (Gaussian) prefactor and classical action:

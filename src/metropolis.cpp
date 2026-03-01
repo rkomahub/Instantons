@@ -19,8 +19,8 @@
  * where V(x) = (x^2 − eta^2)^2 and periodic boundary conditions are assumed.
  */
 
-Metropolis::Metropolis(Lattice &lattice)
-    : x(lattice), gen(std::random_device{}()) {}
+Metropolis::Metropolis(Lattice &lattice, std::mt19937 &gen)
+    : x(lattice), gen(gen) {}
 
 /**
  * @brief Perform one Metropolis sweep over all lattice sites.

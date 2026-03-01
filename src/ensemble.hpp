@@ -1,4 +1,5 @@
 #pragma once
+#include <random>
 #include <string>
 
 /**
@@ -34,6 +35,7 @@
  * @param trials        Number of independent configurations.
  * @param cooled        If true, apply cooling before measurement.
  * @param output_prefix Prefix used for output file names.
+ * @param gen           Random number generator (injected).
  */
 void run_ensemble_average(int trials, bool cooled,
-                          const std::string &output_prefix);
+                          const std::string &output_prefix, std::mt19937 &gen);

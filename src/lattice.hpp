@@ -1,4 +1,5 @@
 #pragma once
+#include <random>
 #include <vector>
 
 /**
@@ -23,41 +24,18 @@ public:
    * potential.
    * @param hot_start  If true, initialize randomly in [-eta, eta].
    *                   If false, initialize in the classical vacuum x = +eta.
+   * @param gen        Random number generator (injected).
    *
    * The hot start corresponds to a disordered configuration,
    * while the cold start corresponds to a classical minimum.
    */
-  Lattice(int N, double eta, bool hot_start);
+  Lattice(int N, double eta, bool hot_start, std::mt19937 &gen);
 
-  /**
-   * @brief Access lattice field value at site i (modifiable).
-   */
   double &operator[](int i);
-
-  /**
-   * @brief Access lattice field value at site i (read-only).
-   */
   const double &operator[](int i) const;
-
-  /**
-   * @brief Number of lattice sites.
-   */
   int size() const;
-
-  /**
-   * @brief Return full Euclidean path configuration.
-   *
-   * The returned vector represents:
-   *
-   *     { x(τ_0), x(τ_1), ..., x(τ_{N-1}) }
-   */
   const std::vector<double> &get_path() const;
 
 private:
-  /**
-   * @brief Discretized Euclidean path.
-   *
-   * x[i] ≡ x(τ_i)
-   */
   std::vector<double> x;
 };

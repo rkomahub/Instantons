@@ -3,8 +3,7 @@
 
 #include <random>
 
-Lattice::Lattice(int N, double eta, bool hot_start) : x(N) {
-  std::mt19937 gen(std::random_device{}());
+Lattice::Lattice(int N, double eta, bool hot_start, std::mt19937 &gen) : x(N) {
   std::uniform_real_distribution<double> dist(-eta, eta);
   for (int i = 0; i < N; ++i) {
     x[i] = hot_start ? dist(gen) : eta;

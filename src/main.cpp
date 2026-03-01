@@ -1,4 +1,5 @@
 #include "analysis_driver.hpp"
+#include <random>
 
 /**
  * @file main.cpp
@@ -21,13 +22,16 @@
 
 int main() {
 
-  run_basic_analysis();
-  run_cooling_evolution_analysis();
-  run_ensemble_analysis();
-  run_rilm_analysis();
-  run_heated_rilm_analysis();
-  run_iilm_analysis();
-  run_qmidens_analysis();
+  std::mt19937 gen(std::random_device{}());
+  // std::mt19937 gen(12345); // For reproducibility during development
+
+  run_basic_analysis(gen);
+  run_cooling_evolution_analysis(gen);
+  run_ensemble_analysis(gen);
+  run_rilm_analysis(gen);
+  run_heated_rilm_analysis(gen);
+  run_iilm_analysis(gen);
+  run_qmidens_analysis(gen);
 
   return 0;
 }

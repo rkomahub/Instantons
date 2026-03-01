@@ -28,7 +28,7 @@
  */
 
 void run_ensemble_average(int trials, bool cooled,
-                          const std::string &output_prefix) {
+                          const std::string &output_prefix, std::mt19937 &gen) {
   const int N = params::N;
   const double a = params::a;
   const double beta = N * a;
@@ -38,8 +38,8 @@ void run_ensemble_average(int trials, bool cooled,
 
   // Generate an ensemble of (approximately) independent configurations.
   for (int t = 0; t < trials; ++t) {
-    Lattice lattice(N, params::eta, /*hot_start=*/true);
-    Metropolis evolver(lattice);
+    Lattice lattice(N, params::eta, /*hot_start=*/true, gen);
+    Metropolis evolver(lattice, gen);
 
     for (int sweep = 0; sweep < params::sweeps; ++sweep) {
       evolver.step();
@@ -48,7 +48,7 @@ void run_ensemble_average(int trials, bool cooled,
     // Optionally cool before measuring observables.
     if (cooled) {
       Lattice cooled_lat = lattice;
-      Metropolis cooled_evolver(cooled_lat);
+      Metropolis cooled_evolver(cooled_lat, gen);
       cooled_evolver.cool(200);
       lattice = cooled_lat;
     }

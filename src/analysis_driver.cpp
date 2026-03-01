@@ -14,6 +14,7 @@
 
 #include <fstream>
 #include <iostream>
+#include <random>
 #include <string>
 #include <vector>
 
@@ -25,9 +26,9 @@ struct Configuration {
       : label(std::move(l)), path(std::move(p)) {}
 };
 
-void run_basic_analysis() {
-  Lattice lattice(params::N, params::eta, params::hot_start);
-  Metropolis evolver(lattice);
+void run_basic_analysis(std::mt19937 &gen) {
+  Lattice lattice(params::N, params::eta, params::hot_start, gen);
+  Metropolis evolver(lattice, gen);
 
   for (int sweep = 0; sweep < params::sweeps; ++sweep) {
     evolver.step();
@@ -36,12 +37,12 @@ void run_basic_analysis() {
   // --- Store configurations ---
   std::vector<Configuration> configs;
 
-  // Quantum (uncooked) path
+  // Quantum (uncooled) path
   configs.emplace_back("quantum", lattice.get_path());
 
   // Cooled path (copy, then apply cooling)
   Lattice cooled = lattice;
-  Metropolis cooled_evolver(cooled);
+  Metropolis cooled_evolver(cooled, gen);
   cooled_evolver.cool(200);
   configs.emplace_back("cooled", cooled.get_path());
 
@@ -65,24 +66,24 @@ void run_basic_analysis() {
   }
 }
 
-void run_cooling_evolution_analysis() {
-  Lattice lattice(params::N, params::eta, params::hot_start);
-  Metropolis evolver(lattice);
+void run_cooling_evolution_analysis(std::mt19937 &gen) {
+  Lattice lattice(params::N, params::eta, params::hot_start, gen);
+  Metropolis evolver(lattice, gen);
   for (int sweep = 0; sweep < params::sweeps; ++sweep) {
     evolver.step();
   }
 
   run_cooling_evolution(lattice, 200, params::a,
-                        "data/instanton_density_vs_ncool.csv");
+                        "data/instanton_density_vs_ncool.csv", gen);
 }
 
-void run_ensemble_analysis() {
+void run_ensemble_analysis(std::mt19937 &gen) {
   int trials = 50;
-  run_ensemble_average(trials, false, "data/ensemble_quantum");
-  run_ensemble_average(trials, true, "data/ensemble_cooled");
+  run_ensemble_average(trials, false, "data/ensemble_quantum", gen);
+  run_ensemble_average(trials, true, "data/ensemble_cooled", gen);
 }
 
-void run_rilm_analysis() {
+void run_rilm_analysis(std::mt19937 &gen) {
   int N = params::N;
   double a = params::a;
   double eta = params::eta;
@@ -100,9 +101,11 @@ void run_rilm_analysis() {
 
   std::cout << "[✓] RILM: placed " << n_inst << ", counted " << counted
             << ", density = " << density << "\n";
+
+  (void)gen; // not used here, but kept for a uniform interface
 }
 
-void run_heated_rilm_analysis() {
+void run_heated_rilm_analysis(std::mt19937 &gen) {
   int N = params::N;
   double a = params::a;
   double eta = params::eta;
@@ -114,7 +117,7 @@ void run_heated_rilm_analysis() {
 
   // 2. Copy and add Gaussian noise
   auto heated_path = rilm_path;
-  apply_gaussian_fluctuations(heated_path, fluct_sigma);
+  apply_gaussian_fluctuations(heated_path, fluct_sigma, gen);
 
   // 3. Save both
   save_path_to_csv(heated_path, "data/rilm_heated_path.csv", a);
@@ -128,7 +131,7 @@ void run_heated_rilm_analysis() {
             << ", density = " << density << "\n";
 }
 
-void run_iilm_analysis() {
+void run_iilm_analysis(std::mt19937 &gen) {
   int N = params::N;
   double a = params::a;
   double eta = params::eta;
@@ -146,19 +149,21 @@ void run_iilm_analysis() {
 
   std::cout << "[✓] IILM: placed " << n_inst << ", counted " << counted
             << ", density = " << density << "\n";
+
+  (void)gen; // not used here, but kept for a uniform interface
 }
 
-void run_cooling_eta_scan(const std::vector<double> &etas) {
-  std::ofstream out("/mnt/data/cooling_eta_scan.csv");
+void run_cooling_eta_scan(const std::vector<double> &etas, std::mt19937 &gen) {
+  std::ofstream out("data/cooling_eta_scan.csv");
   out << "eta,density\n";
   for (double eta : etas) {
-    Lattice lat(params::N, eta, /*hot_start=*/true);
-    Metropolis evo(lat);
+    Lattice lat(params::N, eta, /*hot_start=*/true, gen);
+    Metropolis evo(lat, gen);
     for (int s = 0; s < params::sweeps; ++s)
       evo.step();
 
     // do ~10 cooling sweeps
-    Metropolis cool(lat);
+    Metropolis cool(lat, gen);
     for (int c = 0; c < 10; ++c)
       cool.cool(1);
 

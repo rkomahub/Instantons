@@ -2,6 +2,7 @@
 #include "instanton.hpp"
 #include "metropolis.hpp"
 #include <fstream>
+#include <random>
 #include <vector>
 
 /**
@@ -20,7 +21,8 @@
  */
 
 void run_cooling_evolution(const Lattice &original, int max_sweeps, double a,
-                           const std::string &output_filename) {
+                           const std::string &output_filename,
+                           std::mt19937 &gen) {
   std::ofstream out(output_filename);
   out << "n_cool,n_inst,density\n";
 
@@ -28,7 +30,7 @@ void run_cooling_evolution(const Lattice &original, int max_sweeps, double a,
   Lattice cooled = original;
 
   // Metropolis object used in "cooling mode"
-  Metropolis evolver(cooled);
+  Metropolis evolver(cooled, gen);
 
   for (int n_cool = 1; n_cool <= max_sweeps; ++n_cool) {
 

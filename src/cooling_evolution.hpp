@@ -1,5 +1,6 @@
 #pragma once
 #include "lattice.hpp"
+#include <random>
 #include <string>
 
 /**
@@ -37,6 +38,8 @@
  * @param max_sweeps      Maximum number of cooling sweeps.
  * @param a               Lattice spacing.
  * @param output_filename Output CSV file path.
+ * @param gen             Random number generator (injected).
  */
 void run_cooling_evolution(const Lattice &original, int max_sweeps, double a,
-                           const std::string &output_filename);
+                           const std::string &output_filename,
+                           std::mt19937 &gen);

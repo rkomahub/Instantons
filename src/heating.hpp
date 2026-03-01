@@ -1,4 +1,5 @@
 #pragma once
+#include <random>
 #include <vector>
 
 /**
@@ -27,5 +28,7 @@
  *
  * @param path   Configuration to be modified (in-place).
  * @param sigma  Standard deviation of Gaussian noise.
+ * @param gen    Random number generator (injected).
  */
-void apply_gaussian_fluctuations(std::vector<double> &path, double sigma);
+void apply_gaussian_fluctuations(std::vector<double> &path, double sigma,
+                                 std::mt19937 &gen);

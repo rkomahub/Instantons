@@ -38,3 +38,16 @@ if(DOXYGEN_FOUND)
 else()
   message(STATUS "Doxygen not found, 'docs' target will not be available")
 endif()
+
+enable_testing()
+
+add_executable(test_action
+    tests/test_action.cpp
+    src/lattice.cpp
+    src/metropolis.cpp
+    src/potential.cpp
+)
+
+target_include_directories(test_action PRIVATE src)
+
+add_test(NAME action_tests COMMAND test_action)
