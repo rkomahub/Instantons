@@ -1,4 +1,5 @@
 #include "observables.hpp"
+#include <cmath>
 #include <fstream>
 
 /**
@@ -19,8 +20,20 @@
  * which allows extraction of the energy gap.
  */
 
-std::vector<double> compute_correlator(const std::vector<double> &x) {
-  const int N = x.size();
+double compute_moment(const std::vector<double> &x, int power) {
+  const int N = static_cast<int>(x.size());
+  double sum = 0.0;
+
+  for (int i = 0; i < N; ++i) {
+    sum += std::pow(x[i], power);
+  }
+
+  return sum / static_cast<double>(N);
+}
+
+std::vector<double> compute_correlator_power(const std::vector<double> &x,
+                                             int power) {
+  const int N = static_cast<int>(x.size());
   std::vector<double> correlator(N, 0.0);
 
   // For each Euclidean time separation τ,
@@ -30,7 +43,7 @@ std::vector<double> compute_correlator(const std::vector<double> &x) {
 
     for (int i = 0; i < N; ++i) {
       const int j = (i + tau) % N; // periodic boundary conditions
-      sum += x[i] * x[j];
+      sum += std::pow(x[i], power) * std::pow(x[j], power);
     }
 
     correlator[tau] = sum / static_cast<double>(N);
@@ -39,15 +52,10 @@ std::vector<double> compute_correlator(const std::vector<double> &x) {
   return correlator;
 }
 
-/**
- * @brief Save correlator to CSV file.
- *
- * The output format is:
- *
- *     tau, C(tau)
- *
- * where tau = i * a is the physical Euclidean time separation.
- */
+std::vector<double> compute_correlator(const std::vector<double> &x) {
+  return compute_correlator_power(x, 1);
+}
+
 void save_correlator_to_csv(const std::vector<double> &correlator, double a,
                             const std::string &filename) {
   std::ofstream out(filename);

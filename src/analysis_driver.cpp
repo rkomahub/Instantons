@@ -43,7 +43,7 @@ void run_basic_analysis(std::mt19937 &gen) {
   // Cooled path (copy, then apply cooling)
   Lattice cooled = lattice;
   Metropolis cooled_evolver(cooled, gen);
-  cooled_evolver.cool(100);
+  cooled_evolver.cool(200); // 200 cooling sweeps
   configs.emplace_back("cooled", cooled.get_path());
 
   // --- Analyze and save each configuration ---
@@ -73,7 +73,7 @@ void run_cooling_evolution_analysis(std::mt19937 &gen) {
     evolver.step();
   }
 
-  run_cooling_evolution(lattice, 100, params::a,
+  run_cooling_evolution(lattice, 200, params::a,
                         "data/instanton_density_vs_ncool.csv", gen);
 }
 

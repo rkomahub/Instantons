@@ -68,6 +68,27 @@ constexpr int sweeps = 100000;
 constexpr double dx_width = 0.5;
 
 /**
+ * @brief Width of Gaussian proposal distribution used during cooling.
+ *
+ * During cooling, updates are accepted only if they decrease the
+ * Euclidean action. Unlike the Monte Carlo width (dx_width),
+ * this parameter controls how aggressively the configuration is
+ * smoothed toward a nearby classical solution.
+ *
+ * Smaller values make cooling behave closer to gradient descent,
+ * efficiently suppressing UV fluctuations.
+ *
+ * Larger values make cooling more stochastic and may leave residual
+ * oscillations even after many sweeps.
+ *
+ * Typical tuning range:
+ *     0.05 – 0.20
+ *
+ * This parameter does NOT affect full Monte Carlo sampling.
+ */
+constexpr double dx_width_cool = 0.05;
+
+/**
  * @brief Initial configuration selector.
  *
  * true  → hot start (random in [-eta, eta])

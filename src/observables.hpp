@@ -11,6 +11,51 @@
  */
 
 /**
+ * @brief Compute the p-th moment of the field.
+ *
+ * Given a Euclidean configuration x_i ≡ x(τ_i), this function computes
+ *
+ *     ⟨ x^p ⟩ = (1/N) Σ_i x_i^p
+ *
+ * This quantity is needed for constructing connected correlators.
+ *
+ * For example, in the case p = 2:
+ *
+ *     C_2^conn(τ) = ⟨ x^2(0)x^2(τ) ⟩ − ⟨ x^2 ⟩^2
+ *
+ * @param x      Discretized Euclidean path.
+ * @param power  Integer power p.
+ * @return       The ensemble average ⟨ x^p ⟩ for this configuration.
+ */
+double compute_moment(const std::vector<double> &x, int power);
+
+/**
+ * @brief Compute the p-th power Euclidean two-point correlator.
+ *
+ * Given a configuration x_i ≡ x(τ_i), this function computes
+ *
+ *     C_p(τ) = (1/N) Σ_i x_i^p x_{i+τ}^p
+ *
+ * with periodic boundary conditions.
+ *
+ * Special cases:
+ *
+ *     p = 1  →  ⟨ x(0)x(τ) ⟩
+ *     p = 2  →  ⟨ x^2(0)x^2(τ) ⟩
+ *     p = 3  →  ⟨ x^3(0)x^3(τ) ⟩
+ *
+ * For p = 2, the connected correlator used in Fig. 4 is
+ *
+ *     C_2^conn(τ) = C_2(τ) − ⟨ x^2 ⟩^2
+ *
+ * @param x      Discretized Euclidean path.
+ * @param power  Integer power p.
+ * @return       Vector C_p(τ) for τ = 0, ..., N−1.
+ */
+std::vector<double> compute_correlator_power(const std::vector<double> &x,
+                                             int power);
+
+/**
  * @brief Compute the Euclidean two-point correlator.
  *
  * Given a configuration x_i ≡ x(τ_i), this function computes

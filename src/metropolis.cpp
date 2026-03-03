@@ -76,7 +76,7 @@ void Metropolis::step() {
  * if ΔS < 0 then accept, else reject.
  */
 void Metropolis::cool(int n_sweeps) {
-  std::normal_distribution<double> dx_dist(0.0, params::dx_width);
+  std::normal_distribution<double> dx_dist(0.0, params::dx_width_cool);
 
   for (int sweep = 0; sweep < n_sweeps; ++sweep) {
     for (int i = 0; i < x.size(); ++i) {

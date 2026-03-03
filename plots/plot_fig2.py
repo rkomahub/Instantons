@@ -13,7 +13,7 @@ def main():
 
     fig, ax = plt.subplots(figsize=(8,5))
     ax.plot(q_path["tau"], q_path["x"], label="Monte Carlo", color="black", linewidth=1.0)
-    ax.plot(c_path["tau"], c_path["x"], label="Cooled (100 sweeps)", color="green", linewidth=2.0)
+    ax.plot(c_path["tau"], c_path["x"], label="Cooled (200 sweeps)", color="mediumseagreen", linewidth=2.0)
 
     ax.set_xlabel(r"$\tau$")
     ax.set_ylabel(r"$x(\tau)$")
