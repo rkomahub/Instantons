@@ -1,4 +1,5 @@
 #include "ensemble.hpp"
+
 #include "instanton.hpp"
 #include "lattice.hpp"
 #include "metropolis.hpp"
@@ -9,6 +10,7 @@
 #include <fstream>
 #include <iostream>
 #include <numeric>
+#include <string>
 #include <vector>
 
 /**
@@ -34,15 +36,16 @@ void run_ensemble_average(int trials, bool cooled,
   const double a = params::a;
   const double beta = N * a;
 
-  // For Fig. 3
+  // For Fig. 3 (only uncooled)
   std::vector<double> all_positions;
   if (!cooled) {
     all_positions.reserve(static_cast<size_t>(trials) * static_cast<size_t>(N));
   }
 
-  // For Fig. 4
+  // Correlators per trial
   std::vector<std::vector<double>> C1_data(trials);
-  std::vector<std::vector<double>> C2_data(trials);
+  std::vector<std::vector<double>> C2raw_data(trials);
+  std::vector<std::vector<double>> C2conn_data(trials);
   std::vector<std::vector<double>> C3_data(trials);
 
   std::vector<int> instanton_counts(trials);
@@ -73,22 +76,43 @@ void run_ensemble_average(int trials, bool cooled,
       all_positions.insert(all_positions.end(), path.begin(), path.end());
     }
 
-    // --- Fig. 4 correlators ---
+    // --- Correlators ---
     auto C1 = compute_correlator_power(path, 1);
-    auto C2 = compute_correlator_power(path, 2);
+    auto C2raw = compute_correlator_power(path, 2);
     auto C3 = compute_correlator_power(path, 3);
 
-    // Connected subtraction for x^2
-    double mean_x2 = compute_moment(path, 2);
+    // Connected subtraction for x^2: C2conn = C2raw - <x^2>^2
+    const double mean_x2 = compute_moment(path, 2);
+    auto C2conn = C2raw;
     for (int i = 0; i < N; ++i) {
-      C2[i] -= mean_x2 * mean_x2;
+      C2conn[i] -= mean_x2 * mean_x2;
     }
 
-    C1_data[t] = C1;
-    C2_data[t] = C2;
-    C3_data[t] = C3;
+    C1_data[t] = std::move(C1);
+    C2raw_data[t] = std::move(C2raw);
+    C2conn_data[t] = std::move(C2conn);
+    C3_data[t] = std::move(C3);
 
     instanton_counts[t] = count_zero_crossings(path);
+  }
+
+  // ===============================
+  // Export per-trial correlators (for jackknife in Python)
+  // ===============================
+  {
+    const std::string trials_file = cooled ? "data/fig6_trials_correlators.csv"
+                                           : "data/fig4_trials_correlators.csv";
+
+    std::ofstream out_trials(trials_file);
+    out_trials << "trial,tau,C1,C2raw,C2conn,C3\n";
+
+    for (int t = 0; t < trials; ++t) {
+      for (int i = 0; i < N; ++i) {
+        out_trials << t << "," << i * a << "," << C1_data[t][i] << ","
+                   << C2raw_data[t][i] << "," << C2conn_data[t][i] << ","
+                   << C3_data[t][i] << "\n";
+      }
+    }
   }
 
   // ===============================
@@ -97,56 +121,67 @@ void run_ensemble_average(int trials, bool cooled,
   if (!cooled) {
     std::ofstream out_pos(output_prefix + "_positions.csv");
     out_pos << "x\n";
-    for (double xi : all_positions)
+    for (double xi : all_positions) {
       out_pos << xi << "\n";
+    }
   }
 
   // ===============================
-  // Fig. 4: ensemble averages
+  // Ensemble averages: Fig.4 (uncooled) and Fig.6 (cooled)
   // ===============================
-  if (!cooled) {
-
+  {
     std::vector<double> C1_mean(N, 0.0), C1_err(N, 0.0);
-    std::vector<double> C2_mean(N, 0.0), C2_err(N, 0.0);
+    std::vector<double> C2raw_mean(N, 0.0), C2raw_err(N, 0.0);
+    std::vector<double> C2conn_mean(N, 0.0), C2conn_err(N, 0.0);
     std::vector<double> C3_mean(N, 0.0), C3_err(N, 0.0);
 
     for (int i = 0; i < N; ++i) {
 
       for (int t = 0; t < trials; ++t) {
         C1_mean[i] += C1_data[t][i];
-        C2_mean[i] += C2_data[t][i];
+        C2raw_mean[i] += C2raw_data[t][i];
+        C2conn_mean[i] += C2conn_data[t][i];
         C3_mean[i] += C3_data[t][i];
       }
 
       C1_mean[i] /= trials;
-      C2_mean[i] /= trials;
+      C2raw_mean[i] /= trials;
+      C2conn_mean[i] /= trials;
       C3_mean[i] /= trials;
 
-      double var1 = 0.0, var2 = 0.0, var3 = 0.0;
+      double var1 = 0.0, var2raw = 0.0, var2conn = 0.0, var3 = 0.0;
 
       for (int t = 0; t < trials; ++t) {
         var1 += std::pow(C1_data[t][i] - C1_mean[i], 2);
-        var2 += std::pow(C2_data[t][i] - C2_mean[i], 2);
+        var2raw += std::pow(C2raw_data[t][i] - C2raw_mean[i], 2);
+        var2conn += std::pow(C2conn_data[t][i] - C2conn_mean[i], 2);
         var3 += std::pow(C3_data[t][i] - C3_mean[i], 2);
       }
 
       if (trials > 1) {
         var1 /= (trials - 1);
-        var2 /= (trials - 1);
+        var2raw /= (trials - 1);
+        var2conn /= (trials - 1);
         var3 /= (trials - 1);
       }
 
       C1_err[i] = std::sqrt(var1 / trials);
-      C2_err[i] = std::sqrt(var2 / trials);
+      C2raw_err[i] = std::sqrt(var2raw / trials);
+      C2conn_err[i] = std::sqrt(var2conn / trials);
       C3_err[i] = std::sqrt(var3 / trials);
     }
 
-    std::ofstream out("data/fig4_quantum_correlators.csv");
-    out << "tau,C1,C1_err,C2conn,C2conn_err,C3,C3_err\n";
+    const std::string filename = cooled ? "data/fig6_cooled_correlators.csv"
+                                        : "data/fig4_quantum_correlators.csv";
+
+    std::ofstream out(filename);
+    out << "tau,C1,C1_err,C2raw,C2raw_err,C2conn,C2conn_err,C3,C3_err\n";
 
     for (int i = 0; i < N; ++i) {
-      out << i * a << "," << C1_mean[i] << "," << C1_err[i] << "," << C2_mean[i]
-          << "," << C2_err[i] << "," << C3_mean[i] << "," << C3_err[i] << "\n";
+      out << i * a << "," << C1_mean[i] << "," << C1_err[i] << ","
+          << C2raw_mean[i] << "," << C2raw_err[i] << "," << C2conn_mean[i]
+          << "," << C2conn_err[i] << "," << C3_mean[i] << "," << C3_err[i]
+          << "\n";
     }
   }
 
@@ -161,12 +196,13 @@ void run_ensemble_average(int trials, bool cooled,
 
   double inst_var = 0.0;
   for (int t = 0; t < trials; ++t) {
-    double d = instanton_counts[t] - inst_mean;
+    const double d = instanton_counts[t] - inst_mean;
     inst_var += d * d;
   }
 
-  if (trials > 1)
+  if (trials > 1) {
     inst_var /= (trials - 1);
+  }
 
   const double inst_stderr = std::sqrt(inst_var / trials);
 
