@@ -1,24 +1,24 @@
 #include "observables.hpp"
+#include "potential.hpp"
 #include <cmath>
 #include <fstream>
 
-/**
- * @file observables.cpp
- * @brief Implementation of Euclidean two-point correlators.
- *
- * Given a configuration x_i ≡ x(τ_i) sampled from the Euclidean path integral,
- * this module computes the translationally averaged correlator
- *
- *     C(τ) = (1/N) Σ_i x_i x_{i+τ}
- *
- * with periodic boundary conditions.
- *
- * In the large-τ limit:
- *
- *     C(τ) ~ exp(−(E1 − E0) τ)
- *
- * which allows extraction of the energy gap.
- */
+double compute_action(const std::vector<double> &x, double a, double eta) {
+  const int N = x.size();
+  double S = 0.0;
+
+  for (int i = 0; i < N; i++) {
+    int im = (i - 1 + N) % N;
+
+    double kinetic = std::pow(x[i] - x[im], 2) / (4.0 * a);
+
+    double potential_term = a * potential(x[i], eta);
+
+    S += kinetic + potential_term;
+  }
+
+  return S;
+}
 
 double compute_moment(const std::vector<double> &x, int power) {
   const int N = static_cast<int>(x.size());

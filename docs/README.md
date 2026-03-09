@@ -1,80 +1,116 @@
-# Monte Carlo Simulations of Instantons in the Double Well Potential
+# Monte Carlo Instantons in the Double Well Potential
 
-This project implements Euclidean lattice Monte Carlo simulations of instantons in the quantum mechanical double well potential.
+Numerical simulations of instantons in the quantum mechanical double well potential using **Euclidean lattice Monte Carlo**.
 
 The implementation follows:
 
-**T. Schäfer**, *Instantons and Monte Carlo Methods in Quantum Mechanics*.
+**T. Schäfer**
+*Instantons and Monte Carlo Methods in Quantum Mechanics*
 
 ---
 
-## 1. Physical Model
+# Overview
 
-We study the Hamiltonian
+This project studies tunneling and instanton physics using several complementary numerical approaches:
+
+* Euclidean **Monte Carlo path integral sampling**
+* **Cooling** to extract instanton content
+* **Instanton liquid models** (RILM / IILM)
+* **Adiabatic switching** for non-Gaussian corrections
+* **Correlation functions** and energy gap extraction
+
+The code aims to reproduce the figures and numerical experiments presented in Schäfer’s lecture notes.
+
+---
+
+# Physical Model
+
+We consider the double well Hamiltonian
 
 [
-H = \frac{p^2}{2m} + (x^2 - \eta^2)^2
+H = \frac{p^2}{2m} + (x^2-\eta^2)^2
 ]
 
-After rescaling (2m = 1), the discretized Euclidean action reads
+After rescaling ((2m = 1)), the discretized Euclidean action becomes
 
 [
-S = \sum_i \left[
-\frac{(x_i - x_{i-1})^2}{4a}
-
-* a (x_i^2 - \eta^2)^2
-  \right]
-  ]
+S =
+\sum_i
+\left[
+\frac{(x_i-x_{i-1})^2}{4a}
++
+a(x_i^2-\eta^2)^2
+\right]
+]
 
 with periodic boundary conditions.
 
 The classical instanton solution is
 
 [
-x_I(\tau) = \eta \tanh\left(\frac{\omega}{2}(\tau - \tau_0)\right),
-\quad \omega = 4\eta
+x_I(\tau) =
+\eta
+\tanh
+\left(
+\frac{\omega}{2}(\tau-\tau_0)
+\right),
+\qquad
+\omega = 4\eta
 ]
 
-with classical action
+and the classical instanton action
 
 [
-S_0 = \frac{4\eta^3}{3}.
+S_0 = \frac{4\eta^3}{3}
 ]
 
 ---
 
-## 2. Implemented Methods
+# Implemented Methods
 
-The project includes:
+### Monte Carlo path integral
 
-* Metropolis sampling of the Euclidean path integral
-* Cooling for instanton extraction
+* Metropolis updates of lattice configurations
+* Ensemble averaging
+* Correlator measurements
+* Energy gap extraction
+
+### Instanton extraction
+
+* Cooling algorithms
+* Instanton density measurements
+* Action per instanton
+
+### Semiclassical approaches
+
 * Random Instanton Liquid Model (RILM)
+* Heated RILM
 * Interacting Instanton Liquid Model (IILM)
-* Adiabatic switching for non-Gaussian corrections
-* Two-point correlators and gap extraction
-* Ensemble averaging with statistical errors
+
+### Beyond Gaussian semiclassics
+
+* Adiabatic switching
+* Thermodynamic integration
+* Non-Gaussian corrections to instanton density
 
 ---
 
-## 3. Repository Structure
+# Repository Structure
 
 ```
 .
 ├── CMakeLists.txt
 ├── LICENSE
-├── bin/                   # Compiled executables
-├── data/                  # Generated CSV output
-├── plots/                 # Python plotting scripts
-│   ├── plot_fig1.py
-│   ├── plot_fig2_6.py
-│   ├── plot_fig3.py
-│   ├── plot_fig4.py
-│   └── plot_fig7.py
-├── docs/                  # Generated documentation (Doxygen)
-├── tests/                 # Unit tests (CTest)
+├── README.md
+├── bin/              # compiled executables
+├── build/            # CMake build directory
+├── data/             # generated CSV data
+├── figures/          # generated plots
+├── plots/            # python plotting scripts
+├── docs/             # documentation (Doxygen)
+├── tests/            # unit tests
 └── src/
-    ├── main.cpp           # Command dispatcher
+    ├── main.cpp
     ├── analysis_driver.*
     ├── lattice.*
     ├── potential.*
@@ -92,21 +128,21 @@ The project includes:
 
 ---
 
-## 4. Build Pipeline (CMake)
+# Build
 
-### 4.1 Configure
+### Configure
 
-```
+```bash
 cmake -S . -B build -DCMAKE_BUILD_TYPE=Debug
 ```
 
-### 4.2 Compile
+### Compile
 
-```
-cmake --build build -j 8
+```bash
+cmake --build build -j
 ```
 
-This produces:
+Generated executables:
 
 ```
 bin/montecarlo
@@ -115,58 +151,22 @@ bin/test_*
 
 ---
 
-## 5. Command-Line Interface
+# Command Line Interface
 
-The executable now requires a command specifying which analysis to run. Since we introduced a **command-dispatch CLI**:
-* The executable requires a **command**.
-* Each command corresponds to a specific numerical experiment.
-* Runs are reproducible via `--seed`.
-* Optional `--etas` for eta scans.
-
-### Basic Usage
+The main executable runs different numerical experiments.
 
 ```
 ./bin/montecarlo <command> [options]
 ```
 
-### Figure to Command
-
-| Schäfer Fig.   | Physical Content                                 | CLI Command                                     | Generated Data                            | Python Script               |
-| -------------- | ------------------------------------------------ | ----------------------------------------------- | ----------------------------------------- | --------------------------- |
-| **Fig. 1(a)**  | Double-well potential + energy levels            | *(no C++ needed)*                               | — (pure Python HO diagonalization)        | `plot_fig1.py`              |
-| **Fig. 1(b)**  | Spectrum vs η                                    | *(no C++ needed)*                               | — (pure Python HO diagonalization)        | `plot_fig1.py`              |
-| **Fig. 2**     | Typical Euclidean path + cooled path             | `basic`                                         | `quantum_path.csv`<br>`cooled_path.csv`   | `plot_fig2_6.py`            |
-| **Fig. 3**     | Probability distribution vs exact |ψ₀|²          | `ensemble`                                      | `ensemble_quantum*`                       | `plot_fig3.py`              |
-| **Fig. 4**     | Correlators (uncooled) + log-derivative          | `ensemble`                                      | `ensemble_quantum*`                       | `plot_fig4.py`              |
-| **Fig. 5**     | Free energy via adiabatic switching              | `qmidens`                                       | switching CSV (ΔF, errors)                | *(future plot script)*      |
-| **Fig. 6**     | Correlators (cooled) + log-derivative            | `ensemble`                                      | `ensemble_cooled*`                        | `plot_fig2_6.py`            |
-| **Fig. 7(a)**  | Instanton density vs cooling sweeps              | `cooling-evolution`                             | `instanton_density_vs_ncool.csv`          | `plot_fig7.py`              |
-| **Fig. 7(b)**  | Action per instanton vs cooling                  | `cooling-evolution` *(requires action logging)* | *(needs S per sweep export)*              | *(future plot)*             |
-| **Fig. 8**     | Instanton density vs η                           | `eta-scan`                                      | `cooling_eta_scan.csv`                    | *(future plot)*             |
-| **Fig. 9**     | One-instanton sector during switching            | `qmidens` *(future extension)*                  | *(not yet exported)*                      | —                           |
-| **Fig. 10**    | RILM correlators                                 | `rilm`                                          | `rilm_path.csv`<br>`rilm_correlator.csv`  | *(future dedicated script)* |
-| **Fig. 11**    | Gaussian effective potential                     | *(not implemented)*                             | —                                         | —                           |
-| **Fig. 12**    | RILM vs Heated RILM path                         | `rilm` + `heated-rilm`                          | `rilm_path.csv`<br>`rilm_heated_path.csv` | *(future dedicated script)* |
-| **Fig. 13**    | Heated RILM correlators                          | `heated-rilm`                                   | `rilm_heated_correlator.csv`              | *(future script)*           |
-| **Fig. 14–16** | IA interaction, streamline, separation histogram | *(not yet implemented)*                         | —                                         | —                           |
-
----
-
-### Optional Arguments
+Optional arguments
 
 ```
 --seed <int>
-```
-
-Sets the random number generator seed (default: 12345).
-Ensures reproducibility.
-
-```
 --etas a,b,c
 ```
 
-Only for `eta-scan`.
-Example:
+Example
 
 ```
 ./bin/montecarlo eta-scan --etas 1.0,1.2,1.4,1.6
@@ -174,57 +174,96 @@ Example:
 
 ---
 
-## 6. Example Workflows
+# Main Commands
 
-### Reproduce Fig. 2 (Typical Euclidean Path)
+| Command             | Description                               |
+| ------------------- | ----------------------------------------- |
+| `basic`             | typical Euclidean path + cooled path      |
+| `ensemble`          | correlators and probability distributions |
+| `cooling-evolution` | instanton density vs cooling              |
+| `fig7`              | averaged cooling analysis                 |
+| `fig8`              | instanton density vs η                    |
+| `fig9`              | switching paths                           |
+| `fig11`             | Gaussian effective potential              |
+| `rilm`              | random instanton liquid model             |
+| `heated-rilm`       | heated RILM                               |
+| `iilm`              | interacting instanton liquid              |
+| `fig14`             | IA interaction and streamline             |
+| `fig15`             | streamline paths                          |
+| `fig16`             | IA separation histogram                   |
+| `fig17`             | instanton positions                       |
+| `qmidens`           | non-Gaussian corrections                  |
+| `eta-scan`          | scan in η                                 |
+
+---
+
+# Generating Figures
+
+Typical workflow
 
 ```
-./bin/montecarlo basic --seed 12345
-python plots/plot_fig2_6.py
+./bin/montecarlo <command>
+python3 plots/plot_figX.py
 ```
 
-### Reproduce Instanton Density vs Cooling
+Example
 
 ```
-./bin/montecarlo cooling-evolution --seed 12345
-python plots/plot_fig7.py
-```
-
-### Perform an η Scan
-
-```
-./bin/montecarlo eta-scan --etas 1.0,1.2,1.4,1.6
+./bin/montecarlo fig7
+python3 plots/plot_fig7.py
 ```
 
 ---
 
-## 7. Running the Tests (CTest)
+# Figure Reproduction Map
 
-Unit tests verify:
+| Schäfer figure | Method                           |
+| -------------- | -------------------------------- |
+| Fig.1          | Schrödinger spectral calculation |
+| Fig.2          | Monte Carlo path                 |
+| Fig.3          | probability distribution         |
+| Fig.4          | correlators                      |
+| Fig.5          | adiabatic switching              |
+| Fig.6          | cooled correlators               |
+| Fig.7          | cooling evolution                |
+| Fig.8          | instanton density vs η           |
+| Fig.9          | switching paths                  |
+| Fig.10         | RILM correlators                 |
+| Fig.11         | Gaussian effective potential     |
+| Fig.12         | RILM vs heated RILM              |
+| Fig.13         | heated RILM correlators          |
+| Fig.14–16      | IA interaction and streamline    |
+| Fig.17         | instanton liquid positions       |
 
-* Action locality
-* Cooling monotonicity
-* Acceptance rule consistency
-* Boundary-condition invariance
-* Potential symmetry
+---
 
-Run all tests:
+# Testing
+
+Run all unit tests
 
 ```
 ctest --test-dir build --output-on-failure
 ```
 
+Tests verify
+
+* action consistency
+* Metropolis acceptance rule
+* cooling monotonicity
+* boundary conditions
+* potential symmetry
+
 ---
 
-## 8. Documentation (Doxygen)
+# Documentation
 
-Generate documentation:
+Generate API documentation with
 
 ```
 cmake --build build --target docs
 ```
 
-Open:
+Then open
 
 ```
 docs/api/html/index.html
@@ -232,136 +271,48 @@ docs/api/html/index.html
 
 ---
 
-## 9. Reproducing Figures
+# Computational Layers
 
-After generating data with the appropriate command, figures can be produced using:
+The project contains four conceptual layers.
 
-```
-python plots/plot_figX.py
-```
+### Spectral quantum mechanics
 
-The plotting scripts reproduce the main figures from the Schäfer lectures:
+Direct diagonalization of the Hamiltonian.
 
-* Potential and spectrum
-* Euclidean paths and cooling
-* Correlators and log-derivatives
-* Instanton density vs cooling
-* Instanton liquid comparisons
-* Non-Gaussian corrections
+### Full Monte Carlo path integral
+
+Metropolis sampling of Euclidean paths.
+
+### Semiclassical instanton extraction
+
+Cooling and instanton density measurements.
+
+### Instanton liquid models
+
+Analytical multi-instanton configurations (RILM, IILM, streamline).
 
 ---
 
-## 10. Rebuild Options
+# Rebuild
 
-Incremental rebuild:
+Incremental rebuild
 
 ```
-cmake --build build -j 8
+cmake --build build -j
 ```
 
-Full clean rebuild:
+Clean rebuild
 
 ```
 rm -rf build
-cmake -S . -B build -DCMAKE_BUILD_TYPE=Debug
-cmake --build build -j 8
+cmake -S . -B build
+cmake --build build -j
 ```
 
 ---
 
-## 11. Project computational layers
+# Author
 
-## 1. Spectral (Schrödinger) Layer
-
-**Method:** Direct diagonalization of the Hamiltonian
-**Numerics:** HO basis → matrix → eigenvalues/eigenvectors
-**Path integral not used**
-
-### Figures:
-
-* **Fig. 1(a)** — Potential + first energy levels
-* **Fig. 1(b)** — Spectrum vs η
-
-These are purely spectral. No Monte Carlo.
-
----
-
-## 2. Full Monte Carlo (Euclidean Path Integral) Layer
-
-**Method:** Metropolis sampling of discretized Euclidean action
-**Core object:** Typical lattice path ( x(\tau_i) )
-**Includes cooling as a post-processing filter**
-
-### Figures:
-
-* **Fig. 2** — Typical Euclidean path + cooled path
-* **Fig. 3** — Probability distribution (P(x)) vs (|\psi_0|^2)
-* **Fig. 4** — Correlators (uncooled)
-* **Fig. 6** — Correlators (cooled)
-* **Fig. 7(a)** — Instanton density vs cooling sweeps
-* **Fig. 7(b)** — Action per instanton vs cooling
-* **Fig. 8** — Instanton density vs η
-
-These all originate from *full Monte Carlo sampling*.
-
-Cooling does **not** create a new computational layer — it is a deterministic smoothing procedure applied to MC configurations.
-
----
-
-## 3. Beyond Gaussian Semiclassics
-
-**Method:** Adiabatic switching / thermodynamic integration
-**Purpose:** Compute non-Gaussian corrections to instanton density
-**Mathematically:** Interpolate between Gaussian and full action
-
-### Figure:
-
-* **Fig. 5** — Free energy (F(T))
-
-Although it uses MC sampling internally, it belongs to a different conceptual layer because:
-
-* It computes a *free energy difference*
-* It probes *beyond one-loop semiclassics*
-* It does not rely on raw path observables
-
-This is a separate theoretical layer.
-
----
-
-## 4. Semiclassical Instanton Liquid Models
-
-**Method:** Construct multi-instanton configurations analytically
-**No path integral sampling**
-
-### Figures:
-
-* **Fig. 9** — One-instanton sector during switching
-* **Fig. 10** — RILM correlators
-* **Fig. 11** — Gaussian effective potential
-* **Fig. 12** — RILM vs Heated RILM paths
-* **Fig. 13** — Heated RILM correlators
-* **Fig. 14–16** — IA interaction, streamline, separation histogram
-
-These are semiclassical constructions:
-
-* RILM
-* IILM
-* Streamline
-* IA interaction potential
-
-No Metropolis sampling of full path integral.
-
-# Conceptual Hierarchy
-
-If we order them by theoretical depth:
-
-1. Spectral QM (exact Schrödinger)
-2. Full Monte Carlo path integral
-3. Cooling extraction of semiclassical objects
-4. Semiclassical liquid approximations
-5. Beyond-Gaussian corrections (switching)
-
----
-
-Author: Marco Benazzi
-Project started: 2025
+Marco Benazzi
+Theoretical Physics MSc Project
+Started: 2025

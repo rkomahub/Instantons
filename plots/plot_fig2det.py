@@ -107,10 +107,10 @@ def main():
     ax.legend()
     fig.tight_layout()
 
-    fig.savefig(FIGS / "Figure_2_det.png", dpi=250)
-    fig.savefig(FIGS / "Figure_2_det.pdf")
+    fig.savefig(FIGS / "Figure_2det.png", dpi=250)
+    fig.savefig(FIGS / "Figure_2det.pdf")
 
-    print(f"[ok] saved {FIGS/'Figure_2_det.png'} and .pdf")
+    print(f"[ok] saved {FIGS/'Figure_2det.png'} and .pdf")
     print(f"[info] action: raw={action(x_raw):.6g}, det={action(x_det):.6g}, steps={len(S_hist)-1}")
 
     # Optional: save action history for debugging/tuning

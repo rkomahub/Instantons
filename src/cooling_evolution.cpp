@@ -1,6 +1,9 @@
 #include "cooling_evolution.hpp"
 #include "instanton.hpp"
 #include "metropolis.hpp"
+#include "observables.hpp"
+#include "parameters.hpp"
+
 #include <fstream>
 #include <random>
 #include <vector>
@@ -24,7 +27,7 @@ void run_cooling_evolution(const Lattice &original, int max_sweeps, double a,
                            const std::string &output_filename,
                            std::mt19937 &gen) {
   std::ofstream out(output_filename);
-  out << "n_cool,n_inst,density\n";
+  out << "n_cool,n_inst,density,action,s_per_inst\n";
 
   // Work on a copy so the original configuration is unchanged.
   Lattice cooled = original;
@@ -46,6 +49,14 @@ void run_cooling_evolution(const Lattice &original, int max_sweeps, double a,
     // Instanton density n_{I+A} = N_{I+A} / beta.
     const double density = static_cast<double>(n_inst) / beta;
 
-    out << n_cool << "," << n_inst << "," << density << "\n";
+    double S = compute_action(cooled.get_path(), a, params::eta);
+
+    double S_inst = NAN;
+
+    if (n_inst > 0)
+      S_inst = S / n_inst;
+
+    out << n_cool << "," << n_inst << "," << density << "," << S << ","
+        << S_inst << "\n";
   }
 }

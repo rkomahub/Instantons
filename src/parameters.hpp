@@ -47,7 +47,7 @@ constexpr double a = 0.05;
  *
  *     S0 = 4 eta^3 / 3
  */
-constexpr double eta = 1.4;
+inline double eta = 1.4; // instead of constexpr to allow tuning at runtime
 
 /**
  * @brief Number of full Metropolis sweeps.

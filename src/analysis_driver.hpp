@@ -61,6 +61,15 @@ void run_cooling_eta_scan(const std::vector<double> &etas, std::mt19937 &gen);
  */
 void run_ensemble_analysis(std::mt19937 &gen);
 
+// Reproduce Schäfer Fig.7 (a,b): ensemble-averaged cooling evolution for eta
+// = 1.4, 1.5, 1.6.
+void run_fig7_analysis(std::mt19937 &gen);
+
+// Reproduce Schäfer Fig.8: instanton density vs eta after cooling.
+void run_fig8_analysis(const std::vector<double> &etas, std::mt19937 &gen);
+
+void run_fig9_analysis(std::mt19937 &gen);
+
 /**
  * @brief Random Instanton Liquid Model (RILM) analysis.
  *
@@ -68,6 +77,9 @@ void run_ensemble_analysis(std::mt19937 &gen);
  * and compares correlators with full Monte Carlo results.
  */
 void run_rilm_analysis(std::mt19937 &gen);
+
+// Reproduce Schäfer Fig.11: instanton density vs eta in the IILM.
+void run_fig11_analysis(double eta);
 
 /**
  * @brief RILM with added Gaussian fluctuations (heating).
@@ -77,6 +89,14 @@ void run_rilm_analysis(std::mt19937 &gen);
  */
 void run_heated_rilm_analysis(std::mt19937 &gen);
 
+// Reproduce Schäfer Fig.14
+void run_fig14_analysis(std::mt19937 &gen);
+
+void run_fig15_analysis(std::mt19937 &gen);
+
+// Reproduce Schäfer Fig.16: distribution of IA separations after cooling
+void run_fig16_analysis(std::mt19937 &gen);
+
 /**
  * @brief Interacting Instanton Liquid Model (IILM) analysis.
  *
@@ -84,6 +104,9 @@ void run_heated_rilm_analysis(std::mt19937 &gen);
  * improving semiclassical realism.
  */
 void run_iilm_analysis(std::mt19937 &gen);
+
+// Reproduce Schäfer Fig.17: instanton positions vs configuration index in IILM
+void run_fig17_analysis(std::mt19937 &gen);
 
 /**
  * @brief Non-Gaussian correction to instanton density.

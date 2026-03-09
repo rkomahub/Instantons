@@ -1,4 +1,5 @@
 #pragma once
+#include <random>
 #include <vector>
 
 /**
@@ -34,4 +35,5 @@
  *
  * @return Discretized multi-instanton configuration.
  */
-std::vector<double> generate_rilm_path(int N, double a, double eta, int n_inst);
+std::vector<double> generate_rilm_path(int N, double a, double eta, int n_inst,
+                                       std::mt19937 &gen);

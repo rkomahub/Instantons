@@ -1,4 +1,5 @@
 #include "instanton.hpp"
+#include <vector>
 
 /**
  * @file instanton.cpp

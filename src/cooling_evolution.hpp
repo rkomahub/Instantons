@@ -27,7 +27,7 @@
  *
  * The output CSV file contains:
  *
- *     n_cool, n_inst, density
+ *     n_cool, n_inst, density, action, s_per_inst
  *
  * where:
  *   n_cool  = number of cooling sweeps performed

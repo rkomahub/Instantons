@@ -3,6 +3,23 @@
 #include <vector>
 
 /**
+ * @brief Compute the total Euclidean lattice action.
+ *
+ * The discretized action is
+ *
+ *     S = Σ_i [ (x_i - x_{i-1})^2 / (4a) + a V(x_i) ]
+ *
+ * with periodic boundary conditions.
+ *
+ * @param x    Euclidean path.
+ * @param a    Lattice spacing.
+ * @param eta  Double well parameter.
+ *
+ * @return Total action S[x].
+ */
+double compute_action(const std::vector<double> &x, double a, double eta);
+
+/**
  * @file observables.hpp
  * @brief Measurement of physical observables from Euclidean configurations.
  *

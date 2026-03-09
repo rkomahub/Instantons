@@ -60,3 +60,18 @@ void run_qmidens_analysis(std::mt19937 &gen);
 double compute_qmidens_corrected_density(int sweeps, double dx_width,
                                          int n_alpha_fine, int n_alpha_coarse,
                                          std::mt19937 &gen);
+
+/**
+ * @brief Generate Monte Carlo paths used in Fig.9 (switching paths).
+ *
+ * Produces representative configurations in:
+ *   - 0-instanton sector
+ *   - 1-instanton sector (with fixed instanton location)
+ *
+ * The simulation samples the switched action
+ *
+ *     S_alpha = (1 - alpha) S_gauss + alpha S_full
+ *
+ * and exports configurations for plotting.
+ */
+void run_fig9_paths(std::mt19937 &gen);
