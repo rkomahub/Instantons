@@ -23,6 +23,7 @@
 #include <string>
 #include <vector>
 
+// Small container used to label and store one Euclidean path.
 struct Configuration {
   std::string label;
   std::vector<double> path;
@@ -31,10 +32,12 @@ struct Configuration {
       : label(std::move(l)), path(std::move(p)) {}
 };
 
+// Run one full Metropolis simulation and compare quantum and cooled paths.
 void run_basic_analysis(std::mt19937 &gen) {
   Lattice lattice(params::N, params::eta, params::hot_start, gen);
   Metropolis evolver(lattice, gen);
 
+  // Equilibrate and sample the Euclidean path with Metropolis sweeps.
   for (int sweep = 0; sweep < params::sweeps; ++sweep) {
     evolver.step();
   }
@@ -61,7 +64,7 @@ void run_basic_analysis(std::mt19937 &gen) {
     auto corr = compute_correlator(config.path);
     save_correlator_to_csv(corr, params::a, base + "_correlator.csv");
 
-    // Instanton count
+    // Estimate instanton content through zero crossings.
     int n_inst = count_zero_crossings(config.path);
     double beta = config.path.size() * params::a;
     double density = static_cast<double>(n_inst) / beta;
@@ -71,9 +74,12 @@ void run_basic_analysis(std::mt19937 &gen) {
   }
 }
 
+// Measure how the instanton density changes under repeated cooling sweeps.
 void run_cooling_evolution_analysis(std::mt19937 &gen) {
   Lattice lattice(params::N, params::eta, params::hot_start, gen);
   Metropolis evolver(lattice, gen);
+
+  // Generate the initial quantum configuration before cooling.
   for (int sweep = 0; sweep < params::sweeps; ++sweep) {
     evolver.step();
   }
@@ -82,12 +88,14 @@ void run_cooling_evolution_analysis(std::mt19937 &gen) {
                         "data/instanton_density_vs_ncool.csv", gen);
 }
 
+// Compute ensemble averages for quantum and cooled configurations.
 void run_ensemble_analysis(std::mt19937 &gen) {
   int trials = 50;
   run_ensemble_average(trials, false, "data/ensemble_quantum", gen);
   run_ensemble_average(trials, true, "data/ensemble_cooled", gen);
 }
 
+// Generate and analyze an interacting instanton liquid configuration.
 void run_iilm_analysis(std::mt19937 &gen) {
   const int N = params::N;
   const double a = params::a;
@@ -103,10 +111,12 @@ void run_iilm_analysis(std::mt19937 &gen) {
   // --- build lattice path from cfg
   auto iilm_path = build_iilm_path(N, a, eta, cfg);
 
+  // Save the generated IILM path and its Euclidean correlator.
   save_path_to_csv(iilm_path, "data/iilm_path.csv", a);
   save_correlator_to_csv(compute_correlator(iilm_path), a,
                          "data/iilm_correlator.csv");
 
+  // Compare inserted instantons with the zero-crossing estimate.
   const int counted = count_zero_crossings(iilm_path);
   const double density = static_cast<double>(counted) / beta;
 
@@ -114,12 +124,15 @@ void run_iilm_analysis(std::mt19937 &gen) {
             << ", density = " << density << "\n";
 }
 
+// Scan eta and measure the cooled instanton density after fixed cooling.
 void run_cooling_eta_scan(const std::vector<double> &etas, std::mt19937 &gen) {
   std::ofstream out("data/cooling_eta_scan.csv");
   out << "eta,density\n";
   for (double eta : etas) {
     Lattice lat(params::N, eta, /*hot_start=*/true, gen);
     Metropolis evo(lat, gen);
+
+    // Generate a quantum path for the current double-well parameter eta.
     for (int s = 0; s < params::sweeps; ++s)
       evo.step();
 
@@ -128,6 +141,7 @@ void run_cooling_eta_scan(const std::vector<double> &etas, std::mt19937 &gen) {
     for (int c = 0; c < 10; ++c)
       cool.cool(1);
 
+    // Store the instanton density extracted after cooling.
     int n = count_zero_crossings(lat.get_path());
     double beta = params::N * params::a;
     out << eta << "," << (double(n) / beta) << "\n";

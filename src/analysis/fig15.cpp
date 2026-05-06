@@ -11,6 +11,7 @@
 #include <random>
 #include <vector>
 
+// Generate relaxed IA paths with different action ratios for Fig. 15.
 void run_fig15_analysis(std::mt19937 & /*gen*/) {
   std::cout << "[📊] Running Fig.15 relaxed-IA family scan...\n";
 
@@ -43,16 +44,19 @@ void run_fig15_analysis(std::mt19937 & /*gen*/) {
   std::vector<double> best_diff(targets.size(), 1e100);
   std::vector<bool> found(targets.size(), false);
 
+  // Search over initial separations and flow time.
   for (double tauIA0 = tauIA_min; tauIA0 <= tauIA_max + 1e-12;
        tauIA0 += dtau_scan) {
     const double tauA0 = std::fmod(tauI + tauIA0, beta);
 
     auto x = build_sum_ansatz_ia(N, a, eta, tauI, tauA0);
 
+    // Follow the IA pair down the action valley.
     for (int step = 0; step <= nflow; ++step) {
       const double S = compute_action(x, a, eta);
       const double ratio = S / S0;
 
+      // Keep the path closest to each requested action ratio.
       for (size_t k = 0; k < targets.size(); ++k) {
         const double diff = std::fabs(ratio - targets[k]);
         if (diff < best_diff[k]) {
@@ -81,6 +85,7 @@ void run_fig15_analysis(std::mt19937 & /*gen*/) {
               << "  best actual ratio = " << best_ratio[k]
               << "  |diff| = " << best_diff[k] << "\n";
 
+    // Export the path and its local action density.
     for (int i = 0; i < N; ++i) {
       const int im = (i - 1 + N) % N;
       const double dx = (x[i] - x[im]) / a;

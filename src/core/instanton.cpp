@@ -1,5 +1,6 @@
 #include "core/instanton.hpp"
 
+// Count tunneling events through sign changes of the Euclidean path.
 int count_zero_crossings(const std::vector<double> &path) {
   int count = 0;
   const int N = path.size();
@@ -13,5 +14,6 @@ int count_zero_crossings(const std::vector<double> &path) {
     }
   }
 
+  // Each crossing corresponds to one instanton or anti-instanton event.
   return count;
 }

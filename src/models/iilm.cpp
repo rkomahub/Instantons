@@ -8,6 +8,8 @@
 // -----------------------------
 // Core constraint
 // -----------------------------
+
+// Check that no two instantons violate the hard-core separation.
 bool iilm_core_ok(const IILMConfig &cfg, double beta, double tau_core) {
   const int n = static_cast<int>(cfg.tau.size());
   for (int i = 0; i < n; ++i) {
@@ -23,6 +25,8 @@ bool iilm_core_ok(const IILMConfig &cfg, double beta, double tau_core) {
 // -----------------------------
 // Initial configuration
 // -----------------------------
+
+// Generate random collective coordinates with a hard-core constraint.
 IILMConfig generate_iilm_config(int n_inst, double beta, double tau_core,
                                 std::mt19937 &gen) {
   if (n_inst <= 0)
@@ -42,6 +46,7 @@ IILMConfig generate_iilm_config(int n_inst, double beta, double tau_core,
   int attempts = 0;
   const int max_attempts = 200 * n_inst;
 
+  // Rejection sampling places instantons without hard-core overlap.
   while (static_cast<int>(cfg.tau.size()) < n_inst && attempts < max_attempts) {
     const double t = dist_tau(gen);
 
@@ -87,6 +92,8 @@ IILMConfig generate_iilm_config(int n_inst, double beta, double tau_core,
 // -----------------------------
 // Build lattice path from cfg
 // -----------------------------
+
+// Convert collective coordinates into a discretized multi-instanton path.
 std::vector<double> build_iilm_path(int N, double a, double eta,
                                     const IILMConfig &cfg) {
   if (N <= 0)
@@ -104,6 +111,7 @@ std::vector<double> build_iilm_path(int N, double a, double eta,
   for (int i = 0; i < N; ++i) {
     const double tau = i * a;
 
+    // Sum the instanton and anti-instanton profiles at this time slice.
     double sum = 0.0;
     for (size_t j = 0; j < cfg.tau.size(); ++j) {
       const double dt = nearest_image_dt(tau - cfg.tau[j], beta);
@@ -119,6 +127,8 @@ std::vector<double> build_iilm_path(int N, double a, double eta,
 // -----------------------------
 // Proposal move for Markov chain
 // -----------------------------
+
+// Propose a local collective-coordinate move for one instanton.
 bool propose_move_tau(IILMConfig &cfg, double beta, double tau_core,
                       double step, std::mt19937 &gen) {
   if (cfg.tau.empty())
@@ -143,6 +153,7 @@ bool propose_move_tau(IILMConfig &cfg, double beta, double tau_core,
     }
   }
 
+  // Commit the valid collective-coordinate proposal.
   cfg.tau[j] = trial;
   return true;
 }

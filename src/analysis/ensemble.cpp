@@ -13,6 +13,7 @@
 #include <string>
 #include <vector>
 
+// Generate many configurations and average observables over the ensemble.
 void run_ensemble_average(int trials, bool cooled,
                           const std::string &output_prefix, std::mt19937 &gen) {
 
@@ -32,6 +33,7 @@ void run_ensemble_average(int trials, bool cooled,
   std::vector<std::vector<double>> C2conn_data(trials);
   std::vector<std::vector<double>> C3_data(trials);
 
+  // Store one instanton count per configuration.
   std::vector<int> instanton_counts(trials);
 
   // ===============================
@@ -42,10 +44,12 @@ void run_ensemble_average(int trials, bool cooled,
     Lattice lattice(N, params::eta, /*hot_start=*/true, gen);
     Metropolis evolver(lattice, gen);
 
+    // Generate one quantum configuration.
     for (int sweep = 0; sweep < params::sweeps; ++sweep) {
       evolver.step();
     }
 
+    // Optionally remove short-distance fluctuations by cooling.
     if (cooled) {
       Lattice cooled_lat = lattice;
       Metropolis cooled_evolver(cooled_lat, gen);
@@ -90,6 +94,7 @@ void run_ensemble_average(int trials, bool cooled,
     std::ofstream out_trials(trials_file);
     out_trials << "trial,tau,C1,C2raw,C2conn,C3\n";
 
+    // Save each trial separately to allow external resampling analysis.
     for (int t = 0; t < trials; ++t) {
       for (int i = 0; i < N; ++i) {
         out_trials << t << "," << i * a << "," << C1_data[t][i] << ","
@@ -105,6 +110,8 @@ void run_ensemble_average(int trials, bool cooled,
   if (!cooled) {
     std::ofstream out_pos(output_prefix + "_positions.csv");
     out_pos << "x\n";
+
+    // Export all sampled positions for the probability histogram P(x).
     for (double xi : all_positions) {
       out_pos << xi << "\n";
     }
@@ -119,6 +126,7 @@ void run_ensemble_average(int trials, bool cooled,
     std::vector<double> C2conn_mean(N, 0.0), C2conn_err(N, 0.0);
     std::vector<double> C3_mean(N, 0.0), C3_err(N, 0.0);
 
+    // Average each correlator independently at every Euclidean time.
     for (int i = 0; i < N; ++i) {
 
       for (int t = 0; t < trials; ++t) {
@@ -135,6 +143,7 @@ void run_ensemble_average(int trials, bool cooled,
 
       double var1 = 0.0, var2raw = 0.0, var2conn = 0.0, var3 = 0.0;
 
+      // Estimate statistical errors from trial-to-trial fluctuations.
       for (int t = 0; t < trials; ++t) {
         var1 += std::pow(C1_data[t][i] - C1_mean[i], 2);
         var2raw += std::pow(C2raw_data[t][i] - C2raw_mean[i], 2);
@@ -161,6 +170,7 @@ void run_ensemble_average(int trials, bool cooled,
     std::ofstream out(filename);
     out << "tau,C1,C1_err,C2raw,C2raw_err,C2conn,C2conn_err,C3,C3_err\n";
 
+    // Export ensemble-averaged correlators with standard errors.
     for (int i = 0; i < N; ++i) {
       out << i * a << "," << C1_mean[i] << "," << C1_err[i] << ","
           << C2raw_mean[i] << "," << C2raw_err[i] << "," << C2conn_mean[i]

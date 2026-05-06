@@ -4,6 +4,7 @@
 #include <algorithm>
 #include <cmath>
 
+// Shortest distance between two Euclidean times on a periodic circle.
 double periodic_distance(double t1, double t2, double beta) {
   const double dt = std::fabs(t1 - t2);
   return std::min(dt, beta - dt);
@@ -18,6 +19,7 @@ static double wrap_to_nearest_image(double dt, double beta) {
   return dt;
 }
 
+// Build an instanton--anti-instanton pair using the sum ansatz.
 std::vector<double> build_sum_ansatz_ia(int N, double a, double eta,
                                         double tau_I, double tau_A) {
   const double omega = 4.0 * eta;
@@ -41,6 +43,7 @@ std::vector<double> build_sum_ansatz_ia(int N, double a, double eta,
   return x;
 }
 
+// Locate zero crossings by linear interpolation between lattice sites.
 std::vector<double> zero_crossings_interp(const std::vector<double> &x,
                                           double a) {
   const int N = static_cast<int>(x.size());
@@ -95,6 +98,7 @@ std::vector<double> zero_crossings_interp(const std::vector<double> &x,
   return zeros;
 }
 
+// Return the periodic separation when exactly two zero crossings are present.
 double zero_crossing_separation(const std::vector<double> &x, double a) {
   const int N = static_cast<int>(x.size());
   const double beta = N * a;
@@ -106,6 +110,7 @@ double zero_crossing_separation(const std::vector<double> &x, double a) {
   return periodic_distance(z[0], z[1], beta);
 }
 
+// Apply one steepest-descent step for the discretized Euclidean action.
 void gradient_flow_step(std::vector<double> &x, double a, double eta,
                         double eps) {
   const int N = static_cast<int>(x.size());
@@ -123,6 +128,7 @@ void gradient_flow_step(std::vector<double> &x, double a, double eta,
     grad[i] = lap + a * dV;
   }
 
+  // Move the path downhill in action.
   for (int i = 0; i < N; ++i) {
     x[i] -= eps * grad[i];
   }

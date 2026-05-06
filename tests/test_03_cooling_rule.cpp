@@ -50,8 +50,7 @@ int main() {
 
   const double dS = S_new - S_old;
 
-  // Run exactly one cooling sweep (site loop starts from 0 in your
-  // implementation)
+  // Run exactly one cooling sweep (site loop starts from 0)
   Metropolis evo(lat, gen_run);
   evo.cool(1);
 

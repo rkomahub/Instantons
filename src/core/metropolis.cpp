@@ -8,6 +8,7 @@
 
 namespace {
 
+// Compute the part of the action affected by a local update at site i.
 double local_action(const Lattice &x, int i) {
   const int N = x.size();
 
@@ -23,9 +24,11 @@ double local_action(const Lattice &x, int i) {
 
 } // namespace
 
+// Bind the Metropolis updater to an existing lattice and RNG.
 Metropolis::Metropolis(Lattice &lattice, std::mt19937 &gen)
     : x(lattice), gen(gen) {}
 
+// Perform one full Metropolis sweep over all lattice sites.
 void Metropolis::step() {
   std::normal_distribution<double> dx_dist(0.0, params::dx_width);
   std::uniform_real_distribution<double> prob_dist(0.0, 1.0);
@@ -53,6 +56,7 @@ void Metropolis::step() {
   }
 }
 
+// Perform cooling sweeps, accepting only action-lowering updates.
 void Metropolis::cool(int n_sweeps) {
   std::normal_distribution<double> dx_dist(0.0, params::dx_width_cool);
 
@@ -65,12 +69,14 @@ void Metropolis::cool(int n_sweeps) {
 
       const double S_old = local_action(x, i);
 
+      // Propose a small local deformation of the cooled path.
       x[i] += dx_dist(gen);
 
       const double S_new = local_action(x, i);
 
       const double dS = S_new - S_old;
 
+      // Reject any update that increases the Euclidean action.
       if (dS > 0.0) {
         x[i] = x_old;
       }

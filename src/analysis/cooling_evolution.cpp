@@ -8,6 +8,7 @@
 #include <fstream>
 #include <random>
 
+// Track how instanton observables evolve as cooling removes UV noise.
 void run_cooling_evolution(const Lattice &original, int max_sweeps, double a,
                            const std::string &output_filename,
                            std::mt19937 &gen) {
@@ -34,8 +35,10 @@ void run_cooling_evolution(const Lattice &original, int max_sweeps, double a,
     // Instanton density n_{I+A} = N_{I+A} / beta.
     const double density = static_cast<double>(n_inst) / beta;
 
+    // Compute the action of the current cooled configuration.
     double S = compute_action(cooled.get_path(), a, params::eta);
 
+    // Store the action per instanton only when instantons are present.
     double S_inst = NAN;
 
     if (n_inst > 0)

@@ -14,6 +14,7 @@
 #include <random>
 #include <vector>
 
+// Generate IA interaction curves and separation histograms for Figs. 14 and 16.
 void run_fig14_analysis(std::mt19937 &gen) {
   std::cout << "[📊] Running Fig.14 + Fig.16 combined analysis...\n";
 
@@ -37,6 +38,7 @@ void run_fig14_analysis(std::mt19937 &gen) {
 
   const double tauI = 0.25 * beta;
 
+  // Compute the IA interaction from the simple sum ansatz.
   for (double tauIA = 0.05; tauIA <= 4.50; tauIA += 0.025) {
     const double tauA = std::fmod(tauI + tauIA, beta);
 
@@ -57,6 +59,7 @@ void run_fig14_analysis(std::mt19937 &gen) {
     const double eps = 0.002;
     const int nflow = 1200;
 
+    // Relax IA paths by gradient flow to approximate the streamline.
     for (double tauIA0 = 4.0; tauIA0 >= 0.10; tauIA0 -= 0.05) {
       const double tauA0 = std::fmod(tauI + tauIA0, beta);
       auto x = build_sum_ansatz_ia(N, a, eta, tauI, tauA0);
@@ -94,6 +97,7 @@ void run_fig14_analysis(std::mt19937 &gen) {
   std::ofstream out_sep("data/fig16_separations.csv");
   out_sep << "source,trial,sep\n"; // source = mc or ref
 
+  // Add one IA separation to the selected histogram.
   auto fill_hist = [&](double sep, std::vector<int> &hist) {
     if (sep < tau_min || sep >= tau_max)
       return;
@@ -107,6 +111,7 @@ void run_fig14_analysis(std::mt19937 &gen) {
     Lattice lat(N, eta, params::hot_start, gen);
     Metropolis evo(lat, gen);
 
+    // Generate one full quantum configuration.
     for (int s = 0; s < params::sweeps; ++s)
       evo.step();
 
@@ -120,6 +125,7 @@ void run_fig14_analysis(std::mt19937 &gen) {
     if (tau.size() < 2)
       continue;
 
+    // Measure nearest-neighbor zero-crossing separations on the circle.
     for (size_t i = 0; i < tau.size(); ++i) {
       const double t1 = tau[i];
       const double t2 = tau[(i + 1) % tau.size()];
@@ -140,6 +146,7 @@ void run_fig14_analysis(std::mt19937 &gen) {
     if (tau.size() < 2)
       continue;
 
+    // Use the random instanton ensemble as the uncorrelated reference.
     for (size_t i = 0; i < tau.size(); ++i) {
       const double t1 = tau[i];
       const double t2 = tau[(i + 1) % tau.size()];
@@ -167,6 +174,7 @@ void run_fig14_analysis(std::mt19937 &gen) {
     total_ref += hist_ref[b];
   }
 
+  // Convert histogram enhancement into an effective IA interaction.
   for (int b = 0; b < nbins; ++b) {
     const double tau_c = tau_min + (b + 0.5) * binw;
     const double n_mc = hist_mc[b];
@@ -194,4 +202,5 @@ void run_fig14_analysis(std::mt19937 &gen) {
             << "  data/fig16_histograms.csv\n";
 }
 
+// Fig. 16 uses the same combined analysis pipeline.
 void run_fig16_analysis(std::mt19937 &gen) { run_fig14_analysis(gen); }

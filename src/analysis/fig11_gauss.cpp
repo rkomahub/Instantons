@@ -6,11 +6,13 @@
 #include <string>
 
 namespace {
+// Classical single-instanton profile centered at tau0.
 double x_instanton(double tau, double eta, double tau0) {
   const double u = 2.0 * eta * (tau - tau0);
   return eta * std::tanh(u);
 }
 
+// Gaussian fluctuation potential around the instanton path.
 double V_gauss(double tau, double eta, double tau0) {
   const double u = 2.0 * eta * (tau - tau0);
   const double c = std::cosh(u);
@@ -19,6 +21,7 @@ double V_gauss(double tau, double eta, double tau0) {
 }
 } // namespace
 
+// Export the instanton profile and Gaussian effective potential for Fig. 11.
 void run_fig11_analysis(double eta) {
   std::cout << "[📈] Running Fig. 11 export (Gaussian effective potential)...\n";
 
@@ -37,6 +40,8 @@ void run_fig11_analysis(double eta) {
   const double tau_max = +0.5 * T;
 
   out << "tau,xI,Vg\n";
+
+  // Sample both functions on a uniform Euclidean-time grid.
   for (int i = 0; i < N; ++i) {
     const double f = (N == 1) ? 0.0 : double(i) / double(N - 1);
     const double tau = tau_min + f * (tau_max - tau_min);

@@ -3,6 +3,7 @@
 #include <cmath>
 #include <stdexcept>
 
+// Compute the arithmetic mean of a data sample.
 double mean(const std::vector<double> &values) {
   if (values.empty()) {
     throw std::runtime_error("mean: empty input vector");
@@ -16,6 +17,7 @@ double mean(const std::vector<double> &values) {
   return sum / static_cast<double>(values.size());
 }
 
+// Compute the unbiased sample variance around a known mean.
 double sample_variance(const std::vector<double> &values, double mean_value) {
   if (values.size() < 2) {
     return 0.0;
@@ -30,6 +32,7 @@ double sample_variance(const std::vector<double> &values, double mean_value) {
   return var / static_cast<double>(values.size() - 1);
 }
 
+// Compute the statistical standard error of the sample mean.
 double standard_error(const std::vector<double> &values) {
   if (values.empty()) {
     throw std::runtime_error("standard_error: empty input vector");

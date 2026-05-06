@@ -49,3 +49,54 @@ void run_ensemble_analysis(std::mt19937 &gen);
  * with short-range repulsion.
  */
 void run_iilm_analysis(std::mt19937 &gen);
+
+/**
+ * @brief Generate Fig.7 cooling analysis data.
+ */
+void run_fig7_analysis(std::mt19937 &gen);
+
+/**
+ * @brief Generate Fig.8 instanton density comparison data.
+ */
+void run_fig8_analysis(const std::vector<double> &etas,
+                       std::mt19937 &gen);
+
+/**
+ * @brief Generate Fig.9 switching-path configurations.
+ */
+void run_fig9_analysis(std::mt19937 &gen);
+
+/**
+ * @brief Generate Fig.10 RILM correlator data.
+ */
+void run_rilm_analysis(std::mt19937 &gen);
+
+/**
+ * @brief Export Gaussian effective potential data for Fig.11.
+ */
+void run_fig11_analysis(double eta);
+
+/**
+ * @brief Generate heated RILM data for Figs.12 and 13.
+ */
+void run_heated_rilm_analysis(std::mt19937 &gen);
+
+/**
+ * @brief Generate IA interaction and separation data for Figs.14 and 16.
+ */
+void run_fig14_analysis(std::mt19937 &gen);
+
+/**
+ * @brief Generate relaxed IA configurations for Fig.15.
+ */
+void run_fig15_analysis(std::mt19937 &gen);
+
+/**
+ * @brief Generate instanton trajectory data for Fig.17.
+ */
+void run_fig17_analysis(std::mt19937 &gen);
+
+/**
+ * @brief Run the non-Gaussian instanton density analysis.
+ */
+void run_qmidens_analysis(std::mt19937 &gen);

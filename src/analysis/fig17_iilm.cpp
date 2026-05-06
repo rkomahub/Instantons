@@ -11,6 +11,7 @@
 #include <random>
 #include <vector>
 
+// Track instanton and anti-instanton positions during an IILM simulation.
 void run_fig17_analysis(std::mt19937 &gen) {
   std::cout << "[📊] Running Fig.17 IILM trajectory of instanton positions...\n";
 
@@ -37,6 +38,7 @@ void run_fig17_analysis(std::mt19937 &gen) {
   out << "conf,kind,k,tau\n"; // kind=+1 instanton, kind=-1 anti-instanton,
                               // k=0..9
 
+  // Count proposed and accepted collective-coordinate moves.
   long long n_prop = 0, n_acc = 0;
 
   for (int conf = 0; conf < n_cfg; ++conf) {
@@ -46,11 +48,14 @@ void run_fig17_analysis(std::mt19937 &gen) {
     ++n_prop;
     const bool proposed =
         propose_move_tau(trial, beta, tau_core, step_tau, gen);
+
+    // Rebuild the path only if the hard-core proposal is valid.
     if (proposed) {
       auto x_trial = build_iilm_path(N, a, eta, trial);
       const double S_trial = compute_action(x_trial, a, eta);
       const double dS = S_trial - S;
 
+      // Accept or reject the proposed collective-coordinate move.
       if (u01(gen) <= std::exp(-dS)) {
         cfg = std::move(trial);
         x = std::move(x_trial);
@@ -65,6 +70,7 @@ void run_fig17_analysis(std::mt19937 &gen) {
       tau_I.reserve(cfg.tau.size());
       tau_A.reserve(cfg.tau.size());
 
+      // Split collective coordinates by topological charge.
       for (size_t j = 0; j < cfg.tau.size(); ++j) {
         if (cfg.Q[j] == +1)
           tau_I.push_back(cfg.tau[j]);
@@ -78,9 +84,11 @@ void run_fig17_analysis(std::mt19937 &gen) {
       const int nI = std::min<int>(10, (int)tau_I.size());
       const int nA = std::min<int>(10, (int)tau_A.size());
 
+      // Save the first instanton trajectories.
       for (int k = 0; k < nI; ++k)
         out << conf << "," << +1 << "," << k << "," << tau_I[k] << "\n";
 
+      // Save the first anti-instanton trajectories.
       for (int k = 0; k < nA; ++k)
         out << conf << "," << -1 << "," << k << "," << tau_A[k] << "\n";
     }

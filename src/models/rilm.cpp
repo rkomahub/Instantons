@@ -9,6 +9,7 @@
 
 namespace {
 
+// Minimum-image displacement on the Euclidean time circle.
 inline double min_image_dt(double dt, double beta) {
   dt -= beta * std::round(dt / beta);
   return dt;
@@ -23,6 +24,7 @@ bool passes_hard_core(const std::vector<double> &tau_sorted, double beta,
       return false;
     }
   }
+
   // circular neighbor: last -> first
   const double wrap_gap = beta - (tau_sorted[n - 1] - tau_sorted[0]);
   return (wrap_gap > dmin);
@@ -38,6 +40,7 @@ std::vector<double> sample_centers_hard_core(int n, double beta, double dmin,
   if (dmin <= 0.0) {
     throw std::runtime_error("sample_centers_hard_core: dmin must be > 0");
   }
+
   // simple necessary condition: total excluded length must fit in beta
   // (very rough, but useful to fail fast)
   if (n * dmin >= beta) {
@@ -48,6 +51,7 @@ std::vector<double> sample_centers_hard_core(int n, double beta, double dmin,
   std::uniform_real_distribution<double> dist_tau(0.0, beta);
   std::vector<double> tau(n);
 
+  // Try random center sets until the hard-core constraint is satisfied.
   for (int attempt = 0; attempt < max_tries; ++attempt) {
     for (int j = 0; j < n; ++j)
       tau[j] = dist_tau(gen);
@@ -68,6 +72,8 @@ std::vector<double> sample_centers_hard_core(int n, double beta, double dmin,
 // =================================================
 // product-ansatz hypothesis
 // =================================================
+
+// Generate a random instanton liquid path from uniformly sampled centers.
 std::vector<double> generate_rilm_path(int N, double a, double eta, int n_inst,
                                        std::mt19937 &gen) {
   if (n_inst <= 0)
@@ -89,6 +95,7 @@ std::vector<double> generate_rilm_path(int N, double a, double eta, int n_inst,
 
   std::vector<double> x(N, 0.0);
 
+  // Build the path as a smooth product of instanton sign flips.
   for (int i = 0; i < N; ++i) {
     const double tau = i * a;
 

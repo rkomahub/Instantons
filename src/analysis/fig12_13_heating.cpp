@@ -12,6 +12,7 @@
 #include <random>
 #include <vector>
 
+// Generate heated RILM paths and correlators for Figs. 12 and 13.
 void run_heated_rilm_analysis(std::mt19937 &gen) {
   const int trials = 100; // before 50
   const int N = params::N;
@@ -30,6 +31,7 @@ void run_heated_rilm_analysis(std::mt19937 &gen) {
   const int n_heat_sweeps = 300;    // metro sweeps
   const double dx_width_heat = 0.3; // tune acceptance
 
+  // Local curvature of the double-well potential along the classical path.
   auto Vdd = [eta](double xc) { return 12.0 * xc * xc - 4.0 * eta * eta; };
   std::normal_distribution<double> dx_dist(0.0, dx_width_heat);
   std::uniform_real_distribution<double> u01(0.0, 1.0);
@@ -38,6 +40,7 @@ void run_heated_rilm_analysis(std::mt19937 &gen) {
   std::vector<std::vector<double>> C1_data(trials), C2raw_data(trials),
       C2conn_data(trials), C3_data(trials);
 
+  // Track the Metropolis acceptance rate during heating.
   long long n_prop_tot = 0, n_acc_tot = 0;
 
   for (int t = 0; t < trials; ++t) {
@@ -68,6 +71,7 @@ void run_heated_rilm_analysis(std::mt19937 &gen) {
           const double kappa = Vdd(x_cl[i]);
           const double dx0 = x_old - x_cl[i];
 
+          // Local Gaussian action before the proposed update.
           const double S_old = (std::pow(x_old - x_metro[im], 2) +
                                 std::pow(x_metro[ip] - x_old, 2)) /
                                    (4.0 * a) +
@@ -76,6 +80,7 @@ void run_heated_rilm_analysis(std::mt19937 &gen) {
           const double x_new = x_old + dx_dist(gen);
           const double dx1 = x_new - x_cl[i];
 
+          // Local Gaussian action after the proposed update.
           const double S_new = (std::pow(x_new - x_metro[im], 2) +
                                 std::pow(x_metro[ip] - x_new, 2)) /
                                    (4.0 * a) +
@@ -104,6 +109,7 @@ void run_heated_rilm_analysis(std::mt19937 &gen) {
         const double kappa = Vdd(x_cl[i]);
         const double dx0 = x_old - x_cl[i];
 
+        // Evaluate the current local Gaussian action.
         const double S_old =
             (std::pow(x_old - path[im], 2) + std::pow(path[ip] - x_old, 2)) /
                 (4.0 * a) +
@@ -112,6 +118,7 @@ void run_heated_rilm_analysis(std::mt19937 &gen) {
         const double x_new = x_old + dx_dist(gen);
         const double dx1 = x_new - x_cl[i];
 
+        // Evaluate the proposed local Gaussian action.
         const double S_new =
             (std::pow(x_new - path[im], 2) + std::pow(path[ip] - x_new, 2)) /
                 (4.0 * a) +
@@ -134,6 +141,7 @@ void run_heated_rilm_analysis(std::mt19937 &gen) {
     auto C2raw = compute_correlator_power(path, 2);
     auto C3 = compute_correlator_power(path, 3);
 
+    // Connected x^2 correlator removes the constant contribution.
     auto C2conn = C2raw;
     for (int i = 0; i < N; ++i)
       C2conn[i] -= mean_x2 * mean_x2;
@@ -148,6 +156,8 @@ void run_heated_rilm_analysis(std::mt19937 &gen) {
   {
     std::ofstream outT("data/fig13_trials_correlators.csv");
     outT << "trial,tau,C1,C2raw,C2conn,C3\n";
+
+    // Save raw trial data for external error analysis.
     for (int t = 0; t < trials; ++t) {
       for (int i = 0; i < N; ++i) {
         outT << t << "," << i * a << "," << C1_data[t][i] << ","
@@ -163,6 +173,7 @@ void run_heated_rilm_analysis(std::mt19937 &gen) {
   std::vector<double> C2conn_mean(N, 0), C2conn_err(N, 0);
   std::vector<double> C3_mean(N, 0), C3_err(N, 0);
 
+  // Compute mean correlators and standard errors at each tau.
   for (int i = 0; i < N; ++i) {
     for (int t = 0; t < trials; ++t) {
       C1_mean[i] += C1_data[t][i];
@@ -176,6 +187,8 @@ void run_heated_rilm_analysis(std::mt19937 &gen) {
     C3_mean[i] /= trials;
 
     double v1 = 0, v2r = 0, v2c = 0, v3 = 0;
+
+    // Estimate variances from configuration-to-configuration fluctuations.
     for (int t = 0; t < trials; ++t) {
       v1 += std::pow(C1_data[t][i] - C1_mean[i], 2);
       v2r += std::pow(C2raw_data[t][i] - C2raw_mean[i], 2);
@@ -198,6 +211,8 @@ void run_heated_rilm_analysis(std::mt19937 &gen) {
   {
     std::ofstream out("data/fig13_heated_rilm_correlators.csv");
     out << "tau,C1,C1_err,C2raw,C2raw_err,C2conn,C2conn_err,C3,C3_err\n";
+
+    // Export final heated-RILM correlators with error bars.
     for (int i = 0; i < N; ++i) {
       out << i * a << "," << C1_mean[i] << "," << C1_err[i] << ","
           << C2raw_mean[i] << "," << C2raw_err[i] << "," << C2conn_mean[i]

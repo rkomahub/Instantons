@@ -11,6 +11,7 @@
 #include <random>
 #include <vector>
 
+// Reproduce Fig. 8 data: cooled MC density and non-Gaussian density.
 void run_fig8_analysis(const std::vector<double> &etas, std::mt19937 &gen) {
   // --- BLUE (MC + 10 cooling sweeps)
   const int Nconf = 100;
@@ -29,12 +30,15 @@ void run_fig8_analysis(const std::vector<double> &etas, std::mt19937 &gen) {
   std::ofstream outR("data/fig8_qmidens.csv");
   outR << "eta,density_ng_mean,density_ng_err\n";
 
+  // Scan the instanton density as a function of the double-well parameter.
   for (double eta_val : etas) {
     params::eta = eta_val;
 
     // ===== BLUE: full MC -> cool 10 -> count
     Lattice lat(params::N, params::eta, params::hot_start, gen);
     Metropolis evo(lat, gen);
+
+    // Thermalize the quantum path before measurements.
     for (int s = 0; s < params::sweeps; ++s)
       evo.step();
 
@@ -43,6 +47,7 @@ void run_fig8_analysis(const std::vector<double> &etas, std::mt19937 &gen) {
     std::vector<double> dens;
     dens.reserve(Nconf);
 
+    // Measure cooled instanton densities over many configurations.
     for (int k = 0; k < Nconf; ++k) {
       for (int s = 0; s < skip; ++s)
         evo.step();
@@ -65,6 +70,7 @@ void run_fig8_analysis(const std::vector<double> &etas, std::mt19937 &gen) {
     std::vector<double> vals;
     vals.reserve(Nrep);
 
+    // Estimate the corrected density from independent switching runs.
     for (int r = 0; r < Nrep; ++r) {
       // independent RNG stream per replicate
       std::mt19937 gen_r(gen()); // draws a seed from the main generator

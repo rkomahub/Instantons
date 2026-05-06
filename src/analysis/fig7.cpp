@@ -11,6 +11,7 @@
 #include <random>
 #include <vector>
 
+// Reproduce Fig. 7 data: instanton density and action vs cooling sweeps.
 void run_fig7_analysis(std::mt19937 &gen) {
   const std::vector<double> etas = {1.4, 1.5, 1.6};
 
@@ -21,15 +22,18 @@ void run_fig7_analysis(std::mt19937 &gen) {
   std::ofstream out("data/fig7_long.csv");
   out << "eta,conf,n_cool,n_inst,density,action,s_per_inst\n";
 
+  // Repeat the cooling analysis for different double-well parameters.
   for (double eta_val : etas) {
     params::eta = eta_val;
 
     Lattice lat(params::N, params::eta, params::hot_start, gen);
     Metropolis evo(lat, gen);
 
+    // Thermalize the initial quantum path.
     for (int s = 0; s < params::sweeps; ++s)
       evo.step();
 
+    // Generate approximately independent configurations.
     for (int k = 0; k < Nconf; ++k) {
       for (int s = 0; s < skip; ++s)
         evo.step();
@@ -39,6 +43,7 @@ void run_fig7_analysis(std::mt19937 &gen) {
 
       const double beta = cooled.size() * params::a;
 
+      // Follow one copied configuration through progressive cooling.
       for (int n_cool = 0; n_cool <= ncool_max; ++n_cool) {
         if (n_cool > 0)
           cool_evo.cool(1);
