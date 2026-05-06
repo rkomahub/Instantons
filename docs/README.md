@@ -44,9 +44,7 @@ a(x_i^2-\eta^2)^2
 \right]
 $$
 
-with periodic boundary conditions.
-
-The classical instanton solution is
+with periodic boundary conditions. The classical instanton solution is
 
 $$
 x_I(\tau) =
@@ -67,32 +65,25 @@ $$
 
 ---
 
-# Implemented Methods
+# Computational Layers
 
-### Monte Carlo path integral
+The project contains four conceptual layers.
 
-* Metropolis updates of lattice configurations
-* Ensemble averaging
-* Correlator measurements
-* Energy gap extraction
+### 1. Spectral quantum mechanics
 
-### Instanton extraction
+Direct diagonalization of the Hamiltonian.
 
-* Cooling algorithms
-* Instanton density measurements
-* Action per instanton
+### 2. Full Monte Carlo path integral
 
-### Semiclassical approaches
+Metropolis sampling of Euclidean paths.
 
-* Random Instanton Liquid Model (RILM)
-* Heated RILM
-* Interacting Instanton Liquid Model (IILM)
+### 3. Semiclassical instanton extraction
 
-### Beyond Gaussian semiclassics
+Cooling and instanton density measurements.
 
-* Adiabatic switching
-* Thermodynamic integration
-* Non-Gaussian corrections to instanton density
+### 4. Instanton liquid models
+
+Analytical multi-instanton configurations (RILM, IILM, streamline).
 
 ---
 
@@ -289,28 +280,6 @@ Then open
 ```text
 docs/api/html/index.html
 ```
-
----
-
-# Computational Layers
-
-The project contains four conceptual layers.
-
-### Spectral quantum mechanics
-
-Direct diagonalization of the Hamiltonian.
-
-### Full Monte Carlo path integral
-
-Metropolis sampling of Euclidean paths.
-
-### Semiclassical instanton extraction
-
-Cooling and instanton density measurements.
-
-### Instanton liquid models
-
-Analytical multi-instanton configurations (RILM, IILM, streamline).
 
 ---
 

@@ -12,7 +12,7 @@ The continuum Euclidean action is discretized on a lattice with \(N\) points and
 
 The lattice action is
 
-\[
+$$
 S_E[x] =
 \sum_i
 \left[
@@ -20,29 +20,29 @@ S_E[x] =
 +
 a (x_i^2 - \eta^2)^2
 \right]
-\]
+$$
 
 Periodic boundary conditions are imposed.
 
 The previous lattice site is
 
-\[
+$$
 i_- =
 \begin{cases}
 N-1, & i=0 \\
 i-1, & i>0
 \end{cases}
-\]
+$$
 
 The next lattice site is
 
-\[
+$$
 i_+ =
 \begin{cases}
 0, & i=N-1 \\
 i+1, & i<N-1
 \end{cases}
-\]
+$$
 
 ---
 
@@ -50,9 +50,9 @@ i+1, & i<N-1
 
 A configuration is represented by the vector
 
-\[
+$$
 x = (x_0, x_1, \dots, x_{N-1})
-\]
+$$
 
 The class `Lattice` stores this path.
 
@@ -67,47 +67,47 @@ Two initializations are used:
 
 The Metropolis algorithm samples configurations with probability
 
-\[
+$$
 P[x] \propto e^{-S_E[x]}
-\]
+$$
 
 At each site, a local proposal is generated.
 
 The proposal is
 
-\[
+$$
 x_i' = x_i + \delta x
-\]
+$$
 
 where
 
-\[
+$$
 \delta x \sim \mathcal{N}(0,\sigma)
-\]
+$$
 
 The action difference is computed locally.
 
 The local action contribution is
 
-\[
+$$
 S_i =
 \frac{(x_i-x_{i-1})^2 + (x_{i+1}-x_i)^2}{4a}
 +
 aV(x_i)
-\]
+$$
 
 The proposal is accepted with probability
 
-\[
+$$
 P_{\text{accept}} =
 \min(1,e^{-\Delta S})
-\]
+$$
 
 where
 
-\[
+$$
 \Delta S = S_i[x_i'] - S_i[x_i]
-\]
+$$
 
 One sweep updates all lattice sites once.
 
@@ -119,9 +119,9 @@ Cooling uses the same local proposal mechanism as Metropolis sampling, but the a
 
 A proposal is accepted if it does not increase the action.
 
-\[
+$$
 \Delta S \le 0
-\]
+$$
 
 Cooling removes short-distance fluctuations and drives configurations toward nearby classical structures.
 
@@ -139,27 +139,27 @@ Instantons and anti-instantons are detected through zero crossings.
 
 A crossing is counted when neighboring points have opposite sign.
 
-\[
+$$
 x_i x_{i+1} < 0
-\]
+$$
 
 The total number of crossings gives
 
-\[
+$$
 N_{I+A}
-\]
+$$
 
 The corresponding density is
 
-\[
+$$
 n_{I+A} = \frac{N_{I+A}}{\beta}
-\]
+$$
 
 where
 
-\[
+$$
 \beta = Na
-\]
+$$
 
 ---
 
@@ -171,9 +171,9 @@ The kinetic term is computed from nearest-neighbor differences.
 
 The potential term is computed from
 
-\[
+$$
 V(x_i) = (x_i^2-\eta^2)^2
-\]
+$$
 
 The total action is the sum over all sites.
 
@@ -185,12 +185,12 @@ The code computes Euclidean correlators from a single path.
 
 For power \(p\), the correlator is
 
-\[
+$$
 C_p(\tau) =
 \frac{1}{N}
 \sum_i
 x_i^p x_{i+\tau}^p
-\]
+$$
 
 with periodic indexing.
 
@@ -202,13 +202,13 @@ The cases used most often are:
 
 For \(p=2\), the connected correlator is
 
-\[
+$$
 C_2^{\text{conn}}(\tau)
 =
 C_2(\tau)
 -
 \langle x^2\rangle^2
-\]
+$$
 
 ---
 
@@ -218,29 +218,29 @@ Several independent measurements are combined to estimate means and uncertaintie
 
 For measurements \(O_t\), the sample mean is
 
-\[
+$$
 \bar{O}
 =
 \frac{1}{T}
 \sum_{t=1}^{T}
 O_t
-\]
+$$
 
 The sample variance is
 
-\[
+$$
 s^2 =
 \frac{1}{T-1}
 \sum_{t=1}^{T}
 (O_t-\bar{O})^2
-\]
+$$
 
 The standard error is
 
-\[
+$$
 \sigma_{\bar{O}} =
 \sqrt{\frac{s^2}{T}}
-\]
+$$
 
 The code uses these formulas for correlator errors and density errors.
 
@@ -256,7 +256,7 @@ The path is built from hyperbolic tangent profiles.
 
 The general form is
 
-\[
+$$
 x(\tau)
 =
 \eta
@@ -267,19 +267,19 @@ x(\tau)
 \right)
 -1
 \right]
-\]
+$$
 
 where
 
-\[
+$$
 \omega = 4\eta
-\]
+$$
 
 The charges are
 
-\[
+$$
 Q_j = \pm 1
-\]
+$$
 
 The generated paths are then measured with the same correlator routines used for Monte Carlo configurations.
 
@@ -291,15 +291,15 @@ Heating adds Gaussian fluctuations to a semiclassical path.
 
 The update is
 
-\[
+$$
 x_i \rightarrow x_i + \xi_i
-\]
+$$
 
 where
 
-\[
+$$
 \xi_i \sim \mathcal{N}(0,\sigma)
-\]
+$$
 
 This produces noisy configurations around instanton backgrounds.
 
@@ -322,24 +322,24 @@ A configuration stores:
 
 A hard-core condition is imposed.
 
-\[
+$$
 d(\tau_i,\tau_j) \ge \tau_{\text{core}}
-\]
+$$
 
 The periodic distance is
 
-\[
+$$
 d(\tau_i,\tau_j)
 =
 \min(|\tau_i-\tau_j|,\beta-|\tau_i-\tau_j|)
-\]
+$$
 
 A proposal moves one instanton position.
 
-\[
+$$
 \tau_j' =
 \tau_j + \delta \tau
-\]
+$$
 
 The proposed position is wrapped into \([0,\beta)\).
 
@@ -355,13 +355,13 @@ For each separation, the action is computed.
 
 The interaction is measured relative to two isolated instantons.
 
-\[
+$$
 \frac{S_{\text{int}}}{S_0}
 =
 \frac{S}{S_0}
 -
 2
-\]
+$$
 
 The code also uses gradient-flow-like relaxation to generate streamline configurations.
 
@@ -375,33 +375,33 @@ Adiabatic switching computes free-energy differences by interpolating between tw
 
 The interpolating action is
 
-\[
+$$
 S_\alpha =
 (1-\alpha)S_{\text{gauss}}
 +
 \alpha S_{\text{full}}
-\]
+$$
 
 where
 
-\[
+$$
 0 \le \alpha \le 1
-\]
+$$
 
 For each value of \(\alpha\), the code samples the corresponding ensemble and measures
 
-\[
+$$
 \Delta S(\alpha)
 =
 \langle S_{\text{full}} - S_{\text{gauss}} \rangle_\alpha
-\]
+$$
 
 The integral is
 
-\[
+$$
 I =
 \int_0^1 d\alpha \, \Delta S(\alpha)
-\]
+$$
 
 ---
 
@@ -411,13 +411,13 @@ The integral over \(\alpha\) is evaluated using Simpson's rule.
 
 For an odd number of points \(n_\alpha\), the spacing is
 
-\[
+$$
 h = \frac{1}{n_\alpha-1}
-\]
+$$
 
 The Simpson approximation is
 
-\[
+$$
 I
 \approx
 \frac{h}{3}
@@ -430,13 +430,13 @@ f_{n_\alpha-1}
 +
 2\sum_{\text{even }i\ne 0,n_\alpha-1} f_i
 \right]
-\]
+$$
 
 where
 
-\[
+$$
 f_i = \Delta S(\alpha_i)
-\]
+$$
 
 ---
 
@@ -449,11 +449,11 @@ The code computes the switching integral on two grids:
 
 The improved estimate is
 
-\[
+$$
 I_{\text{Rich}}
 =
 \frac{16I_{\text{fine}} - I_{\text{coarse}}}{15}
-\]
+$$
 
 This reduces the leading discretization error of Simpson integration.
 
@@ -465,12 +465,12 @@ The Gaussian instanton density is computed from the semiclassical formula.
 
 The non-Gaussian correction modifies it by
 
-\[
+$$
 n_{\text{corrected}}
 =
 n_{\text{gauss}}
 e^{-I_{\text{Rich}}}
-\]
+$$
 
 This quantity is used in the density comparison against cooling estimates.
 
@@ -543,3 +543,6 @@ The `models/` layer contains semiclassical instanton models.
 The `analysis/` layer contains figure-specific and experiment-specific workflows.
 
 The `utils/` layer contains generic tools such as I/O, statistics, and periodic indexing.
+
+```
+```
