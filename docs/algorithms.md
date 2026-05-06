@@ -71,9 +71,7 @@ $$
 P[x] \propto e^{-S_E[x]}
 $$
 
-At each site, a local proposal is generated.
-
-The proposal is
+At each site, a local proposal is generated. The proposal is
 
 $$
 x_i' = x_i + \delta x
@@ -85,9 +83,7 @@ $$
 \delta x \sim \mathcal{N}(0,\sigma)
 $$
 
-The action difference is computed locally.
-
-The local action contribution is
+The action difference is computed locally. The local action contribution is
 
 $$
 S_i =
@@ -115,17 +111,13 @@ One sweep updates all lattice sites once.
 
 ## 4. Cooling
 
-Cooling uses the same local proposal mechanism as Metropolis sampling, but the acceptance rule is deterministic.
-
-A proposal is accepted if it does not increase the action.
+Cooling uses the same local proposal mechanism as Metropolis sampling, but the acceptance rule is deterministic. A proposal is accepted if it does not increase the action.
 
 $$
 \Delta S \le 0
 $$
 
-Cooling removes short-distance fluctuations and drives configurations toward nearby classical structures.
-
-The code uses cooling to measure:
+Cooling removes short-distance fluctuations and drives configurations toward nearby classical structures. The code uses cooling to measure:
 
 - number of instantons
 - instanton density
@@ -135,9 +127,7 @@ The code uses cooling to measure:
 
 ## 5. Instanton Counting
 
-Instantons and anti-instantons are detected through zero crossings.
-
-A crossing is counted when neighboring points have opposite sign.
+Instantons and anti-instantons are detected through zero crossings. A crossing is counted when neighboring points have opposite sign.
 
 $$
 x_i x_{i+1} < 0
@@ -203,11 +193,7 @@ The cases used most often are:
 For \(p=2\), the connected correlator is
 
 $$
-C_2^{\text{conn}}(\tau)
-=
-C_2(\tau)
--
-\langle x^2\rangle^2
+C_2^{\text{conn}}(\tau) = C_2(\tau) - \langle x^2\rangle^2
 $$
 
 ---
@@ -219,11 +205,7 @@ Several independent measurements are combined to estimate means and uncertaintie
 For measurements \(O_t\), the sample mean is
 
 $$
-\bar{O}
-=
-\frac{1}{T}
-\sum_{t=1}^{T}
-O_t
+\bar{O}=\frac{1}{T}\sum_{t=1}^{T}O_t
 $$
 
 The sample variance is
@@ -257,16 +239,7 @@ The path is built from hyperbolic tangent profiles.
 The general form is
 
 $$
-x(\tau)
-=
-\eta
-\left[
-\sum_j Q_j
-\tanh\left(
-\frac{\omega}{2}(\tau-\tau_j)
-\right)
--1
-\right]
+x(\tau)=\eta\left[\sum_j Q_j\tanh\left(\frac{\omega}{2}(\tau-\tau_j)\right)-1\right]
 $$
 
 where
@@ -329,9 +302,7 @@ $$
 The periodic distance is
 
 $$
-d(\tau_i,\tau_j)
-=
-\min(|\tau_i-\tau_j|,\beta-|\tau_i-\tau_j|)
+d(\tau_i,\tau_j)=\min(|\tau_i-\tau_j|,\beta-|\tau_i-\tau_j|)
 $$
 
 A proposal moves one instanton position.
@@ -356,11 +327,7 @@ For each separation, the action is computed.
 The interaction is measured relative to two isolated instantons.
 
 $$
-\frac{S_{\text{int}}}{S_0}
-=
-\frac{S}{S_0}
--
-2
+\frac{S_{\text{int}}}{S_0}=\frac{S}{S_0}-2
 $$
 
 The code also uses gradient-flow-like relaxation to generate streamline configurations.
@@ -391,9 +358,7 @@ $$
 For each value of \(\alpha\), the code samples the corresponding ensemble and measures
 
 $$
-\Delta S(\alpha)
-=
-\langle S_{\text{full}} - S_{\text{gauss}} \rangle_\alpha
+\Delta S(\alpha)=\langle S_{\text{full}} - S_{\text{gauss}} \rangle_\alpha
 $$
 
 The integral is
@@ -450,9 +415,7 @@ The code computes the switching integral on two grids:
 The improved estimate is
 
 $$
-I_{\text{Rich}}
-=
-\frac{16I_{\text{fine}} - I_{\text{coarse}}}{15}
+I_{\text{Rich}}=\frac{16I_{\text{fine}} - I_{\text{coarse}}}{15}
 $$
 
 This reduces the leading discretization error of Simpson integration.
@@ -466,10 +429,7 @@ The Gaussian instanton density is computed from the semiclassical formula.
 The non-Gaussian correction modifies it by
 
 $$
-n_{\text{corrected}}
-=
-n_{\text{gauss}}
-e^{-I_{\text{Rich}}}
+n_{\text{corrected}}=n_{\text{gauss}}e^{-I_{\text{Rich}}}
 $$
 
 This quantity is used in the density comparison against cooling estimates.
@@ -543,6 +503,3 @@ The `models/` layer contains semiclassical instanton models.
 The `analysis/` layer contains figure-specific and experiment-specific workflows.
 
 The `utils/` layer contains generic tools such as I/O, statistics, and periodic indexing.
-
-```
-```

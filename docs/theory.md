@@ -24,11 +24,7 @@ $$
 On the lattice:
 
 $$
-S_E = \sum_i
-\left[
-\frac{(x_i - x_{i-1})^2}{4a}
-+ a (x_i^2 - \eta^2)^2
-\right]
+S_E = \sum_i\left[\frac{(x_i - x_{i-1})^2}{4a}+ a (x_i^2 - \eta^2)^2\right]
 $$
 
 with periodic boundary conditions and
@@ -76,9 +72,7 @@ $$
 P[x] \propto e^{-S_E[x]}
 $$
 
-using the Metropolis algorithm.
-
-Each site update proposes
+using the Metropolis algorithm. Each site update proposes
 
 $$
 x_i \rightarrow x_i + \delta x
@@ -147,13 +141,7 @@ separation of quantum noise and semiclassical dynamics.
 Superposition of non-interacting instantons:
 
 $$
-x(\tau) =
-\eta
-\left[
-\sum_j Q_j
-\tanh\left(\frac{\omega}{2}(\tau - \tau_j)\right)
-- 1
-\right]
+x(\tau) =\eta\left[\sum_j Q_j\tanh\left(\frac{\omega}{2}(\tau - \tau_j)\right)- 1\right]
 $$
 
 ---
@@ -175,9 +163,7 @@ to model short-range repulsion.
 We interpolate between Gaussian and full action:
 
 $$
-S_\alpha =
-(1 - \alpha) S_{\text{gauss}}
-+ \alpha S_{\text{full}}
+S_\alpha =(1 - \alpha) S_{\text{gauss}}+ \alpha S_{\text{full}}
 $$
 
 and compute
@@ -286,9 +272,7 @@ Where:
 * `n_inst` = number of zero crossings
 * `density` = n_inst / β
 
-Used to study:
-
-* Separation of quantum fluctuations and instanton structure
+Used to study separation of quantum fluctuations and instanton structure
 
 ---
 
@@ -334,6 +318,3 @@ $$
 $$
 
 The final corrected density is printed to stdout.
-
-```
-```

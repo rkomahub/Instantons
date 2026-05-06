@@ -306,6 +306,3 @@ cmake --build build -j
 Marco Benazzi
 Theoretical Physics MSc Project
 Started: 2025
-
-```
-```
