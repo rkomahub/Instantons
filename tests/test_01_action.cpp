@@ -1,7 +1,7 @@
-#include "lattice.hpp"
-#include "metropolis.hpp"
-#include "parameters.hpp"
-#include "potential.hpp"
+#include "core/lattice.hpp"
+#include "core/metropolis.hpp"
+#include "core/potential.hpp"
+#include "utils/parameters.hpp"
 
 #include <cassert>
 #include <cmath>

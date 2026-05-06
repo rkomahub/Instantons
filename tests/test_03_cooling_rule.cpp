@@ -1,7 +1,7 @@
-#include "lattice.hpp"
-#include "metropolis.hpp"
-#include "parameters.hpp"
-#include "potential.hpp"
+#include "core/lattice.hpp"
+#include "core/metropolis.hpp"
+#include "core/potential.hpp"
+#include "utils/parameters.hpp"
 
 #include <cassert>
 #include <cmath>
@@ -38,7 +38,7 @@ int main() {
   const int site = 0;
 
   // Predict the first cooling proposal at site=0
-  std::normal_distribution<double> dx_dist(0.0, params::dx_width);
+  std::normal_distribution<double> dx_dist(0.0, params::dx_width_cool);
   const double dx0 = dx_dist(gen_pred);
 
   auto x_before = lat.get_path();

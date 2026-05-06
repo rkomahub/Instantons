@@ -1,40 +1,41 @@
-/**
- * @file main.cpp
- * @brief Command-line interface for the instanton simulation project.
- *
- * This executable dispatches high-level numerical analyses defined in
- * analysis_driver.hpp.
- *
- * The program supports:
- *
- *   - Full Euclidean Monte Carlo simulations
- *   - Cooling analyses and instanton counting
- *   - Ensemble averages of correlators
- *   - Random and interacting instanton liquid models
- *   - Adiabatic switching calculations
- *   - Figure-by-figure data generation
- *
- * The interface is designed for:
- *
- *   - Reproducibility through explicit RNG seeds
- *   - Modular execution of individual analyses
- *   - Minimal recomputation during figure production
- */
+#include "analysis/analysis_driver.hpp"
 
-#include "analysis_driver.hpp"
+#include "analysis/fig10_rilm.hpp"
+#include "analysis/fig12_13_heating.hpp"
+#include "analysis/fig14_16.hpp"
+#include "analysis/fig15.hpp"
+#include "analysis/fig17_iilm.hpp"
+#include "analysis/fig7.hpp"
+#include "analysis/fig8.hpp"
+#include "analysis/fig9.hpp"
 
+#include <functional>
 #include <iostream>
 #include <random>
+#include <stdexcept>
 #include <string>
+#include <unordered_map>
 #include <vector>
 
 /**
- * @brief Print command-line usage information.
+ * @file main.cpp
+ * @brief Command-line entry point for the instanton simulation executable.
  *
- * @param prog Program name, typically argv[0].
- *
- * The help message lists available commands, their purpose, and
- * supported optional flags.
+ * Parses command-line options, initializes the random number generator,
+ * and dispatches the selected numerical analysis.
+ */
+
+/**
+ * @brief Parsed command-line options.
+ */
+struct CliOptions {
+  std::string command;
+  int seed = 12345;
+  std::vector<double> etas;
+};
+
+/**
+ * @brief Print available commands and command-line options.
  */
 static void print_help(const char *prog) {
   std::cout
@@ -118,12 +119,8 @@ static void print_help(const char *prog) {
 /**
  * @brief Parse a comma-separated list of eta values.
  *
- * Example:
- *
- *     "1.0,1.2,1.4"
- *
- * @param s Input string.
- * @return Vector of eta values.
+ * @param s String of the form "1.0,1.2,1.4".
+ * @return Parsed eta values.
  */
 static std::vector<double> parse_etas(const std::string &s) {
   std::vector<double> etas;
@@ -148,18 +145,50 @@ static std::vector<double> parse_etas(const std::string &s) {
 }
 
 /**
- * @brief Entry point of the instanton simulation project.
+ * @brief Parse command-line arguments.
  *
- * The program expects one command and optional flags.
- *
- * Supported optional flags:
- *
+ * Recognized options:
  *   - --seed <int>
- *   - --etas <comma-separated list>
+ *   - --etas a,b,c
  *
- * @param argc Argument count.
- * @param argv Argument vector.
- * @return 0 on success, non-zero on error.
+ * @throws std::runtime_error on invalid options.
+ */
+static CliOptions parse_cli_options(int argc, char **argv) {
+  CliOptions opt;
+
+  if (argc < 2) {
+    return opt;
+  }
+
+  opt.command = argv[1];
+
+  for (int i = 2; i < argc; ++i) {
+    const std::string arg = argv[i];
+
+    if (arg == "--seed") {
+      if (i + 1 >= argc) {
+        throw std::runtime_error("missing integer after --seed");
+      }
+      opt.seed = std::stoi(argv[++i]);
+    } else if (arg == "--etas") {
+      if (i + 1 >= argc) {
+        throw std::runtime_error("missing eta list after --etas");
+      }
+      opt.etas = parse_etas(argv[++i]);
+    } else if (arg == "--help" || arg == "-h") {
+      opt.command = "--help";
+    } else {
+      throw std::runtime_error("unknown option: " + arg);
+    }
+  }
+
+  return opt;
+}
+
+/**
+ * @brief Program entry point.
+ *
+ * @return Zero on success, non-zero on invalid input.
  */
 int main(int argc, char **argv) {
   if (argc < 2) {
@@ -174,77 +203,66 @@ int main(int argc, char **argv) {
     return 0;
   }
 
-  std::string cmd = first_arg;
-  int seed = 12345;
-  std::vector<double> etas;
+  CliOptions opt;
 
-  for (int i = 2; i < argc; ++i) {
-    const std::string arg = argv[i];
-
-    if (arg == "--seed") {
-      if (i + 1 >= argc) {
-        std::cerr << "Error: missing integer after --seed\n\n";
-        print_help(argv[0]);
-        return 1;
-      }
-      seed = std::stoi(argv[++i]);
-    } else if (arg == "--etas") {
-      if (i + 1 >= argc) {
-        std::cerr << "Error: missing eta list after --etas\n\n";
-        print_help(argv[0]);
-        return 1;
-      }
-      etas = parse_etas(argv[++i]);
-    } else if (arg == "--help" || arg == "-h") {
-      print_help(argv[0]);
-      return 0;
-    } else {
-      std::cerr << "Error: unknown option \"" << arg << "\"\n\n";
-      print_help(argv[0]);
-      return 1;
-    }
+  try {
+    opt = parse_cli_options(argc, argv);
+  } catch (const std::exception &e) {
+    std::cerr << "Error: " << e.what() << "\n\n";
+    print_help(argv[0]);
+    return 1;
   }
+
+  std::string cmd = opt.command;
+  int seed = opt.seed;
+  std::vector<double> etas = opt.etas;
+
+  // ---------------- initialize RNG ----------------
 
   std::mt19937 gen(static_cast<std::mt19937::result_type>(seed));
 
-  if (cmd == "basic") {
-    run_basic_analysis(gen);
-  } else if (cmd == "cooling-evolution") {
+  // ---------------- command dispatch ----------------
+
+  std::unordered_map<std::string, std::function<void()>> commands;
+
+  commands["basic"] = [&]() { run_basic_analysis(gen); };
+  commands["cooling-evolution"] = [&]() {
     run_cooling_evolution_analysis(gen);
-  } else if (cmd == "ensemble") {
-    run_ensemble_analysis(gen);
-  } else if (cmd == "fig7") {
-    run_fig7_analysis(gen);
-  } else if (cmd == "fig8") {
+  };
+  commands["ensemble"] = [&]() { run_ensemble_analysis(gen); };
+  commands["fig7"] = [&]() { run_fig7_analysis(gen); };
+
+  commands["fig8"] = [&]() {
     if (etas.empty()) {
       etas = {1.0, 1.2, 1.4, 1.6, 1.8};
     }
     run_fig8_analysis(etas, gen);
-  } else if (cmd == "fig9") {
-    run_fig9_analysis(gen);
-  } else if (cmd == "fig11") {
-    run_fig11_analysis(1.4);
-  } else if (cmd == "rilm") {
-    run_rilm_analysis(gen);
-  } else if (cmd == "heated-rilm") {
-    run_heated_rilm_analysis(gen);
-  } else if (cmd == "fig14") {
-    run_fig14_analysis(gen);
-  } else if (cmd == "fig15") {
-    run_fig15_analysis(gen);
-  } else if (cmd == "fig16") {
-    run_fig16_analysis(gen);
-  } else if (cmd == "iilm") {
-    run_iilm_analysis(gen);
-  } else if (cmd == "fig17") {
-    run_fig17_analysis(gen);
-  } else if (cmd == "qmidens") {
-    run_qmidens_analysis(gen);
-  } else if (cmd == "eta-scan") {
+  };
+
+  commands["fig9"] = [&]() { run_fig9_analysis(gen); };
+  commands["fig11"] = [&]() { run_fig11_analysis(1.4); };
+  commands["rilm"] = [&]() { run_rilm_analysis(gen); };
+  commands["heated-rilm"] = [&]() { run_heated_rilm_analysis(gen); };
+  commands["fig14"] = [&]() { run_fig14_analysis(gen); };
+  commands["fig15"] = [&]() { run_fig15_analysis(gen); };
+  commands["fig16"] = [&]() { run_fig16_analysis(gen); };
+  commands["iilm"] = [&]() { run_iilm_analysis(gen); };
+  commands["fig17"] = [&]() { run_fig17_analysis(gen); };
+  commands["qmidens"] = [&]() { run_qmidens_analysis(gen); };
+
+  commands["eta-scan"] = [&]() {
     if (etas.empty()) {
       etas = {0.8, 1.0, 1.2, 1.4, 1.6, 1.8, 2.0};
     }
     run_cooling_eta_scan(etas, gen);
+  };
+
+  // ----------------- execute command ----------------
+
+  auto it = commands.find(cmd);
+
+  if (it != commands.end()) {
+    it->second();
   } else {
     std::cerr << "Error: unknown command \"" << cmd << "\"\n\n";
     print_help(argv[0]);

@@ -109,21 +109,42 @@ S_0 = \frac{4\eta^3}{3}
 ├── plots/            # python plotting scripts
 ├── docs/             # documentation (Doxygen)
 ├── tests/            # unit tests
-└── src/
-    ├── main.cpp
-    ├── analysis_driver.*
-    ├── lattice.*
-    ├── potential.*
-    ├── metropolis.*
-    ├── cooling_evolution.*
-    ├── observables.*
-    ├── instanton.*
-    ├── ensemble.*
-    ├── heating.*
-    ├── rilm.*
-    ├── iilm.*
-    ├── qmidens.*
-    └── parameters.hpp
+├── src
+│   ├── analysis
+│   │   ├── analysis_driver.*
+│   │   ├── cooling_evolution.*
+│   │   ├── ensemble.*
+│   │   ├── fig10_rilm.*
+│   │   ├── fig11_gauss.*
+│   │   ├── fig12_13_heating.*
+│   │   ├── fig14_16.*
+│   │   ├── fig15.*
+│   │   ├── fig17_iilm.*
+│   │   ├── fig7.*
+│   │   ├── fig8.*
+│   │   ├── fig9.*
+│   │   ├── qmidens.*
+│   │   └── qmidens.*
+│   ├── core
+│   │   ├── instanton.*
+│   │   ├── lattice.*
+│   │   ├── metropolis.*
+│   │   ├── observables.*
+│   │   ├── potential.*
+│   │   └── potential.*
+│   ├── main.*
+│   ├── models
+│   │   ├── fig14_ia_interaction.*
+│   │   ├── heating.*
+│   │   ├── iilm.*
+│   │   ├── rilm.*
+│   │   └── rilm.*
+│   └── utils
+│       ├── io.*
+│       ├── parameters.*
+│       ├── periodic.*
+│       ├── statistics.*
+│       └── statistics.*
 ```
 
 ---
@@ -245,7 +266,7 @@ Run all unit tests
 ctest --test-dir build --output-on-failure
 ```
 
-Tests verify
+Tests verify:
 
 * action consistency
 * Metropolis acceptance rule
