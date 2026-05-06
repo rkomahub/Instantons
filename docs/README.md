@@ -6,6 +6,7 @@ The implementation follows:
 
 **T. Schäfer**
 *Instantons and Monte Carlo Methods in Quantum Mechanics*
+[arXiv:hep-lat/0411010](https://arxiv.org/abs/hep-lat/0411010)
 
 ---
 
@@ -27,13 +28,13 @@ The code aims to reproduce the figures and numerical experiments presented in Sc
 
 We consider the double well Hamiltonian
 
-[
+$$
 H = \frac{p^2}{2m} + (x^2-\eta^2)^2
-]
+$$
 
-After rescaling ((2m = 1)), the discretized Euclidean action becomes
+After rescaling \(2m = 1\), the discretized Euclidean action becomes
 
-[
+$$
 S =
 \sum_i
 \left[
@@ -41,13 +42,13 @@ S =
 +
 a(x_i^2-\eta^2)^2
 \right]
-]
+$$
 
 with periodic boundary conditions.
 
 The classical instanton solution is
 
-[
+$$
 x_I(\tau) =
 \eta
 \tanh
@@ -56,13 +57,13 @@ x_I(\tau) =
 \right),
 \qquad
 \omega = 4\eta
-]
+$$
 
 and the classical instanton action
 
-[
+$$
 S_0 = \frac{4\eta^3}{3}
-]
+$$
 
 ---
 
@@ -97,7 +98,7 @@ S_0 = \frac{4\eta^3}{3}
 
 # Repository Structure
 
-```
+```text
 .
 ├── CMakeLists.txt
 ├── LICENSE
@@ -110,42 +111,41 @@ S_0 = \frac{4\eta^3}{3}
 ├── docs/             # documentation (Doxygen)
 ├── tests/            # unit tests
 ├── src
-│   ├── analysis
-│   │   ├── analysis_driver.*
-│   │   ├── cooling_evolution.*
-│   │   ├── ensemble.*
-│   │   ├── fig10_rilm.*
-│   │   ├── fig11_gauss.*
-│   │   ├── fig12_13_heating.*
-│   │   ├── fig14_16.*
-│   │   ├── fig15.*
-│   │   ├── fig17_iilm.*
-│   │   ├── fig7.*
-│   │   ├── fig8.*
-│   │   ├── fig9.*
-│   │   ├── qmidens.*
-│   │   └── qmidens.*
-│   ├── core
-│   │   ├── instanton.*
-│   │   ├── lattice.*
-│   │   ├── metropolis.*
-│   │   ├── observables.*
-│   │   ├── potential.*
-│   │   └── potential.*
-│   ├── main.*
-│   ├── models
-│   │   ├── fig14_ia_interaction.*
-│   │   ├── heating.*
-│   │   ├── iilm.*
-│   │   ├── rilm.*
-│   │   └── rilm.*
-│   └── utils
-│       ├── io.*
-│       ├── parameters.*
-│       ├── periodic.*
-│       ├── statistics.*
-│       └── statistics.*
-```
+│   ├── analysis
+│   │   ├── analysis_driver.*
+│   │   ├── cooling_evolution.*
+│   │   ├── ensemble.*
+│   │   ├── fig10_rilm.*
+│   │   ├── fig11_gauss.*
+│   │   ├── fig12_13_heating.*
+│   │   ├── fig14_16.*
+│   │   ├── fig15.*
+│   │   ├── fig17_iilm.*
+│   │   ├── fig7.*
+│   │   ├── fig8.*
+│   │   ├── fig9.*
+│   │   ├── qmidens.*
+│   │   └── qmidens.*
+│   ├── core
+│   │   ├── instanton.*
+│   │   ├── lattice.*
+│   │   ├── metropolis.*
+│   │   ├── observables.*
+│   │   ├── potential.*
+│   │   └── potential.*
+│   ├── main.*
+│   ├── models
+│   │   ├── fig14_ia_interaction.*
+│   │   ├── heating.*
+│   │   ├── iilm.*
+│   │   ├── rilm.*
+│   │   └── rilm.*
+│   └── utils
+│       ├── io.*
+│       ├── parameters.*
+│       ├── periodic.*
+│       ├── statistics.*
+````
 
 ---
 
@@ -165,7 +165,7 @@ cmake --build build -j
 
 Generated executables:
 
-```
+```text
 bin/montecarlo
 bin/test_*
 ```
@@ -176,20 +176,20 @@ bin/test_*
 
 The main executable runs different numerical experiments.
 
-```
+```bash
 ./bin/montecarlo <command> [options]
 ```
 
 Optional arguments
 
-```
+```text
 --seed <int>
 --etas a,b,c
 ```
 
 Example
 
-```
+```bash
 ./bin/montecarlo eta-scan --etas 1.0,1.2,1.4,1.6
 ```
 
@@ -222,14 +222,14 @@ Example
 
 Typical workflow
 
-```
+```bash
 ./bin/montecarlo <command>
 python3 plots/plot_figX.py
 ```
 
 Example
 
-```
+```bash
 ./bin/montecarlo fig7
 python3 plots/plot_fig7.py
 ```
@@ -262,7 +262,7 @@ python3 plots/plot_fig7.py
 
 Run all unit tests
 
-```
+```bash
 ctest --test-dir build --output-on-failure
 ```
 
@@ -280,13 +280,13 @@ Tests verify:
 
 Generate API documentation with
 
-```
+```bash
 cmake --build build --target docs
 ```
 
 Then open
 
-```
+```text
 docs/api/html/index.html
 ```
 
@@ -318,13 +318,13 @@ Analytical multi-instanton configurations (RILM, IILM, streamline).
 
 Incremental rebuild
 
-```
+```bash
 cmake --build build -j
 ```
 
 Clean rebuild
 
-```
+```bash
 rm -rf build
 cmake -S . -B build
 cmake --build build -j
@@ -337,3 +337,6 @@ cmake --build build -j
 Marco Benazzi
 Theoretical Physics MSc Project
 Started: 2025
+
+```
+```
