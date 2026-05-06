@@ -1,6 +1,5 @@
 var searchData=
 [
-  ['ensemble_2ecpp_12',['ensemble.cpp',['../ensemble_8cpp.html',1,'']]],
-  ['ensemble_2ehpp_13',['ensemble.hpp',['../ensemble_8hpp.html',1,'']]],
-  ['eta_14',['eta',['../namespaceparams.html#ae54ec1eeec1be33593631893cd26d211',1,'params']]]
+  ['dx_5fwidth_18',['dx_width',['../namespaceparams.html#abd6f3c4c7bbcd9aee0e148e680893ecf',1,'params']]],
+  ['dx_5fwidth_5fcool_19',['dx_width_cool',['../namespaceparams.html#ad3b6475a6e73bb45dd50772850d92b1e',1,'params']]]
 ];

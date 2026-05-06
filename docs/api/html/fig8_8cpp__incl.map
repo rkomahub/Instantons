@@ -1,0 +1,13 @@
+<map id="/home/marcobenazzi/instantons/src/analysis/fig8.cpp" name="/home/marcobenazzi/instantons/src/analysis/fig8.cpp">
+<area shape="rect" id="node1" title=" " alt="" coords="489,5,664,61"/>
+<area shape="rect" id="node2" href="$fig8_8hpp.html" title="Fig.8 instanton density versus eta." alt="" coords="443,184,575,211"/>
+<area shape="rect" id="node3" title=" " alt="" coords="222,259,294,285"/>
+<area shape="rect" id="node4" title=" " alt="" coords="581,259,644,285"/>
+<area shape="rect" id="node5" href="$qmidens_8hpp.html" title="Non&#45;Gaussian instanton density correction via adiabatic switching." alt="" coords="5,184,169,211"/>
+<area shape="rect" id="node6" href="$instanton_8hpp.html" title="Instanton identification utilities." alt="" coords="651,184,793,211"/>
+<area shape="rect" id="node7" href="$lattice_8hpp.html" title="Representation of a one&#45;dimensional Euclidean lattice configuration." alt="" coords="295,184,418,211"/>
+<area shape="rect" id="node8" href="$metropolis_8hpp.html" title="Metropolis updates and cooling for Euclidean lattice paths." alt="" coords="281,109,433,136"/>
+<area shape="rect" id="node9" href="$parameters_8hpp.html" title="Global parameters for the Euclidean lattice simulation." alt="" coords="866,109,1023,136"/>
+<area shape="rect" id="node10" href="$statistics_8hpp.html" title="Basic statistical utilities for Monte Carlo measurements." alt="" coords="701,109,842,136"/>
+<area shape="rect" id="node11" title=" " alt="" coords="1048,109,1121,136"/>
+</map>

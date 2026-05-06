@@ -5,7 +5,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
 <meta name="generator" content="Doxygen 1.9.1"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>Monte Carlo Instantons: /home/marcobenazzi/instantons/src/iilm.cpp File Reference</title>
+<title>Monte Carlo Instantons: /home/marcobenazzi/instantons/src/models/iilm.cpp File Reference</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -61,7 +61,7 @@ $(function() {
 
 <div id="nav-path" class="navpath">
   <ul>
-<li class="navelem"><a class="el" href="dir_68267d1309a1af8e8297ef4c3efbcdba.html">src</a></li>  </ul>
+<li class="navelem"><a class="el" href="dir_68267d1309a1af8e8297ef4c3efbcdba.html">src</a></li><li class="navelem"><a class="el" href="dir_bdeba5f06b852fec80257c0bf4c3c36e.html">models</a></li>  </ul>
 </div>
 </div><!-- top -->
 <div class="header">
@@ -71,37 +71,51 @@ $(function() {
 <div class="title">iilm.cpp File Reference</div>  </div>
 </div><!--header-->
 <div class="contents">
-<div class="textblock"><code>#include &quot;<a class="el" href="iilm_8hpp_source.html">iilm.hpp</a>&quot;</code><br />
+<div class="textblock"><code>#include &quot;<a class="el" href="iilm_8hpp_source.html">models/iilm.hpp</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="periodic_8hpp_source.html">utils/periodic.hpp</a>&quot;</code><br />
+<code>#include &lt;algorithm&gt;</code><br />
 <code>#include &lt;cmath&gt;</code><br />
-<code>#include &lt;random&gt;</code><br />
+<code>#include &lt;stdexcept&gt;</code><br />
 </div><div class="textblock"><div class="dynheader">
 Include dependency graph for iilm.cpp:</div>
 <div class="dyncontent">
-<div class="center"><img src="iilm_8cpp__incl.png" border="0" usemap="#a_2home_2marcobenazzi_2instantons_2src_2iilm_8cpp" alt=""/></div>
-<map name="a_2home_2marcobenazzi_2instantons_2src_2iilm_8cpp" id="a_2home_2marcobenazzi_2instantons_2src_2iilm_8cpp">
-<area shape="rect" title=" " alt="" coords="49,5,223,47"/>
-<area shape="rect" href="iilm_8hpp.html" title="Interacting Instanton Liquid Model (IILM)." alt="" coords="5,95,80,121"/>
-<area shape="rect" title=" " alt="" coords="105,95,167,121"/>
-<area shape="rect" title=" " alt="" coords="192,95,264,121"/>
-<area shape="rect" title=" " alt="" coords="11,169,74,196"/>
+<div class="center"><img src="iilm_8cpp__incl.png" border="0" usemap="#a_2home_2marcobenazzi_2instantons_2src_2models_2iilm_8cpp" alt=""/></div>
+<map name="a_2home_2marcobenazzi_2instantons_2src_2models_2iilm_8cpp" id="a_2home_2marcobenazzi_2instantons_2src_2models_2iilm_8cpp">
+<area shape="rect" title=" " alt="" coords="205,5,374,61"/>
+<area shape="rect" href="iilm_8hpp.html" title="Interacting Instanton Liquid Model utilities." alt="" coords="19,109,146,136"/>
+<area shape="rect" href="periodic_8hpp.html" title="Small utilities for periodic one&#45;dimensional lattices." alt="" coords="222,109,357,136"/>
+<area shape="rect" title=" " alt="" coords="217,184,303,211"/>
+<area shape="rect" title=" " alt="" coords="345,184,407,211"/>
+<area shape="rect" title=" " alt="" coords="433,109,519,136"/>
+<area shape="rect" title=" " alt="" coords="5,184,77,211"/>
+<area shape="rect" title=" " alt="" coords="102,184,165,211"/>
 </map>
 </div>
 </div><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="func-members"></a>
 Functions</h2></td></tr>
-<tr class="memitem:a49ff92f2b1a270813ac104aba69f027e"><td class="memItemLeft" align="right" valign="top">std::vector&lt; double &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="iilm_8cpp.html#a49ff92f2b1a270813ac104aba69f027e">generate_iilm_path</a> (int N, double a, double eta, int n_inst, double tau_core)</td></tr>
-<tr class="memdesc:a49ff92f2b1a270813ac104aba69f027e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Generate an interacting instanton liquid configuration.  <a href="iilm_8cpp.html#a49ff92f2b1a270813ac104aba69f027e">More...</a><br /></td></tr>
-<tr class="separator:a49ff92f2b1a270813ac104aba69f027e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad03f522be0cc41f90e450a4ff9ac12ed"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="iilm_8cpp.html#ad03f522be0cc41f90e450a4ff9ac12ed">iilm_core_ok</a> (const <a class="el" href="structIILMConfig.html">IILMConfig</a> &amp;cfg, double beta, double tau_core)</td></tr>
+<tr class="memdesc:ad03f522be0cc41f90e450a4ff9ac12ed"><td class="mdescLeft">&#160;</td><td class="mdescRight">Check the instanton core constraint.  <a href="iilm_8cpp.html#ad03f522be0cc41f90e450a4ff9ac12ed">More...</a><br /></td></tr>
+<tr class="separator:ad03f522be0cc41f90e450a4ff9ac12ed"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a025aa5a5a60a0dd3deaf372ab0e28372"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structIILMConfig.html">IILMConfig</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="iilm_8cpp.html#a025aa5a5a60a0dd3deaf372ab0e28372">generate_iilm_config</a> (int n_inst, double beta, double tau_core, std::mt19937 &amp;gen)</td></tr>
+<tr class="memdesc:a025aa5a5a60a0dd3deaf372ab0e28372"><td class="mdescLeft">&#160;</td><td class="mdescRight">Generate an initial IILM configuration.  <a href="iilm_8cpp.html#a025aa5a5a60a0dd3deaf372ab0e28372">More...</a><br /></td></tr>
+<tr class="separator:a025aa5a5a60a0dd3deaf372ab0e28372"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af0e37da8fa03670d4341fc6566935c04"><td class="memItemLeft" align="right" valign="top">std::vector&lt; double &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="iilm_8cpp.html#af0e37da8fa03670d4341fc6566935c04">build_iilm_path</a> (int N, double a, double eta, const <a class="el" href="structIILMConfig.html">IILMConfig</a> &amp;cfg)</td></tr>
+<tr class="memdesc:af0e37da8fa03670d4341fc6566935c04"><td class="mdescLeft">&#160;</td><td class="mdescRight">Build a lattice path from collective coordinates.  <a href="iilm_8cpp.html#af0e37da8fa03670d4341fc6566935c04">More...</a><br /></td></tr>
+<tr class="separator:af0e37da8fa03670d4341fc6566935c04"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a904fc3691af94b04e1b2b00f055db383"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="iilm_8cpp.html#a904fc3691af94b04e1b2b00f055db383">propose_move_tau</a> (<a class="el" href="structIILMConfig.html">IILMConfig</a> &amp;cfg, double beta, double tau_core, double step, std::mt19937 &amp;gen)</td></tr>
+<tr class="memdesc:a904fc3691af94b04e1b2b00f055db383"><td class="mdescLeft">&#160;</td><td class="mdescRight">Propose a Monte Carlo move in collective-coordinate space.  <a href="iilm_8cpp.html#a904fc3691af94b04e1b2b00f055db383">More...</a><br /></td></tr>
+<tr class="separator:a904fc3691af94b04e1b2b00f055db383"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <h2 class="groupheader">Function Documentation</h2>
-<a id="a49ff92f2b1a270813ac104aba69f027e"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a49ff92f2b1a270813ac104aba69f027e">&#9670;&nbsp;</a></span>generate_iilm_path()</h2>
+<a id="af0e37da8fa03670d4341fc6566935c04"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#af0e37da8fa03670d4341fc6566935c04">&#9670;&nbsp;</a></span>build_iilm_path()</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">std::vector&lt;double&gt; generate_iilm_path </td>
+          <td class="memname">std::vector&lt;double&gt; build_iilm_path </td>
           <td>(</td>
           <td class="paramtype">int&#160;</td>
           <td class="paramname"><em>N</em>, </td>
@@ -121,8 +135,101 @@ Functions</h2></td></tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
+          <td class="paramtype">const <a class="el" href="structIILMConfig.html">IILMConfig</a> &amp;&#160;</td>
+          <td class="paramname"><em>cfg</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Build a lattice path from collective coordinates. </p>
+<p>Uses a multi-instanton sum ansatz with periodic boundary conditions.</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">N</td><td>Number of lattice sites. </td></tr>
+    <tr><td class="paramname">a</td><td><a class="el" href="classLattice.html">Lattice</a> spacing. </td></tr>
+    <tr><td class="paramname">eta</td><td>Double well parameter. </td></tr>
+    <tr><td class="paramname">cfg</td><td>Instanton configuration.</td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>Euclidean lattice path. </dd></dl>
+
+</div>
+</div>
+<a id="a025aa5a5a60a0dd3deaf372ab0e28372"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a025aa5a5a60a0dd3deaf372ab0e28372">&#9670;&nbsp;</a></span>generate_iilm_config()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="structIILMConfig.html">IILMConfig</a> generate_iilm_config </td>
+          <td>(</td>
           <td class="paramtype">int&#160;</td>
           <td class="paramname"><em>n_inst</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">double&#160;</td>
+          <td class="paramname"><em>beta</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">double&#160;</td>
+          <td class="paramname"><em>tau_core</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">std::mt19937 &amp;&#160;</td>
+          <td class="paramname"><em>gen</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Generate an initial IILM configuration. </p>
+<p>Instanton positions are sampled in Euclidean time with a minimal separation constraint.</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">n_inst</td><td>Number of instantons and anti-instantons. </td></tr>
+    <tr><td class="paramname">beta</td><td>Euclidean time extent. </td></tr>
+    <tr><td class="paramname">tau_core</td><td>Minimal allowed separation. </td></tr>
+    <tr><td class="paramname">gen</td><td>Random number generator. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="ad03f522be0cc41f90e450a4ff9ac12ed"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ad03f522be0cc41f90e450a4ff9ac12ed">&#9670;&nbsp;</a></span>iilm_core_ok()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool iilm_core_ok </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="el" href="structIILMConfig.html">IILMConfig</a> &amp;&#160;</td>
+          <td class="paramname"><em>cfg</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">double&#160;</td>
+          <td class="paramname"><em>beta</em>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
@@ -138,20 +245,76 @@ Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>Generate an interacting instanton liquid configuration. </p>
-<p>Instantons and anti-instantons are placed randomly in Euclidean time, subject to a minimal separation constraint: </p><pre class="fragment">|τ_i − τ_j| ≥ tau_core
-</pre><p> This mimics the short-range repulsive core in semiclassical instanton ensembles.</p>
+<p>Check the instanton core constraint. </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">N</td><td>Number of lattice sites. </td></tr>
-    <tr><td class="paramname">a</td><td><a class="el" href="classLattice.html">Lattice</a> spacing. </td></tr>
-    <tr><td class="paramname">eta</td><td>Position of potential minima. </td></tr>
-    <tr><td class="paramname">n_inst</td><td>Target number of instantons + anti-instantons. </td></tr>
-    <tr><td class="paramname">tau_core</td><td>Minimal allowed separation between instantons.</td></tr>
+    <tr><td class="paramname">cfg</td><td>Instanton configuration. </td></tr>
+    <tr><td class="paramname">beta</td><td>Euclidean time extent. </td></tr>
+    <tr><td class="paramname">tau_core</td><td>Minimal allowed separation.</td></tr>
   </table>
   </dd>
 </dl>
-<dl class="section return"><dt>Returns</dt><dd>Discretized interacting multi-instanton configuration. </dd></dl>
+<dl class="section return"><dt>Returns</dt><dd>True if all separations satisfy the constraint. </dd></dl>
+
+</div>
+</div>
+<a id="a904fc3691af94b04e1b2b00f055db383"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a904fc3691af94b04e1b2b00f055db383">&#9670;&nbsp;</a></span>propose_move_tau()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool propose_move_tau </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structIILMConfig.html">IILMConfig</a> &amp;&#160;</td>
+          <td class="paramname"><em>cfg</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">double&#160;</td>
+          <td class="paramname"><em>beta</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">double&#160;</td>
+          <td class="paramname"><em>tau_core</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">double&#160;</td>
+          <td class="paramname"><em>step</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">std::mt19937 &amp;&#160;</td>
+          <td class="paramname"><em>gen</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Propose a Monte Carlo move in collective-coordinate space. </p>
+<p>Moves one instanton position while enforcing the core separation constraint.</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">cfg</td><td><a class="el" href="structConfiguration.html">Configuration</a> modified in-place. </td></tr>
+    <tr><td class="paramname">beta</td><td>Euclidean time extent. </td></tr>
+    <tr><td class="paramname">tau_core</td><td>Minimal allowed separation. </td></tr>
+    <tr><td class="paramname">step</td><td>Proposal step size. </td></tr>
+    <tr><td class="paramname">gen</td><td>Random number generator.</td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>True if the proposal satisfies the core constraint. </dd></dl>
 
 </div>
 </div>

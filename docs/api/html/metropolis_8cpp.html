@@ -5,7 +5,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
 <meta name="generator" content="Doxygen 1.9.1"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>Monte Carlo Instantons: /home/marcobenazzi/instantons/src/metropolis.cpp File Reference</title>
+<title>Monte Carlo Instantons: /home/marcobenazzi/instantons/src/core/metropolis.cpp File Reference</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -61,7 +61,7 @@ $(function() {
 
 <div id="nav-path" class="navpath">
   <ul>
-<li class="navelem"><a class="el" href="dir_68267d1309a1af8e8297ef4c3efbcdba.html">src</a></li>  </ul>
+<li class="navelem"><a class="el" href="dir_68267d1309a1af8e8297ef4c3efbcdba.html">src</a></li><li class="navelem"><a class="el" href="dir_aebb8dcc11953d78e620bbef0b9e2183.html">core</a></li>  </ul>
 </div>
 </div><!-- top -->
 <div class="header">
@@ -69,34 +69,29 @@ $(function() {
 <div class="title">metropolis.cpp File Reference</div>  </div>
 </div><!--header-->
 <div class="contents">
-
-<p>Implementation of <a class="el" href="classMetropolis.html">Metropolis</a> updates for the Euclidean lattice action.  
-<a href="#details">More...</a></p>
-<div class="textblock"><code>#include &quot;<a class="el" href="metropolis_8hpp_source.html">metropolis.hpp</a>&quot;</code><br />
-<code>#include &quot;<a class="el" href="parameters_8hpp_source.html">parameters.hpp</a>&quot;</code><br />
-<code>#include &quot;<a class="el" href="potential_8hpp_source.html">potential.hpp</a>&quot;</code><br />
+<div class="textblock"><code>#include &quot;<a class="el" href="metropolis_8hpp_source.html">core/metropolis.hpp</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="potential_8hpp_source.html">core/potential.hpp</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="parameters_8hpp_source.html">utils/parameters.hpp</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="periodic_8hpp_source.html">utils/periodic.hpp</a>&quot;</code><br />
 <code>#include &lt;cmath&gt;</code><br />
 <code>#include &lt;random&gt;</code><br />
 </div><div class="textblock"><div class="dynheader">
 Include dependency graph for metropolis.cpp:</div>
 <div class="dyncontent">
-<div class="center"><img src="metropolis_8cpp__incl.png" border="0" usemap="#a_2home_2marcobenazzi_2instantons_2src_2metropolis_8cpp" alt=""/></div>
-<map name="a_2home_2marcobenazzi_2instantons_2src_2metropolis_8cpp" id="a_2home_2marcobenazzi_2instantons_2src_2metropolis_8cpp">
-<area shape="rect" title="Implementation of Metropolis updates for the Euclidean lattice action." alt="" coords="175,5,393,47"/>
-<area shape="rect" href="metropolis_8hpp.html" title="Metropolis algorithm for Euclidean path integral sampling." alt="" coords="27,95,147,121"/>
-<area shape="rect" title=" " alt="" coords="103,244,175,271"/>
-<area shape="rect" href="parameters_8hpp.html" title="Global simulation parameters for the Euclidean lattice instanton simulation." alt="" coords="221,95,347,121"/>
-<area shape="rect" href="potential_8hpp.html" title="Double well potential definition." alt="" coords="371,95,479,121"/>
-<area shape="rect" title=" " alt="" coords="503,95,566,121"/>
-<area shape="rect" href="lattice_8hpp.html" title="Representation of a one&#45;dimensional Euclidean lattice configuration." alt="" coords="5,169,96,196"/>
-<area shape="rect" title=" " alt="" coords="15,244,78,271"/>
+<div class="center"><img src="metropolis_8cpp__incl.png" border="0" usemap="#a_2home_2marcobenazzi_2instantons_2src_2core_2metropolis_8cpp" alt=""/></div>
+<map name="a_2home_2marcobenazzi_2instantons_2src_2core_2metropolis_8cpp" id="a_2home_2marcobenazzi_2instantons_2src_2core_2metropolis_8cpp">
+<area shape="rect" title=" " alt="" coords="331,5,490,61"/>
+<area shape="rect" href="metropolis_8hpp.html" title="Metropolis updates and cooling for Euclidean lattice paths." alt="" coords="27,109,179,136"/>
+<area shape="rect" title=" " alt="" coords="129,259,201,285"/>
+<area shape="rect" href="potential_8hpp.html" title="Double well potential of the Euclidean quantum system." alt="" coords="254,109,394,136"/>
+<area shape="rect" href="parameters_8hpp.html" title="Global parameters for the Euclidean lattice simulation." alt="" coords="419,109,576,136"/>
+<area shape="rect" href="periodic_8hpp.html" title="Small utilities for periodic one&#45;dimensional lattices." alt="" coords="601,109,735,136"/>
+<area shape="rect" title=" " alt="" coords="738,184,801,211"/>
+<area shape="rect" href="lattice_8hpp.html" title="Representation of a one&#45;dimensional Euclidean lattice configuration." alt="" coords="5,184,128,211"/>
+<area shape="rect" title=" " alt="" coords="35,259,98,285"/>
+<area shape="rect" title=" " alt="" coords="625,184,711,211"/>
 </map>
 </div>
-</div><a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
-<div class="textblock"><p>Implementation of <a class="el" href="classMetropolis.html">Metropolis</a> updates for the Euclidean lattice action. </p>
-<p>The target distribution is </p><pre class="fragment">P[x] ∝ exp(−S_E[x])
-</pre><p> with discretized Euclidean action </p><pre class="fragment">S_E = Σ_i [ (x_i − x_{i−1})^2 / (4a) + a V(x_i) ]
-</pre><p> where V(x) = (x^2 − eta^2)^2 and periodic boundary conditions are assumed. </p>
 </div></div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>

@@ -1,5 +1,7 @@
 var searchData=
 [
-  ['observables_2ecpp_91',['observables.cpp',['../observables_8cpp.html',1,'']]],
-  ['observables_2ehpp_92',['observables.hpp',['../observables_8hpp.html',1,'']]]
+  ['main_2ecpp_173',['main.cpp',['../main_8cpp.html',1,'']]],
+  ['mainpage_2edox_174',['mainpage.dox',['../mainpage_8dox.html',1,'']]],
+  ['metropolis_2ecpp_175',['metropolis.cpp',['../metropolis_8cpp.html',1,'']]],
+  ['metropolis_2ehpp_176',['metropolis.hpp',['../metropolis_8hpp.html',1,'']]]
 ];

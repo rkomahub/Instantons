@@ -5,7 +5,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
 <meta name="generator" content="Doxygen 1.9.1"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>Monte Carlo Instantons: /home/marcobenazzi/instantons/src/heating.cpp File Reference</title>
+<title>Monte Carlo Instantons: /home/marcobenazzi/instantons/src/models/heating.cpp File Reference</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -61,7 +61,7 @@ $(function() {
 
 <div id="nav-path" class="navpath">
   <ul>
-<li class="navelem"><a class="el" href="dir_68267d1309a1af8e8297ef4c3efbcdba.html">src</a></li>  </ul>
+<li class="navelem"><a class="el" href="dir_68267d1309a1af8e8297ef4c3efbcdba.html">src</a></li><li class="navelem"><a class="el" href="dir_bdeba5f06b852fec80257c0bf4c3c36e.html">models</a></li>  </ul>
 </div>
 </div><!-- top -->
 <div class="header">
@@ -71,24 +71,24 @@ $(function() {
 <div class="title">heating.cpp File Reference</div>  </div>
 </div><!--header-->
 <div class="contents">
-<div class="textblock"><code>#include &quot;<a class="el" href="heating_8hpp_source.html">heating.hpp</a>&quot;</code><br />
+<div class="textblock"><code>#include &quot;<a class="el" href="heating_8hpp_source.html">models/heating.hpp</a>&quot;</code><br />
 <code>#include &lt;random&gt;</code><br />
 </div><div class="textblock"><div class="dynheader">
 Include dependency graph for heating.cpp:</div>
 <div class="dyncontent">
-<div class="center"><img src="heating_8cpp__incl.png" border="0" usemap="#a_2home_2marcobenazzi_2instantons_2src_2heating_8cpp" alt=""/></div>
-<map name="a_2home_2marcobenazzi_2instantons_2src_2heating_8cpp" id="a_2home_2marcobenazzi_2instantons_2src_2heating_8cpp">
-<area shape="rect" title=" " alt="" coords="5,5,203,47"/>
-<area shape="rect" href="heating_8hpp.html" title="Addition of Gaussian quantum fluctuations to classical configurations." alt="" coords="99,95,197,121"/>
-<area shape="rect" title=" " alt="" coords="25,169,97,196"/>
-<area shape="rect" title=" " alt="" coords="122,169,185,196"/>
+<div class="center"><img src="heating_8cpp__incl.png" border="0" usemap="#a_2home_2marcobenazzi_2instantons_2src_2models_2heating_8cpp" alt=""/></div>
+<map name="a_2home_2marcobenazzi_2instantons_2src_2models_2heating_8cpp" id="a_2home_2marcobenazzi_2instantons_2src_2models_2heating_8cpp">
+<area shape="rect" title=" " alt="" coords="5,5,175,61"/>
+<area shape="rect" href="heating_8hpp.html" title="Gaussian fluctuations around semiclassical configurations." alt="" coords="72,109,223,136"/>
+<area shape="rect" title=" " alt="" coords="9,184,81,211"/>
+<area shape="rect" title=" " alt="" coords="116,184,179,211"/>
 </map>
 </div>
 </div><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="func-members"></a>
 Functions</h2></td></tr>
 <tr class="memitem:a2190126ba5e334e36767eb7f9e32cb89"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="heating_8cpp.html#a2190126ba5e334e36767eb7f9e32cb89">apply_gaussian_fluctuations</a> (std::vector&lt; double &gt; &amp;path, double sigma, std::mt19937 &amp;gen)</td></tr>
-<tr class="memdesc:a2190126ba5e334e36767eb7f9e32cb89"><td class="mdescLeft">&#160;</td><td class="mdescRight">Add Gaussian fluctuations to a path configuration.  <a href="heating_8cpp.html#a2190126ba5e334e36767eb7f9e32cb89">More...</a><br /></td></tr>
+<tr class="memdesc:a2190126ba5e334e36767eb7f9e32cb89"><td class="mdescLeft">&#160;</td><td class="mdescRight">Add Gaussian fluctuations to a path.  <a href="heating_8cpp.html#a2190126ba5e334e36767eb7f9e32cb89">More...</a><br /></td></tr>
 <tr class="separator:a2190126ba5e334e36767eb7f9e32cb89"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <h2 class="groupheader">Function Documentation</h2>
@@ -124,15 +124,13 @@ Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>Add Gaussian fluctuations to a path configuration. </p>
-<p>Each lattice site is modified as: </p><pre class="fragment">x_i → x_i + N(0, sigma)
-</pre><p> where N(0, sigma) is a Gaussian random variable.</p>
-<p>This approximates quantum fluctuations around a classical path.</p>
+<p>Add Gaussian fluctuations to a path. </p>
+<p>Each lattice site is updated by Gaussian noise with standard deviation ( \sigma ).</p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">path</td><td><a class="el" href="structConfiguration.html">Configuration</a> to be modified (in-place). </td></tr>
-    <tr><td class="paramname">sigma</td><td>Standard deviation of Gaussian noise. </td></tr>
-    <tr><td class="paramname">gen</td><td>Random number generator (injected). </td></tr>
+    <tr><td class="paramname">path</td><td><a class="el" href="structConfiguration.html">Configuration</a> modified in-place. </td></tr>
+    <tr><td class="paramname">sigma</td><td>Width of the Gaussian fluctuations. </td></tr>
+    <tr><td class="paramname">gen</td><td>Random number generator. </td></tr>
   </table>
   </dd>
 </dl>

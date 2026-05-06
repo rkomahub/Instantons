@@ -1,4 +1,5 @@
-<map id="/home/marcobenazzi/instantons/src/rilm.hpp" name="/home/marcobenazzi/instantons/src/rilm.hpp">
-<area shape="rect" id="node1" title="Random Instanton Liquid Model (RILM)." alt="" coords="5,5,180,47"/>
-<area shape="rect" id="node2" title=" " alt="" coords="61,95,124,121"/>
+<map id="/home/marcobenazzi/instantons/src/models/rilm.hpp" name="/home/marcobenazzi/instantons/src/models/rilm.hpp">
+<area shape="rect" id="node1" title="Random Instanton Liquid Model utilities." alt="" coords="5,5,175,61"/>
+<area shape="rect" id="node2" title=" " alt="" coords="9,109,81,136"/>
+<area shape="rect" id="node3" title=" " alt="" coords="105,109,168,136"/>
 </map>

@@ -1,5 +1,5 @@
-<map id="/home/marcobenazzi/instantons/src/analysis_driver.hpp" name="/home/marcobenazzi/instantons/src/analysis_driver.hpp">
-<area shape="rect" id="node1" title="High&#45;level analysis routines reproducing numerical experiments." alt="" coords="5,5,180,61"/>
+<map id="/home/marcobenazzi/instantons/src/analysis/analysis_driver.hpp" name="/home/marcobenazzi/instantons/src/analysis/analysis_driver.hpp">
+<area shape="rect" id="node1" title="High&#45;level Monte Carlo and instanton analyses." alt="" coords="5,5,180,61"/>
 <area shape="rect" id="node2" title=" " alt="" coords="11,109,83,136"/>
 <area shape="rect" id="node3" title=" " alt="" coords="108,109,171,136"/>
 </map>

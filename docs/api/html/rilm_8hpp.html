@@ -5,7 +5,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
 <meta name="generator" content="Doxygen 1.9.1"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>Monte Carlo Instantons: /home/marcobenazzi/instantons/src/rilm.hpp File Reference</title>
+<title>Monte Carlo Instantons: /home/marcobenazzi/instantons/src/models/rilm.hpp File Reference</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -61,7 +61,7 @@ $(function() {
 
 <div id="nav-path" class="navpath">
   <ul>
-<li class="navelem"><a class="el" href="dir_68267d1309a1af8e8297ef4c3efbcdba.html">src</a></li>  </ul>
+<li class="navelem"><a class="el" href="dir_68267d1309a1af8e8297ef4c3efbcdba.html">src</a></li><li class="navelem"><a class="el" href="dir_bdeba5f06b852fec80257c0bf4c3c36e.html">models</a></li>  </ul>
 </div>
 </div><!-- top -->
 <div class="header">
@@ -72,26 +72,31 @@ $(function() {
 </div><!--header-->
 <div class="contents">
 
-<p>Random Instanton Liquid Model (RILM).  
+<p>Random Instanton Liquid Model utilities.  
 <a href="#details">More...</a></p>
-<div class="textblock"><code>#include &lt;vector&gt;</code><br />
+<div class="textblock"><code>#include &lt;random&gt;</code><br />
+<code>#include &lt;vector&gt;</code><br />
 </div><div class="textblock"><div class="dynheader">
 Include dependency graph for rilm.hpp:</div>
 <div class="dyncontent">
-<div class="center"><img src="rilm_8hpp__incl.png" border="0" usemap="#a_2home_2marcobenazzi_2instantons_2src_2rilm_8hpp" alt=""/></div>
-<map name="a_2home_2marcobenazzi_2instantons_2src_2rilm_8hpp" id="a_2home_2marcobenazzi_2instantons_2src_2rilm_8hpp">
-<area shape="rect" title="Random Instanton Liquid Model (RILM)." alt="" coords="5,5,180,47"/>
-<area shape="rect" title=" " alt="" coords="61,95,124,121"/>
+<div class="center"><img src="rilm_8hpp__incl.png" border="0" usemap="#a_2home_2marcobenazzi_2instantons_2src_2models_2rilm_8hpp" alt=""/></div>
+<map name="a_2home_2marcobenazzi_2instantons_2src_2models_2rilm_8hpp" id="a_2home_2marcobenazzi_2instantons_2src_2models_2rilm_8hpp">
+<area shape="rect" title="Random Instanton Liquid Model utilities." alt="" coords="5,5,175,61"/>
+<area shape="rect" title=" " alt="" coords="9,109,81,136"/>
+<area shape="rect" title=" " alt="" coords="105,109,168,136"/>
 </map>
 </div>
 </div><div class="textblock"><div class="dynheader">
 This graph shows which files directly or indirectly include this file:</div>
 <div class="dyncontent">
-<div class="center"><img src="rilm_8hpp__dep__incl.png" border="0" usemap="#a_2home_2marcobenazzi_2instantons_2src_2rilm_8hppdep" alt=""/></div>
-<map name="a_2home_2marcobenazzi_2instantons_2src_2rilm_8hppdep" id="a_2home_2marcobenazzi_2instantons_2src_2rilm_8hppdep">
-<area shape="rect" title="Random Instanton Liquid Model (RILM)." alt="" coords="104,5,279,47"/>
-<area shape="rect" href="analysis__driver_8cpp.html" title=" " alt="" coords="5,95,180,151"/>
-<area shape="rect" href="rilm_8cpp.html" title=" " alt="" coords="204,102,379,143"/>
+<div class="center"><img src="rilm_8hpp__dep__incl.png" border="0" usemap="#a_2home_2marcobenazzi_2instantons_2src_2models_2rilm_8hppdep" alt=""/></div>
+<map name="a_2home_2marcobenazzi_2instantons_2src_2models_2rilm_8hppdep" id="a_2home_2marcobenazzi_2instantons_2src_2models_2rilm_8hppdep">
+<area shape="rect" title="Random Instanton Liquid Model utilities." alt="" coords="405,5,575,61"/>
+<area shape="rect" href="analysis__driver_8cpp.html" title=" " alt="" coords="5,109,180,165"/>
+<area shape="rect" href="fig10__rilm_8cpp.html" title=" " alt="" coords="204,109,379,165"/>
+<area shape="rect" href="fig12__13__heating_8cpp.html" title=" " alt="" coords="403,109,577,165"/>
+<area shape="rect" href="fig14__16_8cpp.html" title=" " alt="" coords="601,109,776,165"/>
+<area shape="rect" href="rilm_8cpp.html" title=" " alt="" coords="800,109,969,165"/>
 </map>
 </div>
 </div>
@@ -99,18 +104,16 @@ This graph shows which files directly or indirectly include this file:</div>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="func-members"></a>
 Functions</h2></td></tr>
-<tr class="memitem:a4ce99f16ad34ce65d8519e89b15de5b6"><td class="memItemLeft" align="right" valign="top">std::vector&lt; double &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="rilm_8hpp.html#a4ce99f16ad34ce65d8519e89b15de5b6">generate_rilm_path</a> (int N, double a, double eta, int n_inst)</td></tr>
-<tr class="memdesc:a4ce99f16ad34ce65d8519e89b15de5b6"><td class="mdescLeft">&#160;</td><td class="mdescRight">Generate a random instanton liquid configuration.  <a href="rilm_8hpp.html#a4ce99f16ad34ce65d8519e89b15de5b6">More...</a><br /></td></tr>
-<tr class="separator:a4ce99f16ad34ce65d8519e89b15de5b6"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:afd7333865024ec124220ee495edc9393"><td class="memItemLeft" align="right" valign="top">std::vector&lt; double &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="rilm_8hpp.html#afd7333865024ec124220ee495edc9393">generate_rilm_path</a> (int N, double a, double eta, int n_inst, std::mt19937 &amp;gen)</td></tr>
+<tr class="memdesc:afd7333865024ec124220ee495edc9393"><td class="mdescLeft">&#160;</td><td class="mdescRight">Generate a random instanton liquid path.  <a href="rilm_8hpp.html#afd7333865024ec124220ee495edc9393">More...</a><br /></td></tr>
+<tr class="separator:afd7333865024ec124220ee495edc9393"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
-<div class="textblock"><p>Random Instanton Liquid Model (RILM). </p>
-<p>In the random instanton approximation, a configuration is constructed as a superposition of independently distributed instantons and anti-instantons with random positions.</p>
-<p>The multi-instanton ansatz used is: </p><pre class="fragment">x(τ) = η [ Σ_j Q_j tanh( ω/2 (τ − τ_j) ) − 1 ]
-</pre><p> where: Q_j = ±1 (instanton / anti-instanton) τ_j = random position in Euclidean time ω = 4 η </p>
+<div class="textblock"><p>Random Instanton Liquid Model utilities. </p>
+<p>Generates semiclassical configurations from randomly distributed instantons and anti-instantons. </p>
 </div><h2 class="groupheader">Function Documentation</h2>
-<a id="a4ce99f16ad34ce65d8519e89b15de5b6"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a4ce99f16ad34ce65d8519e89b15de5b6">&#9670;&nbsp;</a></span>generate_rilm_path()</h2>
+<a id="afd7333865024ec124220ee495edc9393"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#afd7333865024ec124220ee495edc9393">&#9670;&nbsp;</a></span>generate_rilm_path()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -137,7 +140,13 @@ Functions</h2></td></tr>
           <td class="paramkey"></td>
           <td></td>
           <td class="paramtype">int&#160;</td>
-          <td class="paramname"><em>n_inst</em>&#160;</td>
+          <td class="paramname"><em>n_inst</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">std::mt19937 &amp;&#160;</td>
+          <td class="paramname"><em>gen</em>&#160;</td>
         </tr>
         <tr>
           <td></td>
@@ -147,19 +156,19 @@ Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>Generate a random instanton liquid configuration. </p>
-<p>Instantons and anti-instantons are placed randomly in Euclidean time without interactions.</p>
-<p>The total number of tunneling events is fixed to n_inst.</p>
+<p>Generate a random instanton liquid path. </p>
+<p>Builds a multi-instanton configuration from independently distributed tunneling events.</p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">N</td><td>Number of lattice sites. </td></tr>
     <tr><td class="paramname">a</td><td><a class="el" href="classLattice.html">Lattice</a> spacing. </td></tr>
-    <tr><td class="paramname">eta</td><td>Position of potential minima. </td></tr>
-    <tr><td class="paramname">n_inst</td><td>Total number of instantons + anti-instantons.</td></tr>
+    <tr><td class="paramname">eta</td><td>Double well parameter. </td></tr>
+    <tr><td class="paramname">n_inst</td><td>Number of instantons and anti-instantons. </td></tr>
+    <tr><td class="paramname">gen</td><td>Random number generator.</td></tr>
   </table>
   </dd>
 </dl>
-<dl class="section return"><dt>Returns</dt><dd>Discretized multi-instanton configuration. </dd></dl>
+<dl class="section return"><dt>Returns</dt><dd>Euclidean lattice path. </dd></dl>
 
 </div>
 </div>

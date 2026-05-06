@@ -5,7 +5,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
 <meta name="generator" content="Doxygen 1.9.1"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>Monte Carlo Instantons: /home/marcobenazzi/instantons/src/io.cpp File Reference</title>
+<title>Monte Carlo Instantons: /home/marcobenazzi/instantons/src/utils/io.cpp File Reference</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -61,7 +61,7 @@ $(function() {
 
 <div id="nav-path" class="navpath">
   <ul>
-<li class="navelem"><a class="el" href="dir_68267d1309a1af8e8297ef4c3efbcdba.html">src</a></li>  </ul>
+<li class="navelem"><a class="el" href="dir_68267d1309a1af8e8297ef4c3efbcdba.html">src</a></li><li class="navelem"><a class="el" href="dir_313caf1132e152dd9b58bea13a4052ca.html">utils</a></li>  </ul>
 </div>
 </div><!-- top -->
 <div class="header">
@@ -71,27 +71,110 @@ $(function() {
 <div class="title">io.cpp File Reference</div>  </div>
 </div><!--header-->
 <div class="contents">
-<div class="textblock"><code>#include &quot;<a class="el" href="io_8hpp_source.html">io.hpp</a>&quot;</code><br />
+<div class="textblock"><code>#include &quot;<a class="el" href="io_8hpp_source.html">utils/io.hpp</a>&quot;</code><br />
 <code>#include &lt;fstream&gt;</code><br />
+<code>#include &lt;sstream&gt;</code><br />
+<code>#include &lt;stdexcept&gt;</code><br />
 </div><div class="textblock"><div class="dynheader">
 Include dependency graph for io.cpp:</div>
 <div class="dyncontent">
-<div class="center"><img src="io_8cpp__incl.png" border="0" usemap="#a_2home_2marcobenazzi_2instantons_2src_2io_8cpp" alt=""/></div>
-<map name="a_2home_2marcobenazzi_2instantons_2src_2io_8cpp" id="a_2home_2marcobenazzi_2instantons_2src_2io_8cpp">
-<area shape="rect" title=" " alt="" coords="43,5,203,47"/>
-<area shape="rect" href="io_8hpp.html" title=" " alt="" coords="46,95,109,121"/>
-<area shape="rect" title=" " alt="" coords="133,95,206,121"/>
-<area shape="rect" title=" " alt="" coords="5,169,64,196"/>
-<area shape="rect" title=" " alt="" coords="89,169,151,196"/>
+<div class="center"><img src="io_8cpp__incl.png" border="0" usemap="#a_2home_2marcobenazzi_2instantons_2src_2utils_2io_8cpp" alt=""/></div>
+<map name="a_2home_2marcobenazzi_2instantons_2src_2utils_2io_8cpp" id="a_2home_2marcobenazzi_2instantons_2src_2utils_2io_8cpp">
+<area shape="rect" title=" " alt="" coords="155,5,314,61"/>
+<area shape="rect" href="io_8hpp.html" title="CSV input/output utilities." alt="" coords="30,109,125,136"/>
+<area shape="rect" title=" " alt="" coords="149,109,222,136"/>
+<area shape="rect" title=" " alt="" coords="247,109,321,136"/>
+<area shape="rect" title=" " alt="" coords="346,109,433,136"/>
+<area shape="rect" title=" " alt="" coords="5,184,64,211"/>
+<area shape="rect" title=" " alt="" coords="89,184,151,211"/>
 </map>
 </div>
 </div><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="func-members"></a>
 Functions</h2></td></tr>
 <tr class="memitem:a7eaba75d2a67c13e42d32dc0b3b23878"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="io_8cpp.html#a7eaba75d2a67c13e42d32dc0b3b23878">save_path_to_csv</a> (const std::vector&lt; double &gt; &amp;path, const std::string &amp;filename, double a)</td></tr>
+<tr class="memdesc:a7eaba75d2a67c13e42d32dc0b3b23878"><td class="mdescLeft">&#160;</td><td class="mdescRight">Save a Euclidean path to CSV.  <a href="io_8cpp.html#a7eaba75d2a67c13e42d32dc0b3b23878">More...</a><br /></td></tr>
 <tr class="separator:a7eaba75d2a67c13e42d32dc0b3b23878"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af2d3f44e176fb7e1583fc2c059389be5"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="io_8cpp.html#af2d3f44e176fb7e1583fc2c059389be5">save_correlator_to_csv</a> (const std::vector&lt; double &gt; &amp;correlator, double a, const std::string &amp;filename)</td></tr>
+<tr class="memdesc:af2d3f44e176fb7e1583fc2c059389be5"><td class="mdescLeft">&#160;</td><td class="mdescRight">Save a correlator to CSV.  <a href="io_8cpp.html#af2d3f44e176fb7e1583fc2c059389be5">More...</a><br /></td></tr>
+<tr class="separator:af2d3f44e176fb7e1583fc2c059389be5"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a458ae6bcc472be5c5ea90c6d5c7677b4"><td class="memItemLeft" align="right" valign="top">std::vector&lt; double &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="io_8cpp.html#a458ae6bcc472be5c5ea90c6d5c7677b4">load_path_from_csv</a> (const std::string &amp;filename)</td></tr>
+<tr class="memdesc:a458ae6bcc472be5c5ea90c6d5c7677b4"><td class="mdescLeft">&#160;</td><td class="mdescRight">Load only the path values from a CSV file with columns tau,x.  <a href="io_8cpp.html#a458ae6bcc472be5c5ea90c6d5c7677b4">More...</a><br /></td></tr>
+<tr class="separator:a458ae6bcc472be5c5ea90c6d5c7677b4"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <h2 class="groupheader">Function Documentation</h2>
+<a id="a458ae6bcc472be5c5ea90c6d5c7677b4"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a458ae6bcc472be5c5ea90c6d5c7677b4">&#9670;&nbsp;</a></span>load_path_from_csv()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::vector&lt;double&gt; load_path_from_csv </td>
+          <td>(</td>
+          <td class="paramtype">const std::string &amp;&#160;</td>
+          <td class="paramname"><em>filename</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Load only the path values from a CSV file with columns tau,x. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">filename</td><td>Input file path. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>Vector of path values. </dd></dl>
+
+</div>
+</div>
+<a id="af2d3f44e176fb7e1583fc2c059389be5"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#af2d3f44e176fb7e1583fc2c059389be5">&#9670;&nbsp;</a></span>save_correlator_to_csv()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void save_correlator_to_csv </td>
+          <td>(</td>
+          <td class="paramtype">const std::vector&lt; double &gt; &amp;&#160;</td>
+          <td class="paramname"><em>correlator</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">double&#160;</td>
+          <td class="paramname"><em>a</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const std::string &amp;&#160;</td>
+          <td class="paramname"><em>filename</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Save a correlator to CSV. </p>
+<p>Output columns: tau,C(tau)</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">correlator</td><td>Correlator values. </td></tr>
+    <tr><td class="paramname">a</td><td><a class="el" href="classLattice.html">Lattice</a> spacing. </td></tr>
+    <tr><td class="paramname">filename</td><td>Output file path. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
 <a id="a7eaba75d2a67c13e42d32dc0b3b23878"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a7eaba75d2a67c13e42d32dc0b3b23878">&#9670;&nbsp;</a></span>save_path_to_csv()</h2>
 
@@ -123,6 +206,17 @@ Functions</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
+
+<p>Save a Euclidean path to CSV. </p>
+<p>Output columns: tau,x</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">path</td><td>Discretized Euclidean path. </td></tr>
+    <tr><td class="paramname">filename</td><td>Output file path. </td></tr>
+    <tr><td class="paramname">a</td><td><a class="el" href="classLattice.html">Lattice</a> spacing. </td></tr>
+  </table>
+  </dd>
+</dl>
 
 </div>
 </div>

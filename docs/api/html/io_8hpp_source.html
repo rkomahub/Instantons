@@ -5,7 +5,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
 <meta name="generator" content="Doxygen 1.9.1"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>Monte Carlo Instantons: /home/marcobenazzi/instantons/src/io.hpp Source File</title>
+<title>Monte Carlo Instantons: /home/marcobenazzi/instantons/src/utils/io.hpp Source File</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -61,7 +61,7 @@ $(function() {
 
 <div id="nav-path" class="navpath">
   <ul>
-<li class="navelem"><a class="el" href="dir_68267d1309a1af8e8297ef4c3efbcdba.html">src</a></li>  </ul>
+<li class="navelem"><a class="el" href="dir_68267d1309a1af8e8297ef4c3efbcdba.html">src</a></li><li class="navelem"><a class="el" href="dir_313caf1132e152dd9b58bea13a4052ca.html">utils</a></li>  </ul>
 </div>
 </div><!-- top -->
 <div class="header">
@@ -73,10 +73,17 @@ $(function() {
 <div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160;<span class="preprocessor">#include &lt;string&gt;</span></div>
 <div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160;<span class="preprocessor">#include &lt;vector&gt;</span></div>
 <div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160; </div>
-<div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160;<span class="keywordtype">void</span> <a class="code" href="io_8hpp.html#a7eaba75d2a67c13e42d32dc0b3b23878">save_path_to_csv</a>(<span class="keyword">const</span> std::vector&lt;double&gt; &amp;path,</div>
-<div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160;                      <span class="keyword">const</span> std::string &amp;filename, <span class="keywordtype">double</span> <a class="code" href="namespaceparams.html#a0e40590be171a5c19db1fe4da173a837">a</a>);</div>
-<div class="ttc" id="aio_8hpp_html_a7eaba75d2a67c13e42d32dc0b3b23878"><div class="ttname"><a href="io_8hpp.html#a7eaba75d2a67c13e42d32dc0b3b23878">save_path_to_csv</a></div><div class="ttdeci">void save_path_to_csv(const std::vector&lt; double &gt; &amp;path, const std::string &amp;filename, double a)</div><div class="ttdef"><b>Definition:</b> io.cpp:4</div></div>
-<div class="ttc" id="anamespaceparams_html_a0e40590be171a5c19db1fe4da173a837"><div class="ttname"><a href="namespaceparams.html#a0e40590be171a5c19db1fe4da173a837">params::a</a></div><div class="ttdeci">constexpr double a</div><div class="ttdoc">Lattice spacing in Euclidean time.</div><div class="ttdef"><b>Definition:</b> parameters.hpp:37</div></div>
+<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;<span class="keywordtype">void</span> <a class="code" href="io_8hpp.html#a7eaba75d2a67c13e42d32dc0b3b23878">save_path_to_csv</a>(<span class="keyword">const</span> std::vector&lt;double&gt; &amp;path,</div>
+<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;                      <span class="keyword">const</span> std::string &amp;filename, <span class="keywordtype">double</span> <a class="code" href="namespaceparams.html#a0e40590be171a5c19db1fe4da173a837">a</a>);</div>
+<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160; </div>
+<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;<span class="keywordtype">void</span> <a class="code" href="io_8hpp.html#af2d3f44e176fb7e1583fc2c059389be5">save_correlator_to_csv</a>(<span class="keyword">const</span> std::vector&lt;double&gt; &amp;correlator, <span class="keywordtype">double</span> <a class="code" href="namespaceparams.html#a0e40590be171a5c19db1fe4da173a837">a</a>,</div>
+<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;                            <span class="keyword">const</span> std::string &amp;filename);</div>
+<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160; </div>
+<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;std::vector&lt;double&gt; <a class="code" href="io_8hpp.html#a458ae6bcc472be5c5ea90c6d5c7677b4">load_path_from_csv</a>(<span class="keyword">const</span> std::string &amp;filename);</div>
+<div class="ttc" id="aio_8hpp_html_a458ae6bcc472be5c5ea90c6d5c7677b4"><div class="ttname"><a href="io_8hpp.html#a458ae6bcc472be5c5ea90c6d5c7677b4">load_path_from_csv</a></div><div class="ttdeci">std::vector&lt; double &gt; load_path_from_csv(const std::string &amp;filename)</div><div class="ttdoc">Load only the path values from a CSV file with columns tau,x.</div><div class="ttdef"><b>Definition:</b> io.cpp:26</div></div>
+<div class="ttc" id="aio_8hpp_html_a7eaba75d2a67c13e42d32dc0b3b23878"><div class="ttname"><a href="io_8hpp.html#a7eaba75d2a67c13e42d32dc0b3b23878">save_path_to_csv</a></div><div class="ttdeci">void save_path_to_csv(const std::vector&lt; double &gt; &amp;path, const std::string &amp;filename, double a)</div><div class="ttdoc">Save a Euclidean path to CSV.</div><div class="ttdef"><b>Definition:</b> io.cpp:6</div></div>
+<div class="ttc" id="aio_8hpp_html_af2d3f44e176fb7e1583fc2c059389be5"><div class="ttname"><a href="io_8hpp.html#af2d3f44e176fb7e1583fc2c059389be5">save_correlator_to_csv</a></div><div class="ttdeci">void save_correlator_to_csv(const std::vector&lt; double &gt; &amp;correlator, double a, const std::string &amp;filename)</div><div class="ttdoc">Save a correlator to CSV.</div><div class="ttdef"><b>Definition:</b> io.cpp:15</div></div>
+<div class="ttc" id="anamespaceparams_html_a0e40590be171a5c19db1fe4da173a837"><div class="ttname"><a href="namespaceparams.html#a0e40590be171a5c19db1fe4da173a837">params::a</a></div><div class="ttdeci">constexpr double a</div><div class="ttdoc">Euclidean lattice spacing.</div><div class="ttdef"><b>Definition:</b> parameters.hpp:24</div></div>
 </div><!-- fragment --></div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>

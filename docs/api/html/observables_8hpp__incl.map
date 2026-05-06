@@ -1,5 +1,6 @@
-<map id="/home/marcobenazzi/instantons/src/observables.hpp" name="/home/marcobenazzi/instantons/src/observables.hpp">
-<area shape="rect" id="node1" title="Measurement of physical observables from Euclidean configurations." alt="" coords="5,5,233,47"/>
-<area shape="rect" id="node2" title=" " alt="" coords="47,95,106,121"/>
-<area shape="rect" id="node3" title=" " alt="" coords="131,95,193,121"/>
+<map id="/home/marcobenazzi/instantons/src/core/observables.hpp" name="/home/marcobenazzi/instantons/src/core/observables.hpp">
+<area shape="rect" id="node1" title="Measurement routines for Euclidean lattice configurations." alt="" coords="16,5,175,61"/>
+<area shape="rect" id="node2" href="$io_8hpp.html" title="CSV input/output utilities." alt="" coords="5,109,100,136"/>
+<area shape="rect" id="node4" title=" " alt="" coords="107,184,169,211"/>
+<area shape="rect" id="node3" title=" " alt="" coords="23,184,82,211"/>
 </map>

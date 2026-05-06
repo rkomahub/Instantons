@@ -5,7 +5,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
 <meta name="generator" content="Doxygen 1.9.1"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>Monte Carlo Instantons: /home/marcobenazzi/instantons/src/instanton.cpp File Reference</title>
+<title>Monte Carlo Instantons: /home/marcobenazzi/instantons/src/core/instanton.cpp File Reference</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -61,7 +61,7 @@ $(function() {
 
 <div id="nav-path" class="navpath">
   <ul>
-<li class="navelem"><a class="el" href="dir_68267d1309a1af8e8297ef4c3efbcdba.html">src</a></li>  </ul>
+<li class="navelem"><a class="el" href="dir_68267d1309a1af8e8297ef4c3efbcdba.html">src</a></li><li class="navelem"><a class="el" href="dir_aebb8dcc11953d78e620bbef0b9e2183.html">core</a></li>  </ul>
 </div>
 </div><!-- top -->
 <div class="header">
@@ -71,18 +71,15 @@ $(function() {
 <div class="title">instanton.cpp File Reference</div>  </div>
 </div><!--header-->
 <div class="contents">
-
-<p>Identification of instantons via zero crossings.  
-<a href="#details">More...</a></p>
-<div class="textblock"><code>#include &quot;<a class="el" href="instanton_8hpp_source.html">instanton.hpp</a>&quot;</code><br />
+<div class="textblock"><code>#include &quot;<a class="el" href="instanton_8hpp_source.html">core/instanton.hpp</a>&quot;</code><br />
 </div><div class="textblock"><div class="dynheader">
 Include dependency graph for instanton.cpp:</div>
 <div class="dyncontent">
-<div class="center"><img src="instanton_8cpp__incl.png" border="0" usemap="#a_2home_2marcobenazzi_2instantons_2src_2instanton_8cpp" alt=""/></div>
-<map name="a_2home_2marcobenazzi_2instantons_2src_2instanton_8cpp" id="a_2home_2marcobenazzi_2instantons_2src_2instanton_8cpp">
-<area shape="rect" title="Identification of instantons via zero crossings." alt="" coords="5,5,215,47"/>
-<area shape="rect" href="instanton_8hpp.html" title="Instanton identification utilities." alt="" coords="55,95,165,121"/>
-<area shape="rect" title=" " alt="" coords="79,169,141,196"/>
+<div class="center"><img src="instanton_8cpp__incl.png" border="0" usemap="#a_2home_2marcobenazzi_2instantons_2src_2core_2instanton_8cpp" alt=""/></div>
+<map name="a_2home_2marcobenazzi_2instantons_2src_2core_2instanton_8cpp" id="a_2home_2marcobenazzi_2instantons_2src_2core_2instanton_8cpp">
+<area shape="rect" title=" " alt="" coords="5,5,164,61"/>
+<area shape="rect" href="instanton_8hpp.html" title="Instanton identification utilities." alt="" coords="13,109,156,136"/>
+<area shape="rect" title=" " alt="" coords="53,184,116,211"/>
 </map>
 </div>
 </div><table class="memberdecls">
@@ -92,16 +89,7 @@ Functions</h2></td></tr>
 <tr class="memdesc:ae3325894950eaee71a9ff407a4512283"><td class="mdescLeft">&#160;</td><td class="mdescRight">Count zero crossings of a Euclidean path.  <a href="instanton_8cpp.html#ae3325894950eaee71a9ff407a4512283">More...</a><br /></td></tr>
 <tr class="separator:ae3325894950eaee71a9ff407a4512283"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
-<a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
-<div class="textblock"><p>Identification of instantons via zero crossings. </p>
-<p>In one-dimensional quantum mechanics, instantons correspond to tunneling events between the two classical vacua ±eta.</p>
-<p>On the Euclidean lattice, a tunneling event is identified by a sign change of the field between neighboring sites: </p><pre class="fragment">x_i * x_{i+1} &lt; 0
-</pre><p> Each such crossing corresponds to either:</p><ul>
-<li>an instanton (− → +)</li>
-<li>an anti-instanton (+ → −)</li>
-</ul>
-<p>Due to periodic boundary conditions, the lattice is treated as a closed loop in Euclidean time. </p>
-</div><h2 class="groupheader">Function Documentation</h2>
+<h2 class="groupheader">Function Documentation</h2>
 <a id="ae3325894950eaee71a9ff407a4512283"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#ae3325894950eaee71a9ff407a4512283">&#9670;&nbsp;</a></span>count_zero_crossings()</h2>
 

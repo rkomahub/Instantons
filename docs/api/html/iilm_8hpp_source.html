@@ -5,7 +5,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
 <meta name="generator" content="Doxygen 1.9.1"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>Monte Carlo Instantons: /home/marcobenazzi/instantons/src/iilm.hpp Source File</title>
+<title>Monte Carlo Instantons: /home/marcobenazzi/instantons/src/models/iilm.hpp Source File</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -61,7 +61,7 @@ $(function() {
 
 <div id="nav-path" class="navpath">
   <ul>
-<li class="navelem"><a class="el" href="dir_68267d1309a1af8e8297ef4c3efbcdba.html">src</a></li>  </ul>
+<li class="navelem"><a class="el" href="dir_68267d1309a1af8e8297ef4c3efbcdba.html">src</a></li><li class="navelem"><a class="el" href="dir_bdeba5f06b852fec80257c0bf4c3c36e.html">models</a></li>  </ul>
 </div>
 </div><!-- top -->
 <div class="header">
@@ -70,14 +70,34 @@ $(function() {
 </div><!--header-->
 <div class="contents">
 <a href="iilm_8hpp.html">Go to the documentation of this file.</a><div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;<span class="preprocessor">#pragma once</span></div>
-<div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160;<span class="preprocessor">#include &lt;vector&gt;</span></div>
-<div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160; </div>
-<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;std::vector&lt;double&gt; <a class="code" href="iilm_8hpp.html#a49ff92f2b1a270813ac104aba69f027e">generate_iilm_path</a>(<span class="keywordtype">int</span> <a class="code" href="namespaceparams.html#a7dbadc8421fe706511a5aac5018e394b">N</a>, <span class="keywordtype">double</span> <a class="code" href="namespaceparams.html#a0e40590be171a5c19db1fe4da173a837">a</a>, <span class="keywordtype">double</span> <a class="code" href="namespaceparams.html#ae54ec1eeec1be33593631893cd26d211">eta</a>, <span class="keywordtype">int</span> n_inst,</div>
-<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;                                       <span class="keywordtype">double</span> tau_core);</div>
-<div class="ttc" id="aiilm_8hpp_html_a49ff92f2b1a270813ac104aba69f027e"><div class="ttname"><a href="iilm_8hpp.html#a49ff92f2b1a270813ac104aba69f027e">generate_iilm_path</a></div><div class="ttdeci">std::vector&lt; double &gt; generate_iilm_path(int N, double a, double eta, int n_inst, double tau_core)</div><div class="ttdoc">Generate an interacting instanton liquid configuration.</div><div class="ttdef"><b>Definition:</b> iilm.cpp:5</div></div>
-<div class="ttc" id="anamespaceparams_html_a0e40590be171a5c19db1fe4da173a837"><div class="ttname"><a href="namespaceparams.html#a0e40590be171a5c19db1fe4da173a837">params::a</a></div><div class="ttdeci">constexpr double a</div><div class="ttdoc">Lattice spacing in Euclidean time.</div><div class="ttdef"><b>Definition:</b> parameters.hpp:37</div></div>
-<div class="ttc" id="anamespaceparams_html_a7dbadc8421fe706511a5aac5018e394b"><div class="ttname"><a href="namespaceparams.html#a7dbadc8421fe706511a5aac5018e394b">params::N</a></div><div class="ttdeci">constexpr int N</div><div class="ttdoc">Number of lattice points in Euclidean time.</div><div class="ttdef"><b>Definition:</b> parameters.hpp:29</div></div>
-<div class="ttc" id="anamespaceparams_html_ae54ec1eeec1be33593631893cd26d211"><div class="ttname"><a href="namespaceparams.html#ae54ec1eeec1be33593631893cd26d211">params::eta</a></div><div class="ttdeci">constexpr double eta</div><div class="ttdoc">Position of classical minima of the double well potential.</div><div class="ttdef"><b>Definition:</b> parameters.hpp:50</div></div>
+<div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160;<span class="preprocessor">#include &lt;random&gt;</span></div>
+<div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160;<span class="preprocessor">#include &lt;vector&gt;</span></div>
+<div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160; </div>
+<div class="line"><a name="l00013"></a><span class="lineno"><a class="line" href="structIILMConfig.html">   13</a></span>&#160;<span class="keyword">struct </span><a class="code" href="structIILMConfig.html">IILMConfig</a> {</div>
+<div class="line"><a name="l00014"></a><span class="lineno"><a class="line" href="structIILMConfig.html#a52e6626ba847244d54e5e2b710cd1b04">   14</a></span>&#160;  std::vector&lt;double&gt; <a class="code" href="structIILMConfig.html#a52e6626ba847244d54e5e2b710cd1b04">tau</a>; <span class="comment">// instanton positions</span></div>
+<div class="line"><a name="l00015"></a><span class="lineno"><a class="line" href="structIILMConfig.html#aed7368b7974a38627914610a6f04f9da">   15</a></span>&#160;  std::vector&lt;int&gt; <a class="code" href="structIILMConfig.html#aed7368b7974a38627914610a6f04f9da">Q</a>;      <span class="comment">// charges: +1 or -1</span></div>
+<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;};</div>
+<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160; </div>
+<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;<a class="code" href="structIILMConfig.html">IILMConfig</a> <a class="code" href="iilm_8hpp.html#a025aa5a5a60a0dd3deaf372ab0e28372">generate_iilm_config</a>(<span class="keywordtype">int</span> n_inst, <span class="keywordtype">double</span> beta, <span class="keywordtype">double</span> tau_core,</div>
+<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;                                std::mt19937 &amp;gen);</div>
+<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160; </div>
+<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;std::vector&lt;double&gt; <a class="code" href="iilm_8hpp.html#af0e37da8fa03670d4341fc6566935c04">build_iilm_path</a>(<span class="keywordtype">int</span> <a class="code" href="namespaceparams.html#a7dbadc8421fe706511a5aac5018e394b">N</a>, <span class="keywordtype">double</span> <a class="code" href="namespaceparams.html#a0e40590be171a5c19db1fe4da173a837">a</a>, <span class="keywordtype">double</span> <a class="code" href="namespaceparams.html#ae13c4bcf5214d22d896cabb6a2187752">eta</a>,</div>
+<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;                                    <span class="keyword">const</span> <a class="code" href="structIILMConfig.html">IILMConfig</a> &amp;cfg);</div>
+<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160; </div>
+<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;<span class="keywordtype">bool</span> <a class="code" href="iilm_8hpp.html#ad03f522be0cc41f90e450a4ff9ac12ed">iilm_core_ok</a>(<span class="keyword">const</span> <a class="code" href="structIILMConfig.html">IILMConfig</a> &amp;cfg, <span class="keywordtype">double</span> beta, <span class="keywordtype">double</span> tau_core);</div>
+<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160; </div>
+<div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;<span class="keywordtype">bool</span> <a class="code" href="iilm_8hpp.html#a904fc3691af94b04e1b2b00f055db383">propose_move_tau</a>(<a class="code" href="structIILMConfig.html">IILMConfig</a> &amp;cfg, <span class="keywordtype">double</span> beta, <span class="keywordtype">double</span> tau_core,</div>
+<div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;                      <span class="keywordtype">double</span> step, std::mt19937 &amp;gen);</div>
+<div class="ttc" id="aiilm_8hpp_html_a025aa5a5a60a0dd3deaf372ab0e28372"><div class="ttname"><a href="iilm_8hpp.html#a025aa5a5a60a0dd3deaf372ab0e28372">generate_iilm_config</a></div><div class="ttdeci">IILMConfig generate_iilm_config(int n_inst, double beta, double tau_core, std::mt19937 &amp;gen)</div><div class="ttdoc">Generate an initial IILM configuration.</div><div class="ttdef"><b>Definition:</b> iilm.cpp:26</div></div>
+<div class="ttc" id="aiilm_8hpp_html_a904fc3691af94b04e1b2b00f055db383"><div class="ttname"><a href="iilm_8hpp.html#a904fc3691af94b04e1b2b00f055db383">propose_move_tau</a></div><div class="ttdeci">bool propose_move_tau(IILMConfig &amp;cfg, double beta, double tau_core, double step, std::mt19937 &amp;gen)</div><div class="ttdoc">Propose a Monte Carlo move in collective-coordinate space.</div><div class="ttdef"><b>Definition:</b> iilm.cpp:122</div></div>
+<div class="ttc" id="aiilm_8hpp_html_ad03f522be0cc41f90e450a4ff9ac12ed"><div class="ttname"><a href="iilm_8hpp.html#ad03f522be0cc41f90e450a4ff9ac12ed">iilm_core_ok</a></div><div class="ttdeci">bool iilm_core_ok(const IILMConfig &amp;cfg, double beta, double tau_core)</div><div class="ttdoc">Check the instanton core constraint.</div><div class="ttdef"><b>Definition:</b> iilm.cpp:11</div></div>
+<div class="ttc" id="aiilm_8hpp_html_af0e37da8fa03670d4341fc6566935c04"><div class="ttname"><a href="iilm_8hpp.html#af0e37da8fa03670d4341fc6566935c04">build_iilm_path</a></div><div class="ttdeci">std::vector&lt; double &gt; build_iilm_path(int N, double a, double eta, const IILMConfig &amp;cfg)</div><div class="ttdoc">Build a lattice path from collective coordinates.</div><div class="ttdef"><b>Definition:</b> iilm.cpp:90</div></div>
+<div class="ttc" id="anamespaceparams_html_a0e40590be171a5c19db1fe4da173a837"><div class="ttname"><a href="namespaceparams.html#a0e40590be171a5c19db1fe4da173a837">params::a</a></div><div class="ttdeci">constexpr double a</div><div class="ttdoc">Euclidean lattice spacing.</div><div class="ttdef"><b>Definition:</b> parameters.hpp:24</div></div>
+<div class="ttc" id="anamespaceparams_html_a7dbadc8421fe706511a5aac5018e394b"><div class="ttname"><a href="namespaceparams.html#a7dbadc8421fe706511a5aac5018e394b">params::N</a></div><div class="ttdeci">constexpr int N</div><div class="ttdoc">Number of Euclidean lattice sites.</div><div class="ttdef"><b>Definition:</b> parameters.hpp:19</div></div>
+<div class="ttc" id="anamespaceparams_html_ae13c4bcf5214d22d896cabb6a2187752"><div class="ttname"><a href="namespaceparams.html#ae13c4bcf5214d22d896cabb6a2187752">params::eta</a></div><div class="ttdeci">double eta</div><div class="ttdoc">Double well parameter.</div><div class="ttdef"><b>Definition:</b> parameters.hpp:32</div></div>
+<div class="ttc" id="astructIILMConfig_html"><div class="ttname"><a href="structIILMConfig.html">IILMConfig</a></div><div class="ttdef"><b>Definition:</b> iilm.hpp:13</div></div>
+<div class="ttc" id="astructIILMConfig_html_a52e6626ba847244d54e5e2b710cd1b04"><div class="ttname"><a href="structIILMConfig.html#a52e6626ba847244d54e5e2b710cd1b04">IILMConfig::tau</a></div><div class="ttdeci">std::vector&lt; double &gt; tau</div><div class="ttdef"><b>Definition:</b> iilm.hpp:14</div></div>
+<div class="ttc" id="astructIILMConfig_html_aed7368b7974a38627914610a6f04f9da"><div class="ttname"><a href="structIILMConfig.html#aed7368b7974a38627914610a6f04f9da">IILMConfig::Q</a></div><div class="ttdeci">std::vector&lt; int &gt; Q</div><div class="ttdef"><b>Definition:</b> iilm.hpp:15</div></div>
 </div><!-- fragment --></div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>

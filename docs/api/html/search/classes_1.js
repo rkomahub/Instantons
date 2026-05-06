@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['lattice_69',['Lattice',['../classLattice.html',1,'']]]
+  ['iilmconfig_134',['IILMConfig',['../structIILMConfig.html',1,'']]]
 ];

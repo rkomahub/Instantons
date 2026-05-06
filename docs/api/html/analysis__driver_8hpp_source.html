@@ -5,7 +5,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
 <meta name="generator" content="Doxygen 1.9.1"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>Monte Carlo Instantons: /home/marcobenazzi/instantons/src/analysis_driver.hpp Source File</title>
+<title>Monte Carlo Instantons: /home/marcobenazzi/instantons/src/analysis/analysis_driver.hpp Source File</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -61,7 +61,7 @@ $(function() {
 
 <div id="nav-path" class="navpath">
   <ul>
-<li class="navelem"><a class="el" href="dir_68267d1309a1af8e8297ef4c3efbcdba.html">src</a></li>  </ul>
+<li class="navelem"><a class="el" href="dir_68267d1309a1af8e8297ef4c3efbcdba.html">src</a></li><li class="navelem"><a class="el" href="dir_2eec376824a17f48dc36b4bd0c810e01.html">analysis</a></li>  </ul>
 </div>
 </div><!-- top -->
 <div class="header">
@@ -73,29 +73,20 @@ $(function() {
 <div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160;<span class="preprocessor">#include &lt;random&gt;</span></div>
 <div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160;<span class="preprocessor">#include &lt;vector&gt;</span></div>
 <div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160; </div>
-<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;<span class="keywordtype">void</span> <a class="code" href="analysis__driver_8hpp.html#ad665e7f2cccb3891eed6b33d0166954a">run_basic_analysis</a>(std::mt19937 &amp;gen);</div>
-<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160; </div>
-<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;<span class="keywordtype">void</span> <a class="code" href="analysis__driver_8hpp.html#ac297aa60d9bf8a6a83a5a76721d6d9eb">run_cooling_evolution_analysis</a>(std::mt19937 &amp;gen);</div>
-<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160; </div>
-<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;<span class="keywordtype">void</span> <a class="code" href="analysis__driver_8hpp.html#a257d00b8d308418a4f92ebd0e5f5ccf9">run_cooling_eta_scan</a>(<span class="keyword">const</span> std::vector&lt;double&gt; &amp;etas, std::mt19937 &amp;gen);</div>
-<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160; </div>
-<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;<span class="keywordtype">void</span> <a class="code" href="analysis__driver_8hpp.html#ac554028990827d88fe5d983810d8b13e">run_ensemble_analysis</a>(std::mt19937 &amp;gen);</div>
-<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160; </div>
-<div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;<span class="keywordtype">void</span> <a class="code" href="analysis__driver_8hpp.html#a072369f33f4afd1aee65c28ca0b56878">run_rilm_analysis</a>(std::mt19937 &amp;gen);</div>
-<div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160; </div>
-<div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160;<span class="keywordtype">void</span> <a class="code" href="analysis__driver_8hpp.html#a0409d9035f7be4c9af471220c6b4dfd0">run_heated_rilm_analysis</a>(std::mt19937 &amp;gen);</div>
-<div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160; </div>
-<div class="line"><a name="l00086"></a><span class="lineno">   86</span>&#160;<span class="keywordtype">void</span> <a class="code" href="analysis__driver_8hpp.html#a60565dbfbc6b10fa6681e77c48c41901">run_iilm_analysis</a>(std::mt19937 &amp;gen);</div>
-<div class="line"><a name="l00087"></a><span class="lineno">   87</span>&#160; </div>
-<div class="line"><a name="l00094"></a><span class="lineno">   94</span>&#160;<span class="keywordtype">void</span> <a class="code" href="analysis__driver_8hpp.html#a9e9eaa9710967df20f59542c119a89a9">run_qmidens_analysis</a>(std::mt19937 &amp;gen);</div>
-<div class="ttc" id="aanalysis__driver_8hpp_html_a0409d9035f7be4c9af471220c6b4dfd0"><div class="ttname"><a href="analysis__driver_8hpp.html#a0409d9035f7be4c9af471220c6b4dfd0">run_heated_rilm_analysis</a></div><div class="ttdeci">void run_heated_rilm_analysis(std::mt19937 &amp;gen)</div><div class="ttdoc">RILM with added Gaussian fluctuations (heating).</div><div class="ttdef"><b>Definition:</b> analysis_driver.cpp:108</div></div>
-<div class="ttc" id="aanalysis__driver_8hpp_html_a072369f33f4afd1aee65c28ca0b56878"><div class="ttname"><a href="analysis__driver_8hpp.html#a072369f33f4afd1aee65c28ca0b56878">run_rilm_analysis</a></div><div class="ttdeci">void run_rilm_analysis(std::mt19937 &amp;gen)</div><div class="ttdoc">Random Instanton Liquid Model (RILM) analysis.</div><div class="ttdef"><b>Definition:</b> analysis_driver.cpp:86</div></div>
-<div class="ttc" id="aanalysis__driver_8hpp_html_a257d00b8d308418a4f92ebd0e5f5ccf9"><div class="ttname"><a href="analysis__driver_8hpp.html#a257d00b8d308418a4f92ebd0e5f5ccf9">run_cooling_eta_scan</a></div><div class="ttdeci">void run_cooling_eta_scan(const std::vector&lt; double &gt; &amp;etas, std::mt19937 &amp;gen)</div><div class="ttdoc">Perform a scan of the instanton density as a function of eta.</div><div class="ttdef"><b>Definition:</b> analysis_driver.cpp:156</div></div>
-<div class="ttc" id="aanalysis__driver_8hpp_html_a60565dbfbc6b10fa6681e77c48c41901"><div class="ttname"><a href="analysis__driver_8hpp.html#a60565dbfbc6b10fa6681e77c48c41901">run_iilm_analysis</a></div><div class="ttdeci">void run_iilm_analysis(std::mt19937 &amp;gen)</div><div class="ttdoc">Interacting Instanton Liquid Model (IILM) analysis.</div><div class="ttdef"><b>Definition:</b> analysis_driver.cpp:134</div></div>
-<div class="ttc" id="aanalysis__driver_8hpp_html_a9e9eaa9710967df20f59542c119a89a9"><div class="ttname"><a href="analysis__driver_8hpp.html#a9e9eaa9710967df20f59542c119a89a9">run_qmidens_analysis</a></div><div class="ttdeci">void run_qmidens_analysis(std::mt19937 &amp;gen)</div><div class="ttdoc">Non-Gaussian correction to instanton density.</div><div class="ttdef"><b>Definition:</b> qmidens.cpp:138</div></div>
-<div class="ttc" id="aanalysis__driver_8hpp_html_ac297aa60d9bf8a6a83a5a76721d6d9eb"><div class="ttname"><a href="analysis__driver_8hpp.html#ac297aa60d9bf8a6a83a5a76721d6d9eb">run_cooling_evolution_analysis</a></div><div class="ttdeci">void run_cooling_evolution_analysis(std::mt19937 &amp;gen)</div><div class="ttdoc">Study instanton density under cooling.</div><div class="ttdef"><b>Definition:</b> analysis_driver.cpp:69</div></div>
-<div class="ttc" id="aanalysis__driver_8hpp_html_ac554028990827d88fe5d983810d8b13e"><div class="ttname"><a href="analysis__driver_8hpp.html#ac554028990827d88fe5d983810d8b13e">run_ensemble_analysis</a></div><div class="ttdeci">void run_ensemble_analysis(std::mt19937 &amp;gen)</div><div class="ttdoc">Perform ensemble averaging.</div><div class="ttdef"><b>Definition:</b> analysis_driver.cpp:80</div></div>
-<div class="ttc" id="aanalysis__driver_8hpp_html_ad665e7f2cccb3891eed6b33d0166954a"><div class="ttname"><a href="analysis__driver_8hpp.html#ad665e7f2cccb3891eed6b33d0166954a">run_basic_analysis</a></div><div class="ttdeci">void run_basic_analysis(std::mt19937 &amp;gen)</div><div class="ttdoc">Run basic Monte Carlo analysis.</div><div class="ttdef"><b>Definition:</b> analysis_driver.cpp:29</div></div>
+<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;<span class="keywordtype">void</span> <a class="code" href="analysis__driver_8hpp.html#ad665e7f2cccb3891eed6b33d0166954a">run_basic_analysis</a>(std::mt19937 &amp;gen);</div>
+<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160; </div>
+<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;<span class="keywordtype">void</span> <a class="code" href="analysis__driver_8hpp.html#ac297aa60d9bf8a6a83a5a76721d6d9eb">run_cooling_evolution_analysis</a>(std::mt19937 &amp;gen);</div>
+<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160; </div>
+<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;<span class="keywordtype">void</span> <a class="code" href="analysis__driver_8hpp.html#a257d00b8d308418a4f92ebd0e5f5ccf9">run_cooling_eta_scan</a>(<span class="keyword">const</span> std::vector&lt;double&gt; &amp;etas, std::mt19937 &amp;gen);</div>
+<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160; </div>
+<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;<span class="keywordtype">void</span> <a class="code" href="analysis__driver_8hpp.html#ac554028990827d88fe5d983810d8b13e">run_ensemble_analysis</a>(std::mt19937 &amp;gen);</div>
+<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160; </div>
+<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;<span class="keywordtype">void</span> <a class="code" href="analysis__driver_8hpp.html#a60565dbfbc6b10fa6681e77c48c41901">run_iilm_analysis</a>(std::mt19937 &amp;gen);</div>
+<div class="ttc" id="aanalysis__driver_8hpp_html_a257d00b8d308418a4f92ebd0e5f5ccf9"><div class="ttname"><a href="analysis__driver_8hpp.html#a257d00b8d308418a4f92ebd0e5f5ccf9">run_cooling_eta_scan</a></div><div class="ttdeci">void run_cooling_eta_scan(const std::vector&lt; double &gt; &amp;etas, std::mt19937 &amp;gen)</div><div class="ttdoc">Scan instanton density as a function of eta.</div><div class="ttdef"><b>Definition:</b> analysis_driver.cpp:117</div></div>
+<div class="ttc" id="aanalysis__driver_8hpp_html_a60565dbfbc6b10fa6681e77c48c41901"><div class="ttname"><a href="analysis__driver_8hpp.html#a60565dbfbc6b10fa6681e77c48c41901">run_iilm_analysis</a></div><div class="ttdeci">void run_iilm_analysis(std::mt19937 &amp;gen)</div><div class="ttdoc">Run the Interacting Instanton Liquid Model analysis.</div><div class="ttdef"><b>Definition:</b> analysis_driver.cpp:91</div></div>
+<div class="ttc" id="aanalysis__driver_8hpp_html_ac297aa60d9bf8a6a83a5a76721d6d9eb"><div class="ttname"><a href="analysis__driver_8hpp.html#ac297aa60d9bf8a6a83a5a76721d6d9eb">run_cooling_evolution_analysis</a></div><div class="ttdeci">void run_cooling_evolution_analysis(std::mt19937 &amp;gen)</div><div class="ttdoc">Study cooling evolution of instanton configurations.</div><div class="ttdef"><b>Definition:</b> analysis_driver.cpp:74</div></div>
+<div class="ttc" id="aanalysis__driver_8hpp_html_ac554028990827d88fe5d983810d8b13e"><div class="ttname"><a href="analysis__driver_8hpp.html#ac554028990827d88fe5d983810d8b13e">run_ensemble_analysis</a></div><div class="ttdeci">void run_ensemble_analysis(std::mt19937 &amp;gen)</div><div class="ttdoc">Compute ensemble-averaged correlators and errors.</div><div class="ttdef"><b>Definition:</b> analysis_driver.cpp:85</div></div>
+<div class="ttc" id="aanalysis__driver_8hpp_html_ad665e7f2cccb3891eed6b33d0166954a"><div class="ttname"><a href="analysis__driver_8hpp.html#ad665e7f2cccb3891eed6b33d0166954a">run_basic_analysis</a></div><div class="ttdeci">void run_basic_analysis(std::mt19937 &amp;gen)</div><div class="ttdoc">Run the baseline Euclidean Monte Carlo analysis.</div><div class="ttdef"><b>Definition:</b> analysis_driver.cpp:34</div></div>
 </div><!-- fragment --></div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>

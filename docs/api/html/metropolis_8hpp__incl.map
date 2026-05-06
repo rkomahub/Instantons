@@ -1,6 +1,6 @@
-<map id="/home/marcobenazzi/instantons/src/metropolis.hpp" name="/home/marcobenazzi/instantons/src/metropolis.hpp">
-<area shape="rect" id="node1" title="Metropolis algorithm for Euclidean path integral sampling." alt="" coords="5,5,224,47"/>
-<area shape="rect" id="node2" href="$lattice_8hpp.html" title="Representation of a one&#45;dimensional Euclidean lattice configuration." alt="" coords="111,95,201,121"/>
-<area shape="rect" id="node3" title=" " alt="" coords="37,169,109,196"/>
-<area shape="rect" id="node4" title=" " alt="" coords="134,169,197,196"/>
+<map id="/home/marcobenazzi/instantons/src/core/metropolis.hpp" name="/home/marcobenazzi/instantons/src/core/metropolis.hpp">
+<area shape="rect" id="node1" title="Metropolis updates and cooling for Euclidean lattice paths." alt="" coords="7,5,166,61"/>
+<area shape="rect" id="node2" href="$lattice_8hpp.html" title="Representation of a one&#45;dimensional Euclidean lattice configuration." alt="" coords="75,109,197,136"/>
+<area shape="rect" id="node3" title=" " alt="" coords="5,184,77,211"/>
+<area shape="rect" id="node4" title=" " alt="" coords="105,184,167,211"/>
 </map>

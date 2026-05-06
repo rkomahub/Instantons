@@ -5,7 +5,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
 <meta name="generator" content="Doxygen 1.9.1"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>Monte Carlo Instantons: /home/marcobenazzi/instantons/src/analysis_driver.cpp File Reference</title>
+<title>Monte Carlo Instantons: /home/marcobenazzi/instantons/src/analysis/analysis_driver.cpp File Reference</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -61,7 +61,7 @@ $(function() {
 
 <div id="nav-path" class="navpath">
   <ul>
-<li class="navelem"><a class="el" href="dir_68267d1309a1af8e8297ef4c3efbcdba.html">src</a></li>  </ul>
+<li class="navelem"><a class="el" href="dir_68267d1309a1af8e8297ef4c3efbcdba.html">src</a></li><li class="navelem"><a class="el" href="dir_2eec376824a17f48dc36b4bd0c810e01.html">analysis</a></li>  </ul>
 </div>
 </div><!-- top -->
 <div class="header">
@@ -72,19 +72,24 @@ $(function() {
 <div class="title">analysis_driver.cpp File Reference</div>  </div>
 </div><!--header-->
 <div class="contents">
-<div class="textblock"><code>#include &quot;<a class="el" href="analysis__driver_8hpp_source.html">analysis_driver.hpp</a>&quot;</code><br />
-<code>#include &quot;<a class="el" href="cooling__evolution_8hpp_source.html">cooling_evolution.hpp</a>&quot;</code><br />
-<code>#include &quot;<a class="el" href="ensemble_8hpp_source.html">ensemble.hpp</a>&quot;</code><br />
-<code>#include &quot;<a class="el" href="heating_8hpp_source.html">heating.hpp</a>&quot;</code><br />
-<code>#include &quot;<a class="el" href="iilm_8hpp_source.html">iilm.hpp</a>&quot;</code><br />
-<code>#include &quot;<a class="el" href="instanton_8hpp_source.html">instanton.hpp</a>&quot;</code><br />
-<code>#include &quot;<a class="el" href="io_8hpp_source.html">io.hpp</a>&quot;</code><br />
-<code>#include &quot;<a class="el" href="lattice_8hpp_source.html">lattice.hpp</a>&quot;</code><br />
-<code>#include &quot;<a class="el" href="metropolis_8hpp_source.html">metropolis.hpp</a>&quot;</code><br />
-<code>#include &quot;<a class="el" href="observables_8hpp_source.html">observables.hpp</a>&quot;</code><br />
-<code>#include &quot;<a class="el" href="parameters_8hpp_source.html">parameters.hpp</a>&quot;</code><br />
-<code>#include &quot;<a class="el" href="qmidens_8hpp_source.html">qmidens.hpp</a>&quot;</code><br />
-<code>#include &quot;<a class="el" href="rilm_8hpp_source.html">rilm.hpp</a>&quot;</code><br />
+<div class="textblock"><code>#include &quot;<a class="el" href="analysis__driver_8hpp_source.html">analysis/analysis_driver.hpp</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="cooling__evolution_8hpp_source.html">analysis/cooling_evolution.hpp</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="ensemble_8hpp_source.html">analysis/ensemble.hpp</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="qmidens_8hpp_source.html">analysis/qmidens.hpp</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="instanton_8hpp_source.html">core/instanton.hpp</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="lattice_8hpp_source.html">core/lattice.hpp</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="metropolis_8hpp_source.html">core/metropolis.hpp</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="observables_8hpp_source.html">core/observables.hpp</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="potential_8hpp_source.html">core/potential.hpp</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="fig14__ia__interaction_8hpp_source.html">models/fig14_ia_interaction.hpp</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="heating_8hpp_source.html">models/heating.hpp</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="iilm_8hpp_source.html">models/iilm.hpp</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="rilm_8hpp_source.html">models/rilm.hpp</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="io_8hpp_source.html">utils/io.hpp</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="parameters_8hpp_source.html">utils/parameters.hpp</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="statistics_8hpp_source.html">utils/statistics.hpp</a>&quot;</code><br />
+<code>#include &lt;algorithm&gt;</code><br />
+<code>#include &lt;filesystem&gt;</code><br />
 <code>#include &lt;fstream&gt;</code><br />
 <code>#include &lt;iostream&gt;</code><br />
 <code>#include &lt;random&gt;</code><br />
@@ -93,27 +98,32 @@ $(function() {
 </div><div class="textblock"><div class="dynheader">
 Include dependency graph for analysis_driver.cpp:</div>
 <div class="dyncontent">
-<div class="center"><img src="analysis__driver_8cpp__incl.png" border="0" usemap="#a_2home_2marcobenazzi_2instantons_2src_2analysis__driver_8cpp" alt=""/></div>
-<map name="a_2home_2marcobenazzi_2instantons_2src_2analysis__driver_8cpp" id="a_2home_2marcobenazzi_2instantons_2src_2analysis__driver_8cpp">
-<area shape="rect" title=" " alt="" coords="700,5,875,61"/>
-<area shape="rect" href="analysis__driver_8hpp.html" title="High&#45;level analysis routines reproducing numerical experiments." alt="" coords="204,184,352,211"/>
-<area shape="rect" title=" " alt="" coords="314,259,386,285"/>
-<area shape="rect" title=" " alt="" coords="831,259,894,285"/>
-<area shape="rect" href="cooling__evolution_8hpp.html" title="Study of instanton density under cooling." alt="" coords="361,109,526,136"/>
-<area shape="rect" href="lattice_8hpp.html" title="Representation of a one&#45;dimensional Euclidean lattice configuration." alt="" coords="377,184,468,211"/>
-<area shape="rect" title=" " alt="" coords="716,184,774,211"/>
-<area shape="rect" href="ensemble_8hpp.html" title="Ensemble averaging and statistical error estimation." alt="" coords="601,109,716,136"/>
-<area shape="rect" href="heating_8hpp.html" title="Addition of Gaussian quantum fluctuations to classical configurations." alt="" coords="593,184,692,211"/>
-<area shape="rect" href="iilm_8hpp.html" title="Interacting Instanton Liquid Model (IILM)." alt="" coords="1186,184,1261,211"/>
-<area shape="rect" href="instanton_8hpp.html" title="Instanton identification utilities." alt="" coords="900,184,1011,211"/>
-<area shape="rect" href="io_8hpp.html" title=" " alt="" coords="791,109,854,136"/>
-<area shape="rect" href="metropolis_8hpp.html" title="Metropolis algorithm for Euclidean path integral sampling." alt="" coords="116,109,236,136"/>
-<area shape="rect" href="observables_8hpp.html" title="Measurement of physical observables from Euclidean configurations." alt="" coords="878,109,1007,136"/>
-<area shape="rect" href="parameters_8hpp.html" title="Global simulation parameters for the Euclidean lattice instanton simulation." alt="" coords="1236,109,1361,136"/>
-<area shape="rect" href="qmidens_8hpp.html" title="Non&#45;Gaussian correction to the instanton density via adiabatic switching." alt="" coords="22,184,129,211"/>
-<area shape="rect" href="rilm_8hpp.html" title="Random Instanton Liquid Model (RILM)." alt="" coords="1035,184,1111,211"/>
-<area shape="rect" title=" " alt="" coords="1386,109,1459,136"/>
-<area shape="rect" title=" " alt="" coords="1484,109,1564,136"/>
+<div class="center"><img src="analysis__driver_8cpp__incl.png" border="0" usemap="#a_2home_2marcobenazzi_2instantons_2src_2analysis_2analysis__driver_8cpp" alt=""/></div>
+<map name="a_2home_2marcobenazzi_2instantons_2src_2analysis_2analysis__driver_8cpp" id="a_2home_2marcobenazzi_2instantons_2src_2analysis_2analysis__driver_8cpp">
+<area shape="rect" title=" " alt="" coords="1132,5,1307,61"/>
+<area shape="rect" href="analysis__driver_8hpp.html" title="High&#45;level Monte Carlo and instanton analyses." alt="" coords="1273,184,1480,211"/>
+<area shape="rect" title=" " alt="" coords="454,259,526,285"/>
+<area shape="rect" title=" " alt="" coords="1153,259,1216,285"/>
+<area shape="rect" href="cooling__evolution_8hpp.html" title="Cooling analysis and instanton density measurement." alt="" coords="393,109,616,136"/>
+<area shape="rect" href="lattice_8hpp.html" title="Representation of a one&#45;dimensional Euclidean lattice configuration." alt="" coords="478,184,601,211"/>
+<area shape="rect" title=" " alt="" coords="147,259,206,285"/>
+<area shape="rect" href="ensemble_8hpp.html" title="Ensemble averaging and statistical analysis." alt="" coords="28,184,200,211"/>
+<area shape="rect" href="qmidens_8hpp.html" title="Non&#45;Gaussian instanton density correction via adiabatic switching." alt="" coords="205,109,369,136"/>
+<area shape="rect" href="instanton_8hpp.html" title="Instanton identification utilities." alt="" coords="1976,184,2119,211"/>
+<area shape="rect" href="metropolis_8hpp.html" title="Metropolis updates and cooling for Euclidean lattice paths." alt="" coords="641,109,793,136"/>
+<area shape="rect" href="observables_8hpp.html" title="Measurement routines for Euclidean lattice configurations." alt="" coords="1020,109,1181,136"/>
+<area shape="rect" href="io_8hpp.html" title="CSV input/output utilities." alt="" coords="625,184,720,211"/>
+<area shape="rect" href="potential_8hpp.html" title="Double well potential of the Euclidean quantum system." alt="" coords="1257,109,1397,136"/>
+<area shape="rect" href="fig14__ia__interaction_8hpp.html" title="Fig.14: IA interaction in the sum ansatz + streamline via gradient flow." alt="" coords="1504,184,1735,211"/>
+<area shape="rect" href="heating_8hpp.html" title="Gaussian fluctuations around semiclassical configurations." alt="" coords="744,184,895,211"/>
+<area shape="rect" href="iilm_8hpp.html" title="Interacting Instanton Liquid Model utilities." alt="" coords="919,184,1045,211"/>
+<area shape="rect" href="rilm_8hpp.html" title="Random Instanton Liquid Model utilities." alt="" coords="1121,184,1249,211"/>
+<area shape="rect" href="parameters_8hpp.html" title="Global parameters for the Euclidean lattice simulation." alt="" coords="1625,109,1782,136"/>
+<area shape="rect" href="statistics_8hpp.html" title="Basic statistical utilities for Monte Carlo measurements." alt="" coords="1759,184,1901,211"/>
+<area shape="rect" title=" " alt="" coords="1857,109,1942,136"/>
+<area shape="rect" title=" " alt="" coords="1966,109,2057,136"/>
+<area shape="rect" title=" " alt="" coords="2081,109,2155,136"/>
+<area shape="rect" title=" " alt="" coords="2179,109,2259,136"/>
 </map>
 </div>
 </div><table class="memberdecls">
@@ -125,25 +135,19 @@ Classes</h2></td></tr>
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="func-members"></a>
 Functions</h2></td></tr>
 <tr class="memitem:ad665e7f2cccb3891eed6b33d0166954a"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="analysis__driver_8cpp.html#ad665e7f2cccb3891eed6b33d0166954a">run_basic_analysis</a> (std::mt19937 &amp;gen)</td></tr>
-<tr class="memdesc:ad665e7f2cccb3891eed6b33d0166954a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Run basic Monte Carlo analysis.  <a href="analysis__driver_8cpp.html#ad665e7f2cccb3891eed6b33d0166954a">More...</a><br /></td></tr>
+<tr class="memdesc:ad665e7f2cccb3891eed6b33d0166954a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Run the baseline Euclidean Monte Carlo analysis.  <a href="analysis__driver_8cpp.html#ad665e7f2cccb3891eed6b33d0166954a">More...</a><br /></td></tr>
 <tr class="separator:ad665e7f2cccb3891eed6b33d0166954a"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ac297aa60d9bf8a6a83a5a76721d6d9eb"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="analysis__driver_8cpp.html#ac297aa60d9bf8a6a83a5a76721d6d9eb">run_cooling_evolution_analysis</a> (std::mt19937 &amp;gen)</td></tr>
-<tr class="memdesc:ac297aa60d9bf8a6a83a5a76721d6d9eb"><td class="mdescLeft">&#160;</td><td class="mdescRight">Study instanton density under cooling.  <a href="analysis__driver_8cpp.html#ac297aa60d9bf8a6a83a5a76721d6d9eb">More...</a><br /></td></tr>
+<tr class="memdesc:ac297aa60d9bf8a6a83a5a76721d6d9eb"><td class="mdescLeft">&#160;</td><td class="mdescRight">Study cooling evolution of instanton configurations.  <a href="analysis__driver_8cpp.html#ac297aa60d9bf8a6a83a5a76721d6d9eb">More...</a><br /></td></tr>
 <tr class="separator:ac297aa60d9bf8a6a83a5a76721d6d9eb"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ac554028990827d88fe5d983810d8b13e"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="analysis__driver_8cpp.html#ac554028990827d88fe5d983810d8b13e">run_ensemble_analysis</a> (std::mt19937 &amp;gen)</td></tr>
-<tr class="memdesc:ac554028990827d88fe5d983810d8b13e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Perform ensemble averaging.  <a href="analysis__driver_8cpp.html#ac554028990827d88fe5d983810d8b13e">More...</a><br /></td></tr>
+<tr class="memdesc:ac554028990827d88fe5d983810d8b13e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Compute ensemble-averaged correlators and errors.  <a href="analysis__driver_8cpp.html#ac554028990827d88fe5d983810d8b13e">More...</a><br /></td></tr>
 <tr class="separator:ac554028990827d88fe5d983810d8b13e"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a072369f33f4afd1aee65c28ca0b56878"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="analysis__driver_8cpp.html#a072369f33f4afd1aee65c28ca0b56878">run_rilm_analysis</a> (std::mt19937 &amp;gen)</td></tr>
-<tr class="memdesc:a072369f33f4afd1aee65c28ca0b56878"><td class="mdescLeft">&#160;</td><td class="mdescRight">Random Instanton Liquid Model (RILM) analysis.  <a href="analysis__driver_8cpp.html#a072369f33f4afd1aee65c28ca0b56878">More...</a><br /></td></tr>
-<tr class="separator:a072369f33f4afd1aee65c28ca0b56878"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a0409d9035f7be4c9af471220c6b4dfd0"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="analysis__driver_8cpp.html#a0409d9035f7be4c9af471220c6b4dfd0">run_heated_rilm_analysis</a> (std::mt19937 &amp;gen)</td></tr>
-<tr class="memdesc:a0409d9035f7be4c9af471220c6b4dfd0"><td class="mdescLeft">&#160;</td><td class="mdescRight">RILM with added Gaussian fluctuations (heating).  <a href="analysis__driver_8cpp.html#a0409d9035f7be4c9af471220c6b4dfd0">More...</a><br /></td></tr>
-<tr class="separator:a0409d9035f7be4c9af471220c6b4dfd0"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a60565dbfbc6b10fa6681e77c48c41901"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="analysis__driver_8cpp.html#a60565dbfbc6b10fa6681e77c48c41901">run_iilm_analysis</a> (std::mt19937 &amp;gen)</td></tr>
-<tr class="memdesc:a60565dbfbc6b10fa6681e77c48c41901"><td class="mdescLeft">&#160;</td><td class="mdescRight">Interacting Instanton Liquid Model (IILM) analysis.  <a href="analysis__driver_8cpp.html#a60565dbfbc6b10fa6681e77c48c41901">More...</a><br /></td></tr>
+<tr class="memdesc:a60565dbfbc6b10fa6681e77c48c41901"><td class="mdescLeft">&#160;</td><td class="mdescRight">Run the Interacting Instanton Liquid Model analysis.  <a href="analysis__driver_8cpp.html#a60565dbfbc6b10fa6681e77c48c41901">More...</a><br /></td></tr>
 <tr class="separator:a60565dbfbc6b10fa6681e77c48c41901"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a257d00b8d308418a4f92ebd0e5f5ccf9"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="analysis__driver_8cpp.html#a257d00b8d308418a4f92ebd0e5f5ccf9">run_cooling_eta_scan</a> (const std::vector&lt; double &gt; &amp;etas, std::mt19937 &amp;gen)</td></tr>
-<tr class="memdesc:a257d00b8d308418a4f92ebd0e5f5ccf9"><td class="mdescLeft">&#160;</td><td class="mdescRight">Perform a scan of the instanton density as a function of eta.  <a href="analysis__driver_8cpp.html#a257d00b8d308418a4f92ebd0e5f5ccf9">More...</a><br /></td></tr>
+<tr class="memdesc:a257d00b8d308418a4f92ebd0e5f5ccf9"><td class="mdescLeft">&#160;</td><td class="mdescRight">Scan instanton density as a function of eta.  <a href="analysis__driver_8cpp.html#a257d00b8d308418a4f92ebd0e5f5ccf9">More...</a><br /></td></tr>
 <tr class="separator:a257d00b8d308418a4f92ebd0e5f5ccf9"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <h2 class="groupheader">Function Documentation</h2>
@@ -163,13 +167,8 @@ Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>Run basic Monte Carlo analysis. </p>
-<p>Generates:</p><ul>
-<li>Euclidean path configurations</li>
-<li>Two-point correlators</li>
-<li>Instanton counts</li>
-</ul>
-<p>Serves as the baseline full Monte Carlo study. </p>
+<p>Run the baseline Euclidean Monte Carlo analysis. </p>
+<p>Generates representative paths, correlators, and instanton observables. </p>
 
 </div>
 </div>
@@ -199,12 +198,11 @@ Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>Perform a scan of the instanton density as a function of eta. </p>
-<p>This routine is useful for studying how the semiclassical instanton density depends on the barrier height parameter.</p>
+<p>Scan instanton density as a function of eta. </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">etas</td><td>List of eta values to scan. </td></tr>
-    <tr><td class="paramname">gen</td><td>Random number generator (injected). </td></tr>
+    <tr><td class="paramname">etas</td><td>List of eta values. </td></tr>
+    <tr><td class="paramname">gen</td><td>Random number generator. </td></tr>
   </table>
   </dd>
 </dl>
@@ -227,8 +225,8 @@ Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>Study instanton density under cooling. </p>
-<p>Reproduces density vs cooling sweeps, revealing separation between quantum noise and semiclassical instanton structure. </p>
+<p>Study cooling evolution of instanton configurations. </p>
+<p>Measures instanton density as a function of the number of cooling sweeps. </p>
 
 </div>
 </div>
@@ -248,32 +246,8 @@ Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>Perform ensemble averaging. </p>
-<p>Computes mean correlators and statistical errors for both:</p><ul>
-<li>Uncooled configurations</li>
-<li>Cooled configurations </li>
-</ul>
-
-</div>
-</div>
-<a id="a0409d9035f7be4c9af471220c6b4dfd0"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a0409d9035f7be4c9af471220c6b4dfd0">&#9670;&nbsp;</a></span>run_heated_rilm_analysis()</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">void run_heated_rilm_analysis </td>
-          <td>(</td>
-          <td class="paramtype">std::mt19937 &amp;&#160;</td>
-          <td class="paramname"><em>gen</em></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p>RILM with added Gaussian fluctuations (heating). </p>
-<p>Studies the effect of short-distance quantum fluctuations on semiclassical instanton ensembles. </p>
+<p>Compute ensemble-averaged correlators and errors. </p>
+<p>Includes both quantum and cooled ensembles. </p>
 
 </div>
 </div>
@@ -293,29 +267,8 @@ Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>Interacting Instanton Liquid Model (IILM) analysis. </p>
-<p>Includes a short-range repulsive core between instantons, improving semiclassical realism. </p>
-
-</div>
-</div>
-<a id="a072369f33f4afd1aee65c28ca0b56878"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a072369f33f4afd1aee65c28ca0b56878">&#9670;&nbsp;</a></span>run_rilm_analysis()</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">void run_rilm_analysis </td>
-          <td>(</td>
-          <td class="paramtype">std::mt19937 &amp;&#160;</td>
-          <td class="paramname"><em>gen</em></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p>Random Instanton Liquid Model (RILM) analysis. </p>
-<p>Generates non-interacting multi-instanton configurations and compares correlators with full Monte Carlo results. </p>
+<p>Run the Interacting Instanton Liquid Model analysis. </p>
+<p>Samples interacting instanton configurations with short-range repulsion. </p>
 
 </div>
 </div>

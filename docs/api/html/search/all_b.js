@@ -1,9 +1,5 @@
 var searchData=
 [
-  ['parameters_2ehpp_41',['parameters.hpp',['../parameters_8hpp.html',1,'']]],
-  ['params_42',['params',['../namespaceparams.html',1,'']]],
-  ['path_43',['path',['../structConfiguration.html#a20fef1e9a29d31302b8d4a1c2f618965',1,'Configuration']]],
-  ['potential_44',['potential',['../potential_8cpp.html#a427316b80663dc94930c19f2b21a3279',1,'potential(double x, double eta):&#160;potential.cpp'],['../potential_8hpp.html#a427316b80663dc94930c19f2b21a3279',1,'potential(double x, double eta):&#160;potential.cpp']]],
-  ['potential_2ecpp_45',['potential.cpp',['../potential_8cpp.html',1,'']]],
-  ['potential_2ehpp_46',['potential.hpp',['../potential_8hpp.html',1,'']]]
+  ['n_72',['N',['../namespaceparams.html#a7dbadc8421fe706511a5aac5018e394b',1,'params']]],
+  ['nearest_5fimage_5fdt_73',['nearest_image_dt',['../periodic_8hpp.html#a0ce4770ad6c404007138e32d4cd4cc8b',1,'periodic.hpp']]]
 ];

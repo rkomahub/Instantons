@@ -1,5 +1,4 @@
 var searchData=
 [
-  ['main_110',['main',['../main_8cpp.html#ae66f6b31b5ad750f1fe042a706a4e3d4',1,'main.cpp']]],
-  ['metropolis_111',['Metropolis',['../classMetropolis.html#aad4dbc67a220b45aadd345385be64501',1,'Metropolis']]]
+  ['iilm_5fcore_5fok_204',['iilm_core_ok',['../iilm_8cpp.html#ad03f522be0cc41f90e450a4ff9ac12ed',1,'iilm_core_ok(const IILMConfig &amp;cfg, double beta, double tau_core):&#160;iilm.cpp'],['../iilm_8hpp.html#ad03f522be0cc41f90e450a4ff9ac12ed',1,'iilm_core_ok(const IILMConfig &amp;cfg, double beta, double tau_core):&#160;iilm.cpp']]]
 ];

@@ -1,8 +1,10 @@
 PROJECT_NAME           = "Monte Carlo Instantons"
 OUTPUT_DIRECTORY       = @CMAKE_SOURCE_DIR@/docs/api
 
-INPUT                  = @CMAKE_SOURCE_DIR@/src
-FILE_PATTERNS          = *.hpp *.cpp
+INPUT                  = @CMAKE_SOURCE_DIR@/src \
+                         @CMAKE_SOURCE_DIR@/docs/mainpage.dox
+
+FILE_PATTERNS          = *.hpp *.cpp *.dox
 RECURSIVE              = YES
 
 EXTRACT_ALL            = YES

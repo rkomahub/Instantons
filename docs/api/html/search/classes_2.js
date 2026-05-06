@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['metropolis_70',['Metropolis',['../classMetropolis.html',1,'']]]
+  ['lattice_135',['Lattice',['../classLattice.html',1,'']]]
 ];

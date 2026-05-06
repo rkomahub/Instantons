@@ -84,13 +84,13 @@ Collaboration diagram for Metropolis:</div>
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
 <tr class="memitem:aad4dbc67a220b45aadd345385be64501"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classMetropolis.html#aad4dbc67a220b45aadd345385be64501">Metropolis</a> (<a class="el" href="classLattice.html">Lattice</a> &amp;lattice, std::mt19937 &amp;<a class="el" href="classMetropolis.html#abedb3300e4484f9ad38bd36faced40b5">gen</a>)</td></tr>
-<tr class="memdesc:aad4dbc67a220b45aadd345385be64501"><td class="mdescLeft">&#160;</td><td class="mdescRight">Construct <a class="el" href="classMetropolis.html">Metropolis</a> evolver for a given lattice configuration.  <a href="classMetropolis.html#aad4dbc67a220b45aadd345385be64501">More...</a><br /></td></tr>
+<tr class="memdesc:aad4dbc67a220b45aadd345385be64501"><td class="mdescLeft">&#160;</td><td class="mdescRight">Construct a <a class="el" href="classMetropolis.html">Metropolis</a> evolver.  <a href="classMetropolis.html#aad4dbc67a220b45aadd345385be64501">More...</a><br /></td></tr>
 <tr class="separator:aad4dbc67a220b45aadd345385be64501"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:adf8050c087ad4d0172569e2a783d55ee"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classMetropolis.html#adf8050c087ad4d0172569e2a783d55ee">step</a> ()</td></tr>
 <tr class="memdesc:adf8050c087ad4d0172569e2a783d55ee"><td class="mdescLeft">&#160;</td><td class="mdescRight">Perform one full <a class="el" href="classMetropolis.html">Metropolis</a> sweep.  <a href="classMetropolis.html#adf8050c087ad4d0172569e2a783d55ee">More...</a><br /></td></tr>
 <tr class="separator:adf8050c087ad4d0172569e2a783d55ee"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a17d8536cb35e43a0d6715d2ae6f26ccf"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classMetropolis.html#a17d8536cb35e43a0d6715d2ae6f26ccf">cool</a> (int n_sweeps)</td></tr>
-<tr class="memdesc:a17d8536cb35e43a0d6715d2ae6f26ccf"><td class="mdescLeft">&#160;</td><td class="mdescRight">Perform n_sweeps of cooling (accept only action-decreasing updates).  <a href="classMetropolis.html#a17d8536cb35e43a0d6715d2ae6f26ccf">More...</a><br /></td></tr>
+<tr class="memdesc:a17d8536cb35e43a0d6715d2ae6f26ccf"><td class="mdescLeft">&#160;</td><td class="mdescRight">Perform cooling sweeps.  <a href="classMetropolis.html#a17d8536cb35e43a0d6715d2ae6f26ccf">More...</a><br /></td></tr>
 <tr class="separator:a17d8536cb35e43a0d6715d2ae6f26ccf"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pri-attribs"></a>
@@ -98,7 +98,7 @@ Private Attributes</h2></td></tr>
 <tr class="memitem:a8d9440df80e57bc932a8064a6beaff34"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classLattice.html">Lattice</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classMetropolis.html#a8d9440df80e57bc932a8064a6beaff34">x</a></td></tr>
 <tr class="separator:a8d9440df80e57bc932a8064a6beaff34"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:abedb3300e4484f9ad38bd36faced40b5"><td class="memItemLeft" align="right" valign="top">std::mt19937 &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classMetropolis.html#abedb3300e4484f9ad38bd36faced40b5">gen</a></td></tr>
-<tr class="memdesc:abedb3300e4484f9ad38bd36faced40b5"><td class="mdescLeft">&#160;</td><td class="mdescRight">Random number generator used for updates.  <a href="classMetropolis.html#abedb3300e4484f9ad38bd36faced40b5">More...</a><br /></td></tr>
+<tr class="memdesc:abedb3300e4484f9ad38bd36faced40b5"><td class="mdescLeft">&#160;</td><td class="mdescRight">Random number generator (non-owning reference).  <a href="classMetropolis.html#abedb3300e4484f9ad38bd36faced40b5">More...</a><br /></td></tr>
 <tr class="separator:abedb3300e4484f9ad38bd36faced40b5"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
@@ -128,15 +128,15 @@ Private Attributes</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>Construct <a class="el" href="classMetropolis.html">Metropolis</a> evolver for a given lattice configuration. </p>
+<p>Construct a <a class="el" href="classMetropolis.html">Metropolis</a> evolver. </p>
+<p>The lattice configuration is updated in-place.</p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">lattice</td><td>Reference to configuration to be updated. </td></tr>
-    <tr><td class="paramname">gen</td><td>Random number generator (injected).</td></tr>
+    <tr><td class="paramname">lattice</td><td><a class="el" href="classLattice.html">Lattice</a> configuration. </td></tr>
+    <tr><td class="paramname">gen</td><td>Random number generator. </td></tr>
   </table>
   </dd>
 </dl>
-<p>The lattice is updated in-place. </p>
 
 </div>
 </div>
@@ -157,9 +157,14 @@ Private Attributes</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>Perform n_sweeps of cooling (accept only action-decreasing updates). </p>
-<p>Perform n_sweeps of cooling updates.</p>
-<p>Cooling accepts a proposal only if it lowers the local Euclidean action: if ΔS &lt; 0 then accept, else reject. </p>
+<p>Perform cooling sweeps. </p>
+<p>Cooling accepts only action-decreasing updates.</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">n_sweeps</td><td>Number of cooling sweeps. </td></tr>
+  </table>
+  </dd>
+</dl>
 
 </div>
 </div>
@@ -179,10 +184,6 @@ Private Attributes</h2></td></tr>
 </div><div class="memdoc">
 
 <p>Perform one full <a class="el" href="classMetropolis.html">Metropolis</a> sweep. </p>
-<p>Perform one <a class="el" href="classMetropolis.html">Metropolis</a> sweep over all lattice sites.</p>
-<p>For each site i, the algorithm proposes </p><pre class="fragment">x_i → x_i + δx ,   δx ~ N(0, dx_width)
-</pre><p> and accepts with probability </p><pre class="fragment">min(1, exp(−ΔS))
-</pre><p> where ΔS is the change in the <em>local</em> Euclidean action terms that depend on x_i. </p>
 
 </div>
 </div>
@@ -207,8 +208,7 @@ Private Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p>Random number generator used for updates. </p>
-<p>This generator is not owned by the class. </p>
+<p>Random number generator (non-owning reference). </p>
 
 </div>
 </div>
@@ -235,8 +235,8 @@ Private Attributes</h2></td></tr>
 </div>
 </div>
 <hr/>The documentation for this class was generated from the following files:<ul>
-<li>/home/marcobenazzi/instantons/src/<a class="el" href="metropolis_8hpp_source.html">metropolis.hpp</a></li>
-<li>/home/marcobenazzi/instantons/src/<a class="el" href="metropolis_8cpp.html">metropolis.cpp</a></li>
+<li>/home/marcobenazzi/instantons/src/core/<a class="el" href="metropolis_8hpp_source.html">metropolis.hpp</a></li>
+<li>/home/marcobenazzi/instantons/src/core/<a class="el" href="metropolis_8cpp.html">metropolis.cpp</a></li>
 </ul>
 </div><!-- contents -->
 <!-- start footer part -->

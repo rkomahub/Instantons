@@ -5,7 +5,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
 <meta name="generator" content="Doxygen 1.9.1"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>Monte Carlo Instantons: /home/marcobenazzi/instantons/src/cooling_evolution.cpp File Reference</title>
+<title>Monte Carlo Instantons: /home/marcobenazzi/instantons/src/analysis/cooling_evolution.cpp File Reference</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -61,7 +61,7 @@ $(function() {
 
 <div id="nav-path" class="navpath">
   <ul>
-<li class="navelem"><a class="el" href="dir_68267d1309a1af8e8297ef4c3efbcdba.html">src</a></li>  </ul>
+<li class="navelem"><a class="el" href="dir_68267d1309a1af8e8297ef4c3efbcdba.html">src</a></li><li class="navelem"><a class="el" href="dir_2eec376824a17f48dc36b4bd0c810e01.html">analysis</a></li>  </ul>
 </div>
 </div><!-- top -->
 <div class="header">
@@ -71,47 +71,42 @@ $(function() {
 <div class="title">cooling_evolution.cpp File Reference</div>  </div>
 </div><!--header-->
 <div class="contents">
-
-<p>Study of instanton density under cooling.  
-<a href="#details">More...</a></p>
-<div class="textblock"><code>#include &quot;<a class="el" href="cooling__evolution_8hpp_source.html">cooling_evolution.hpp</a>&quot;</code><br />
-<code>#include &quot;<a class="el" href="instanton_8hpp_source.html">instanton.hpp</a>&quot;</code><br />
-<code>#include &quot;<a class="el" href="metropolis_8hpp_source.html">metropolis.hpp</a>&quot;</code><br />
+<div class="textblock"><code>#include &quot;<a class="el" href="cooling__evolution_8hpp_source.html">analysis/cooling_evolution.hpp</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="instanton_8hpp_source.html">core/instanton.hpp</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="metropolis_8hpp_source.html">core/metropolis.hpp</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="observables_8hpp_source.html">core/observables.hpp</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="parameters_8hpp_source.html">utils/parameters.hpp</a>&quot;</code><br />
+<code>#include &lt;cmath&gt;</code><br />
 <code>#include &lt;fstream&gt;</code><br />
 <code>#include &lt;random&gt;</code><br />
-<code>#include &lt;vector&gt;</code><br />
 </div><div class="textblock"><div class="dynheader">
 Include dependency graph for cooling_evolution.cpp:</div>
 <div class="dyncontent">
-<div class="center"><img src="cooling__evolution_8cpp__incl.png" border="0" usemap="#a_2home_2marcobenazzi_2instantons_2src_2cooling__evolution_8cpp" alt=""/></div>
-<map name="a_2home_2marcobenazzi_2instantons_2src_2cooling__evolution_8cpp" id="a_2home_2marcobenazzi_2instantons_2src_2cooling__evolution_8cpp">
-<area shape="rect" title="Study of instanton density under cooling." alt="" coords="259,5,427,61"/>
-<area shape="rect" href="cooling__evolution_8hpp.html" title="Study of instanton density under cooling." alt="" coords="46,109,211,136"/>
-<area shape="rect" title=" " alt="" coords="135,259,207,285"/>
-<area shape="rect" title=" " alt="" coords="357,259,420,285"/>
-<area shape="rect" href="instanton_8hpp.html" title="Instanton identification utilities." alt="" coords="333,184,444,211"/>
-<area shape="rect" href="metropolis_8hpp.html" title="Metropolis algorithm for Euclidean path integral sampling." alt="" coords="235,109,355,136"/>
-<area shape="rect" title=" " alt="" coords="520,109,593,136"/>
-<area shape="rect" href="lattice_8hpp.html" title="Representation of a one&#45;dimensional Euclidean lattice configuration." alt="" coords="167,184,258,211"/>
-<area shape="rect" title=" " alt="" coords="34,184,92,211"/>
+<div class="center"><img src="cooling__evolution_8cpp__incl.png" border="0" usemap="#a_2home_2marcobenazzi_2instantons_2src_2analysis_2cooling__evolution_8cpp" alt=""/></div>
+<map name="a_2home_2marcobenazzi_2instantons_2src_2analysis_2cooling__evolution_8cpp" id="a_2home_2marcobenazzi_2instantons_2src_2analysis_2cooling__evolution_8cpp">
+<area shape="rect" title=" " alt="" coords="505,5,680,61"/>
+<area shape="rect" href="cooling__evolution_8hpp.html" title="Cooling analysis and instanton density measurement." alt="" coords="206,109,429,136"/>
+<area shape="rect" title=" " alt="" coords="116,259,188,285"/>
+<area shape="rect" href="instanton_8hpp.html" title="Instanton identification utilities." alt="" coords="576,184,718,211"/>
+<area shape="rect" href="metropolis_8hpp.html" title="Metropolis updates and cooling for Euclidean lattice paths." alt="" coords="30,109,182,136"/>
+<area shape="rect" href="observables_8hpp.html" title="Measurement routines for Euclidean lattice configurations." alt="" coords="453,109,614,136"/>
+<area shape="rect" href="parameters_8hpp.html" title="Global parameters for the Euclidean lattice simulation." alt="" coords="690,109,847,136"/>
+<area shape="rect" title=" " alt="" coords="872,109,934,136"/>
+<area shape="rect" title=" " alt="" coords="958,109,1032,136"/>
+<area shape="rect" href="lattice_8hpp.html" title="Representation of a one&#45;dimensional Euclidean lattice configuration." alt="" coords="144,184,267,211"/>
+<area shape="rect" title=" " alt="" coords="332,259,391,285"/>
+<area shape="rect" title=" " alt="" coords="460,259,522,285"/>
+<area shape="rect" href="io_8hpp.html" title="CSV input/output utilities." alt="" coords="401,184,496,211"/>
 </map>
 </div>
 </div><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="func-members"></a>
 Functions</h2></td></tr>
 <tr class="memitem:af3dae1c541f3ce39f06a1538a12fcfbc"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="cooling__evolution_8cpp.html#af3dae1c541f3ce39f06a1538a12fcfbc">run_cooling_evolution</a> (const <a class="el" href="classLattice.html">Lattice</a> &amp;original, int max_sweeps, double a, const std::string &amp;output_filename, std::mt19937 &amp;gen)</td></tr>
-<tr class="memdesc:af3dae1c541f3ce39f06a1538a12fcfbc"><td class="mdescLeft">&#160;</td><td class="mdescRight">Perform cooling sweeps and monitor instanton density.  <a href="cooling__evolution_8cpp.html#af3dae1c541f3ce39f06a1538a12fcfbc">More...</a><br /></td></tr>
+<tr class="memdesc:af3dae1c541f3ce39f06a1538a12fcfbc"><td class="mdescLeft">&#160;</td><td class="mdescRight">Measure instanton density during cooling evolution.  <a href="cooling__evolution_8cpp.html#af3dae1c541f3ce39f06a1538a12fcfbc">More...</a><br /></td></tr>
 <tr class="separator:af3dae1c541f3ce39f06a1538a12fcfbc"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
-<a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
-<div class="textblock"><p>Study of instanton density under cooling. </p>
-<p>Cooling removes short-distance quantum fluctuations by accepting only updates that decrease the Euclidean action.</p>
-<p>As cooling proceeds:</p><ul>
-<li>Quantum noise disappears rapidly (short time scale)</li>
-<li>Instanton–anti-instanton annihilation occurs more slowly</li>
-</ul>
-<p>Monitoring the number of zero crossings as a function of cooling sweeps reveals the separation of these scales. </p>
-</div><h2 class="groupheader">Function Documentation</h2>
+<h2 class="groupheader">Function Documentation</h2>
 <a id="af3dae1c541f3ce39f06a1538a12fcfbc"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#af3dae1c541f3ce39f06a1538a12fcfbc">&#9670;&nbsp;</a></span>run_cooling_evolution()</h2>
 
@@ -156,22 +151,21 @@ Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>Perform cooling sweeps and monitor instanton density. </p>
-<p>Starting from an original Monte Carlo configuration, the function performs successive cooling sweeps and measures:</p>
+<p>Measure instanton density during cooling evolution. </p>
+<p>Starting from a Monte Carlo configuration, the routine performs cooling sweeps and records:</p>
 <ul>
-<li>Number of zero crossings N_{I+A}</li>
-<li>Instanton density n_{I+A} = N_{I+A} / beta</li>
+<li>instanton count</li>
+<li>instanton density</li>
+<li>action per instanton</li>
 </ul>
-<p>as a function of the number of cooling sweeps.</p>
-<p>The output CSV file contains: </p><pre class="fragment">n_cool, n_inst, density
-</pre><p> where: n_cool = number of cooling sweeps performed n_inst = number of zero crossings density = n_inst / beta</p>
-<dl class="params"><dt>Parameters</dt><dd>
+<p>Output format: </p><pre class="fragment">n_cool, n_inst, density, action, s_per_inst
+</pre> <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">original</td><td>Initial Monte Carlo configuration. </td></tr>
+    <tr><td class="paramname">original</td><td>Initial configuration. </td></tr>
     <tr><td class="paramname">max_sweeps</td><td>Maximum number of cooling sweeps. </td></tr>
     <tr><td class="paramname">a</td><td><a class="el" href="classLattice.html">Lattice</a> spacing. </td></tr>
-    <tr><td class="paramname">output_filename</td><td>Output CSV file path. </td></tr>
-    <tr><td class="paramname">gen</td><td>Random number generator (injected). </td></tr>
+    <tr><td class="paramname">output_filename</td><td>Output CSV filename. </td></tr>
+    <tr><td class="paramname">gen</td><td>Random number generator. </td></tr>
   </table>
   </dd>
 </dl>

@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['x_138',['x',['../classLattice.html#a37d64329f95b1136c4f2e970c5e2bbbd',1,'Lattice::x()'],['../classMetropolis.html#a8d9440df80e57bc932a8064a6beaff34',1,'Metropolis::x()']]]
+  ['q_261',['Q',['../structIILMConfig.html#aed7368b7974a38627914610a6f04f9da',1,'IILMConfig']]]
 ];

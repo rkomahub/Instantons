@@ -5,7 +5,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
 <meta name="generator" content="Doxygen 1.9.1"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>Monte Carlo Instantons: /home/marcobenazzi/instantons/src/ensemble.cpp File Reference</title>
+<title>Monte Carlo Instantons: /home/marcobenazzi/instantons/src/analysis/ensemble.cpp File Reference</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -61,7 +61,7 @@ $(function() {
 
 <div id="nav-path" class="navpath">
   <ul>
-<li class="navelem"><a class="el" href="dir_68267d1309a1af8e8297ef4c3efbcdba.html">src</a></li>  </ul>
+<li class="navelem"><a class="el" href="dir_68267d1309a1af8e8297ef4c3efbcdba.html">src</a></li><li class="navelem"><a class="el" href="dir_2eec376824a17f48dc36b4bd0c810e01.html">analysis</a></li>  </ul>
 </div>
 </div><!-- top -->
 <div class="header">
@@ -71,56 +71,50 @@ $(function() {
 <div class="title">ensemble.cpp File Reference</div>  </div>
 </div><!--header-->
 <div class="contents">
-
-<p>Ensemble averaging of correlators and instanton observables.  
-<a href="#details">More...</a></p>
-<div class="textblock"><code>#include &quot;<a class="el" href="ensemble_8hpp_source.html">ensemble.hpp</a>&quot;</code><br />
-<code>#include &quot;<a class="el" href="instanton_8hpp_source.html">instanton.hpp</a>&quot;</code><br />
-<code>#include &quot;<a class="el" href="lattice_8hpp_source.html">lattice.hpp</a>&quot;</code><br />
-<code>#include &quot;<a class="el" href="metropolis_8hpp_source.html">metropolis.hpp</a>&quot;</code><br />
-<code>#include &quot;<a class="el" href="observables_8hpp_source.html">observables.hpp</a>&quot;</code><br />
-<code>#include &quot;<a class="el" href="parameters_8hpp_source.html">parameters.hpp</a>&quot;</code><br />
+<div class="textblock"><code>#include &quot;<a class="el" href="ensemble_8hpp_source.html">analysis/ensemble.hpp</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="instanton_8hpp_source.html">core/instanton.hpp</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="lattice_8hpp_source.html">core/lattice.hpp</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="metropolis_8hpp_source.html">core/metropolis.hpp</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="observables_8hpp_source.html">core/observables.hpp</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="parameters_8hpp_source.html">utils/parameters.hpp</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="statistics_8hpp_source.html">utils/statistics.hpp</a>&quot;</code><br />
 <code>#include &lt;cmath&gt;</code><br />
 <code>#include &lt;fstream&gt;</code><br />
 <code>#include &lt;iostream&gt;</code><br />
 <code>#include &lt;numeric&gt;</code><br />
+<code>#include &lt;string&gt;</code><br />
 <code>#include &lt;vector&gt;</code><br />
 </div><div class="textblock"><div class="dynheader">
 Include dependency graph for ensemble.cpp:</div>
 <div class="dyncontent">
-<div class="center"><img src="ensemble_8cpp__incl.png" border="0" usemap="#a_2home_2marcobenazzi_2instantons_2src_2ensemble_8cpp" alt=""/></div>
-<map name="a_2home_2marcobenazzi_2instantons_2src_2ensemble_8cpp" id="a_2home_2marcobenazzi_2instantons_2src_2ensemble_8cpp">
-<area shape="rect" title="Ensemble averaging of correlators and instanton observables." alt="" coords="451,5,663,47"/>
-<area shape="rect" href="ensemble_8hpp.html" title="Ensemble averaging and statistical error estimation." alt="" coords="200,95,315,121"/>
-<area shape="rect" href="instanton_8hpp.html" title="Instanton identification utilities." alt="" coords="409,169,519,196"/>
-<area shape="rect" title=" " alt="" coords="386,244,449,271"/>
-<area shape="rect" href="lattice_8hpp.html" title="Representation of a one&#45;dimensional Euclidean lattice configuration." alt="" coords="109,169,200,196"/>
-<area shape="rect" href="metropolis_8hpp.html" title="Metropolis algorithm for Euclidean path integral sampling." alt="" coords="5,95,125,121"/>
-<area shape="rect" href="observables_8hpp.html" title="Measurement of physical observables from Euclidean configurations." alt="" coords="339,95,469,121"/>
-<area shape="rect" href="parameters_8hpp.html" title="Global simulation parameters for the Euclidean lattice instanton simulation." alt="" coords="595,95,720,121"/>
-<area shape="rect" title=" " alt="" coords="745,95,807,121"/>
-<area shape="rect" title=" " alt="" coords="831,95,905,121"/>
-<area shape="rect" title=" " alt="" coords="929,95,1009,121"/>
-<area shape="rect" title=" " alt="" coords="1033,95,1108,121"/>
-<area shape="rect" title=" " alt="" coords="119,244,191,271"/>
-<area shape="rect" title=" " alt="" coords="275,169,333,196"/>
+<div class="center"><img src="ensemble_8cpp__incl.png" border="0" usemap="#a_2home_2marcobenazzi_2instantons_2src_2analysis_2ensemble_8cpp" alt=""/></div>
+<map name="a_2home_2marcobenazzi_2instantons_2src_2analysis_2ensemble_8cpp" id="a_2home_2marcobenazzi_2instantons_2src_2analysis_2ensemble_8cpp">
+<area shape="rect" title=" " alt="" coords="564,5,738,61"/>
+<area shape="rect" href="ensemble_8hpp.html" title="Ensemble averaging and statistical analysis." alt="" coords="22,184,194,211"/>
+<area shape="rect" title=" " alt="" coords="79,259,138,285"/>
+<area shape="rect" href="instanton_8hpp.html" title="Instanton identification utilities." alt="" coords="808,184,950,211"/>
+<area shape="rect" title=" " alt="" coords="544,259,606,285"/>
+<area shape="rect" href="lattice_8hpp.html" title="Representation of a one&#45;dimensional Euclidean lattice configuration." alt="" coords="270,184,392,211"/>
+<area shape="rect" href="metropolis_8hpp.html" title="Metropolis updates and cooling for Euclidean lattice paths." alt="" coords="174,109,326,136"/>
+<area shape="rect" href="observables_8hpp.html" title="Measurement routines for Euclidean lattice configurations." alt="" coords="401,109,562,136"/>
+<area shape="rect" href="parameters_8hpp.html" title="Global parameters for the Euclidean lattice simulation." alt="" coords="688,109,846,136"/>
+<area shape="rect" href="statistics_8hpp.html" title="Basic statistical utilities for Monte Carlo measurements." alt="" coords="638,184,779,211"/>
+<area shape="rect" title=" " alt="" coords="921,109,984,136"/>
+<area shape="rect" title=" " alt="" coords="1008,109,1081,136"/>
+<area shape="rect" title=" " alt="" coords="1106,109,1186,136"/>
+<area shape="rect" title=" " alt="" coords="1210,109,1284,136"/>
+<area shape="rect" title=" " alt="" coords="196,259,268,285"/>
+<area shape="rect" href="io_8hpp.html" title="CSV input/output utilities." alt="" coords="417,184,512,211"/>
 </map>
 </div>
 </div><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="func-members"></a>
 Functions</h2></td></tr>
 <tr class="memitem:abf847e426ba56a3154083202f7e00922"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="ensemble_8cpp.html#abf847e426ba56a3154083202f7e00922">run_ensemble_average</a> (int trials, bool cooled, const std::string &amp;output_prefix, std::mt19937 &amp;gen)</td></tr>
-<tr class="memdesc:abf847e426ba56a3154083202f7e00922"><td class="mdescLeft">&#160;</td><td class="mdescRight">Perform ensemble averaging over multiple Monte Carlo runs.  <a href="ensemble_8cpp.html#abf847e426ba56a3154083202f7e00922">More...</a><br /></td></tr>
+<tr class="memdesc:abf847e426ba56a3154083202f7e00922"><td class="mdescLeft">&#160;</td><td class="mdescRight">Compute ensemble-averaged correlators and densities.  <a href="ensemble_8cpp.html#abf847e426ba56a3154083202f7e00922">More...</a><br /></td></tr>
 <tr class="separator:abf847e426ba56a3154083202f7e00922"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
-<a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
-<div class="textblock"><p>Ensemble averaging of correlators and instanton observables. </p>
-<p>The function runs multiple independent Monte Carlo simulations, optionally applies cooling, and estimates expectation values by:</p>
-<p>mean( C(τ) ) = (1/T) Σ_t C_t(τ)</p>
-<p>together with the standard error of the mean:</p>
-<p>stderr( C(τ) ) = sqrt( Var(C(τ)) / T )</p>
-<p>where T = trials. </p>
-</div><h2 class="groupheader">Function Documentation</h2>
+<h2 class="groupheader">Function Documentation</h2>
 <a id="abf847e426ba56a3154083202f7e00922"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#abf847e426ba56a3154083202f7e00922">&#9670;&nbsp;</a></span>run_ensemble_average()</h2>
 
@@ -159,22 +153,15 @@ Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>Perform ensemble averaging over multiple Monte Carlo runs. </p>
-<p>For each trial:</p><ol type="1">
-<li>Generate a configuration using <a class="el" href="classMetropolis.html">Metropolis</a> sampling.</li>
-<li>Optionally apply cooling.</li>
-<li>Compute correlators.</li>
-<li>Count zero crossings.</li>
-</ol>
-<p>The function then computes: </p><pre class="fragment">mean( C(τ) )
-standard error of C(τ)
-</pre><p> and writes results to CSV files.</p>
+<p>Compute ensemble-averaged correlators and densities. </p>
+<p>For each configuration, the routine performs Monte Carlo sampling, optional cooling, correlator measurements, and instanton counting.</p>
+<p>Output files contain mean values and standard errors.</p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">trials</td><td>Number of independent configurations. </td></tr>
-    <tr><td class="paramname">cooled</td><td>If true, apply cooling before measurement. </td></tr>
-    <tr><td class="paramname">output_prefix</td><td>Prefix used for output file names. </td></tr>
-    <tr><td class="paramname">gen</td><td>Random number generator (injected). </td></tr>
+    <tr><td class="paramname">cooled</td><td>Apply cooling before measurements if true. </td></tr>
+    <tr><td class="paramname">output_prefix</td><td>Prefix for output CSV files. </td></tr>
+    <tr><td class="paramname">gen</td><td>Random number generator. </td></tr>
   </table>
   </dd>
 </dl>

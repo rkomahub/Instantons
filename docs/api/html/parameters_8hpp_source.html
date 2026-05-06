@@ -5,7 +5,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
 <meta name="generator" content="Doxygen 1.9.1"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>Monte Carlo Instantons: /home/marcobenazzi/instantons/src/parameters.hpp Source File</title>
+<title>Monte Carlo Instantons: /home/marcobenazzi/instantons/src/utils/parameters.hpp Source File</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -61,7 +61,7 @@ $(function() {
 
 <div id="nav-path" class="navpath">
   <ul>
-<li class="navelem"><a class="el" href="dir_68267d1309a1af8e8297ef4c3efbcdba.html">src</a></li>  </ul>
+<li class="navelem"><a class="el" href="dir_68267d1309a1af8e8297ef4c3efbcdba.html">src</a></li><li class="navelem"><a class="el" href="dir_313caf1132e152dd9b58bea13a4052ca.html">utils</a></li>  </ul>
 </div>
 </div><!-- top -->
 <div class="header">
@@ -71,28 +71,31 @@ $(function() {
 <div class="contents">
 <a href="parameters_8hpp.html">Go to the documentation of this file.</a><div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;<span class="preprocessor">#pragma once</span></div>
 <div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160; </div>
-<div class="line"><a name="l00016"></a><span class="lineno"><a class="line" href="namespaceparams.html">   16</a></span>&#160;<span class="keyword">namespace </span><a class="code" href="namespaceparams.html">params</a> {</div>
-<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160; </div>
-<div class="line"><a name="l00029"></a><span class="lineno"><a class="line" href="namespaceparams.html#a7dbadc8421fe706511a5aac5018e394b">   29</a></span>&#160;constexpr <span class="keywordtype">int</span> <a class="code" href="namespaceparams.html#a7dbadc8421fe706511a5aac5018e394b">N</a> = 800;</div>
-<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160; </div>
-<div class="line"><a name="l00037"></a><span class="lineno"><a class="line" href="namespaceparams.html#a0e40590be171a5c19db1fe4da173a837">   37</a></span>&#160;constexpr <span class="keywordtype">double</span> <a class="code" href="namespaceparams.html#a0e40590be171a5c19db1fe4da173a837">a</a> = 0.05;</div>
+<div class="line"><a name="l00011"></a><span class="lineno"><a class="line" href="namespaceparams.html">   11</a></span>&#160;<span class="keyword">namespace </span><a class="code" href="namespaceparams.html">params</a> {</div>
+<div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160; </div>
+<div class="line"><a name="l00019"></a><span class="lineno"><a class="line" href="namespaceparams.html#a7dbadc8421fe706511a5aac5018e394b">   19</a></span>&#160;constexpr <span class="keywordtype">int</span> <a class="code" href="namespaceparams.html#a7dbadc8421fe706511a5aac5018e394b">N</a> = 800;</div>
+<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160; </div>
+<div class="line"><a name="l00024"></a><span class="lineno"><a class="line" href="namespaceparams.html#a0e40590be171a5c19db1fe4da173a837">   24</a></span>&#160;constexpr <span class="keywordtype">double</span> <a class="code" href="namespaceparams.html#a0e40590be171a5c19db1fe4da173a837">a</a> = 0.05;</div>
+<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160; </div>
+<div class="line"><a name="l00032"></a><span class="lineno"><a class="line" href="namespaceparams.html#ae13c4bcf5214d22d896cabb6a2187752">   32</a></span>&#160;<span class="keyword">inline</span> <span class="keywordtype">double</span> <a class="code" href="namespaceparams.html#ae13c4bcf5214d22d896cabb6a2187752">eta</a> = 1.4;</div>
+<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160; </div>
+<div class="line"><a name="l00037"></a><span class="lineno"><a class="line" href="namespaceparams.html#a0b4de2d813a2f6290d83835f7c092a0e">   37</a></span>&#160;constexpr <span class="keywordtype">int</span> <a class="code" href="namespaceparams.html#a0b4de2d813a2f6290d83835f7c092a0e">sweeps</a> = 100000;</div>
 <div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160; </div>
-<div class="line"><a name="l00050"></a><span class="lineno"><a class="line" href="namespaceparams.html#ae54ec1eeec1be33593631893cd26d211">   50</a></span>&#160;constexpr <span class="keywordtype">double</span> <a class="code" href="namespaceparams.html#ae54ec1eeec1be33593631893cd26d211">eta</a> = 1.4;</div>
-<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160; </div>
-<div class="line"><a name="l00057"></a><span class="lineno"><a class="line" href="namespaceparams.html#a0b4de2d813a2f6290d83835f7c092a0e">   57</a></span>&#160;constexpr <span class="keywordtype">int</span> <a class="code" href="namespaceparams.html#a0b4de2d813a2f6290d83835f7c092a0e">sweeps</a> = 100000;</div>
+<div class="line"><a name="l00042"></a><span class="lineno"><a class="line" href="namespaceparams.html#abd6f3c4c7bbcd9aee0e148e680893ecf">   42</a></span>&#160;constexpr <span class="keywordtype">double</span> <a class="code" href="namespaceparams.html#abd6f3c4c7bbcd9aee0e148e680893ecf">dx_width</a> = 0.5;</div>
+<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160; </div>
+<div class="line"><a name="l00049"></a><span class="lineno"><a class="line" href="namespaceparams.html#ad3b6475a6e73bb45dd50772850d92b1e">   49</a></span>&#160;constexpr <span class="keywordtype">double</span> <a class="code" href="namespaceparams.html#ad3b6475a6e73bb45dd50772850d92b1e">dx_width_cool</a> = 0.05;</div>
+<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160; </div>
+<div class="line"><a name="l00057"></a><span class="lineno"><a class="line" href="namespaceparams.html#aa0f7e5645cc848ad4748ade5368e27f5">   57</a></span>&#160;constexpr <span class="keywordtype">bool</span> <a class="code" href="namespaceparams.html#aa0f7e5645cc848ad4748ade5368e27f5">hot_start</a> = <span class="keyword">true</span>;</div>
 <div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160; </div>
-<div class="line"><a name="l00068"></a><span class="lineno"><a class="line" href="namespaceparams.html#abd6f3c4c7bbcd9aee0e148e680893ecf">   68</a></span>&#160;constexpr <span class="keywordtype">double</span> <a class="code" href="namespaceparams.html#abd6f3c4c7bbcd9aee0e148e680893ecf">dx_width</a> = 0.5;</div>
-<div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160; </div>
-<div class="line"><a name="l00076"></a><span class="lineno"><a class="line" href="namespaceparams.html#aa0f7e5645cc848ad4748ade5368e27f5">   76</a></span>&#160;constexpr <span class="keywordtype">bool</span> <a class="code" href="namespaceparams.html#aa0f7e5645cc848ad4748ade5368e27f5">hot_start</a> = <span class="keyword">true</span>;</div>
-<div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160; </div>
-<div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160;} <span class="comment">// namespace params</span></div>
-<div class="ttc" id="anamespaceparams_html"><div class="ttname"><a href="namespaceparams.html">params</a></div><div class="ttdef"><b>Definition:</b> parameters.hpp:16</div></div>
-<div class="ttc" id="anamespaceparams_html_a0b4de2d813a2f6290d83835f7c092a0e"><div class="ttname"><a href="namespaceparams.html#a0b4de2d813a2f6290d83835f7c092a0e">params::sweeps</a></div><div class="ttdeci">constexpr int sweeps</div><div class="ttdoc">Number of full Metropolis sweeps.</div><div class="ttdef"><b>Definition:</b> parameters.hpp:57</div></div>
-<div class="ttc" id="anamespaceparams_html_a0e40590be171a5c19db1fe4da173a837"><div class="ttname"><a href="namespaceparams.html#a0e40590be171a5c19db1fe4da173a837">params::a</a></div><div class="ttdeci">constexpr double a</div><div class="ttdoc">Lattice spacing in Euclidean time.</div><div class="ttdef"><b>Definition:</b> parameters.hpp:37</div></div>
-<div class="ttc" id="anamespaceparams_html_a7dbadc8421fe706511a5aac5018e394b"><div class="ttname"><a href="namespaceparams.html#a7dbadc8421fe706511a5aac5018e394b">params::N</a></div><div class="ttdeci">constexpr int N</div><div class="ttdoc">Number of lattice points in Euclidean time.</div><div class="ttdef"><b>Definition:</b> parameters.hpp:29</div></div>
-<div class="ttc" id="anamespaceparams_html_aa0f7e5645cc848ad4748ade5368e27f5"><div class="ttname"><a href="namespaceparams.html#aa0f7e5645cc848ad4748ade5368e27f5">params::hot_start</a></div><div class="ttdeci">constexpr bool hot_start</div><div class="ttdoc">Initial configuration selector.</div><div class="ttdef"><b>Definition:</b> parameters.hpp:76</div></div>
-<div class="ttc" id="anamespaceparams_html_abd6f3c4c7bbcd9aee0e148e680893ecf"><div class="ttname"><a href="namespaceparams.html#abd6f3c4c7bbcd9aee0e148e680893ecf">params::dx_width</a></div><div class="ttdeci">constexpr double dx_width</div><div class="ttdoc">Width of Gaussian proposal distribution.</div><div class="ttdef"><b>Definition:</b> parameters.hpp:68</div></div>
-<div class="ttc" id="anamespaceparams_html_ae54ec1eeec1be33593631893cd26d211"><div class="ttname"><a href="namespaceparams.html#ae54ec1eeec1be33593631893cd26d211">params::eta</a></div><div class="ttdeci">constexpr double eta</div><div class="ttdoc">Position of classical minima of the double well potential.</div><div class="ttdef"><b>Definition:</b> parameters.hpp:50</div></div>
+<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;} <span class="comment">// namespace params</span></div>
+<div class="ttc" id="anamespaceparams_html"><div class="ttname"><a href="namespaceparams.html">params</a></div><div class="ttdef"><b>Definition:</b> parameters.hpp:11</div></div>
+<div class="ttc" id="anamespaceparams_html_a0b4de2d813a2f6290d83835f7c092a0e"><div class="ttname"><a href="namespaceparams.html#a0b4de2d813a2f6290d83835f7c092a0e">params::sweeps</a></div><div class="ttdeci">constexpr int sweeps</div><div class="ttdoc">Number of Metropolis sweeps.</div><div class="ttdef"><b>Definition:</b> parameters.hpp:37</div></div>
+<div class="ttc" id="anamespaceparams_html_a0e40590be171a5c19db1fe4da173a837"><div class="ttname"><a href="namespaceparams.html#a0e40590be171a5c19db1fe4da173a837">params::a</a></div><div class="ttdeci">constexpr double a</div><div class="ttdoc">Euclidean lattice spacing.</div><div class="ttdef"><b>Definition:</b> parameters.hpp:24</div></div>
+<div class="ttc" id="anamespaceparams_html_a7dbadc8421fe706511a5aac5018e394b"><div class="ttname"><a href="namespaceparams.html#a7dbadc8421fe706511a5aac5018e394b">params::N</a></div><div class="ttdeci">constexpr int N</div><div class="ttdoc">Number of Euclidean lattice sites.</div><div class="ttdef"><b>Definition:</b> parameters.hpp:19</div></div>
+<div class="ttc" id="anamespaceparams_html_aa0f7e5645cc848ad4748ade5368e27f5"><div class="ttname"><a href="namespaceparams.html#aa0f7e5645cc848ad4748ade5368e27f5">params::hot_start</a></div><div class="ttdeci">constexpr bool hot_start</div><div class="ttdoc">Initial configuration type.</div><div class="ttdef"><b>Definition:</b> parameters.hpp:57</div></div>
+<div class="ttc" id="anamespaceparams_html_abd6f3c4c7bbcd9aee0e148e680893ecf"><div class="ttname"><a href="namespaceparams.html#abd6f3c4c7bbcd9aee0e148e680893ecf">params::dx_width</a></div><div class="ttdeci">constexpr double dx_width</div><div class="ttdoc">Proposal width for Metropolis updates.</div><div class="ttdef"><b>Definition:</b> parameters.hpp:42</div></div>
+<div class="ttc" id="anamespaceparams_html_ad3b6475a6e73bb45dd50772850d92b1e"><div class="ttname"><a href="namespaceparams.html#ad3b6475a6e73bb45dd50772850d92b1e">params::dx_width_cool</a></div><div class="ttdeci">constexpr double dx_width_cool</div><div class="ttdoc">Proposal width used during cooling.</div><div class="ttdef"><b>Definition:</b> parameters.hpp:49</div></div>
+<div class="ttc" id="anamespaceparams_html_ae13c4bcf5214d22d896cabb6a2187752"><div class="ttname"><a href="namespaceparams.html#ae13c4bcf5214d22d896cabb6a2187752">params::eta</a></div><div class="ttdeci">double eta</div><div class="ttdoc">Double well parameter.</div><div class="ttdef"><b>Definition:</b> parameters.hpp:32</div></div>
 </div><!-- fragment --></div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>

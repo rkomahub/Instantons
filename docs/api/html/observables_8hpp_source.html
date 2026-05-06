@@ -5,7 +5,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
 <meta name="generator" content="Doxygen 1.9.1"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>Monte Carlo Instantons: /home/marcobenazzi/instantons/src/observables.hpp Source File</title>
+<title>Monte Carlo Instantons: /home/marcobenazzi/instantons/src/core/observables.hpp Source File</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -61,7 +61,7 @@ $(function() {
 
 <div id="nav-path" class="navpath">
   <ul>
-<li class="navelem"><a class="el" href="dir_68267d1309a1af8e8297ef4c3efbcdba.html">src</a></li>  </ul>
+<li class="navelem"><a class="el" href="dir_68267d1309a1af8e8297ef4c3efbcdba.html">src</a></li><li class="navelem"><a class="el" href="dir_aebb8dcc11953d78e620bbef0b9e2183.html">core</a></li>  </ul>
 </div>
 </div><!-- top -->
 <div class="header">
@@ -70,16 +70,24 @@ $(function() {
 </div><!--header-->
 <div class="contents">
 <a href="observables_8hpp.html">Go to the documentation of this file.</a><div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;<span class="preprocessor">#pragma once</span></div>
-<div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160;<span class="preprocessor">#include &lt;string&gt;</span></div>
+<div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="io_8hpp.html">utils/io.hpp</a>&quot;</span></div>
 <div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160;<span class="preprocessor">#include &lt;vector&gt;</span></div>
 <div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160; </div>
-<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;std::vector&lt;double&gt; <a class="code" href="observables_8hpp.html#a3766160bf70483ff20fc81ab9829c76d">compute_correlator</a>(<span class="keyword">const</span> std::vector&lt;double&gt; &amp;x);</div>
-<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160; </div>
-<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;<span class="keywordtype">void</span> <a class="code" href="observables_8hpp.html#af2d3f44e176fb7e1583fc2c059389be5">save_correlator_to_csv</a>(<span class="keyword">const</span> std::vector&lt;double&gt; &amp;correlator, <span class="keywordtype">double</span> <a class="code" href="namespaceparams.html#a0e40590be171a5c19db1fe4da173a837">a</a>,</div>
-<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;                            <span class="keyword">const</span> std::string &amp;filename);</div>
-<div class="ttc" id="anamespaceparams_html_a0e40590be171a5c19db1fe4da173a837"><div class="ttname"><a href="namespaceparams.html#a0e40590be171a5c19db1fe4da173a837">params::a</a></div><div class="ttdeci">constexpr double a</div><div class="ttdoc">Lattice spacing in Euclidean time.</div><div class="ttdef"><b>Definition:</b> parameters.hpp:37</div></div>
-<div class="ttc" id="aobservables_8hpp_html_a3766160bf70483ff20fc81ab9829c76d"><div class="ttname"><a href="observables_8hpp.html#a3766160bf70483ff20fc81ab9829c76d">compute_correlator</a></div><div class="ttdeci">std::vector&lt; double &gt; compute_correlator(const std::vector&lt; double &gt; &amp;x)</div><div class="ttdoc">Compute the Euclidean two-point correlator.</div><div class="ttdef"><b>Definition:</b> observables.cpp:22</div></div>
-<div class="ttc" id="aobservables_8hpp_html_af2d3f44e176fb7e1583fc2c059389be5"><div class="ttname"><a href="observables_8hpp.html#af2d3f44e176fb7e1583fc2c059389be5">save_correlator_to_csv</a></div><div class="ttdeci">void save_correlator_to_csv(const std::vector&lt; double &gt; &amp;correlator, double a, const std::string &amp;filename)</div><div class="ttdoc">Save correlator data to CSV file.</div><div class="ttdef"><b>Definition:</b> observables.cpp:51</div></div>
+<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;<span class="keywordtype">double</span> <a class="code" href="observables_8hpp.html#abe35447f79e785a8b627d7727e25798e">compute_action</a>(<span class="keyword">const</span> std::vector&lt;double&gt; &amp;x, <span class="keywordtype">double</span> <a class="code" href="namespaceparams.html#a0e40590be171a5c19db1fe4da173a837">a</a>, <span class="keywordtype">double</span> <a class="code" href="namespaceparams.html#ae13c4bcf5214d22d896cabb6a2187752">eta</a>);</div>
+<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160; </div>
+<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;<span class="keywordtype">double</span> <a class="code" href="observables_8hpp.html#a5538d7c94b5304619e9c67222160395d">compute_moment</a>(<span class="keyword">const</span> std::vector&lt;double&gt; &amp;x, <span class="keywordtype">int</span> power);</div>
+<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160; </div>
+<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;std::vector&lt;double&gt; <a class="code" href="observables_8hpp.html#aeed0c03aeb504df0d07fc49d4dc18662">compute_correlator_power</a>(<span class="keyword">const</span> std::vector&lt;double&gt; &amp;x,</div>
+<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;                                             <span class="keywordtype">int</span> power);</div>
+<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160; </div>
+<div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;std::vector&lt;double&gt; <a class="code" href="observables_8hpp.html#a3766160bf70483ff20fc81ab9829c76d">compute_correlator</a>(<span class="keyword">const</span> std::vector&lt;double&gt; &amp;x);</div>
+<div class="ttc" id="aio_8hpp_html"><div class="ttname"><a href="io_8hpp.html">io.hpp</a></div><div class="ttdoc">CSV input/output utilities.</div></div>
+<div class="ttc" id="anamespaceparams_html_a0e40590be171a5c19db1fe4da173a837"><div class="ttname"><a href="namespaceparams.html#a0e40590be171a5c19db1fe4da173a837">params::a</a></div><div class="ttdeci">constexpr double a</div><div class="ttdoc">Euclidean lattice spacing.</div><div class="ttdef"><b>Definition:</b> parameters.hpp:24</div></div>
+<div class="ttc" id="anamespaceparams_html_ae13c4bcf5214d22d896cabb6a2187752"><div class="ttname"><a href="namespaceparams.html#ae13c4bcf5214d22d896cabb6a2187752">params::eta</a></div><div class="ttdeci">double eta</div><div class="ttdoc">Double well parameter.</div><div class="ttdef"><b>Definition:</b> parameters.hpp:32</div></div>
+<div class="ttc" id="aobservables_8hpp_html_a3766160bf70483ff20fc81ab9829c76d"><div class="ttname"><a href="observables_8hpp.html#a3766160bf70483ff20fc81ab9829c76d">compute_correlator</a></div><div class="ttdeci">std::vector&lt; double &gt; compute_correlator(const std::vector&lt; double &gt; &amp;x)</div><div class="ttdoc">Compute the Euclidean two-point correlator.</div><div class="ttdef"><b>Definition:</b> observables.cpp:64</div></div>
+<div class="ttc" id="aobservables_8hpp_html_a5538d7c94b5304619e9c67222160395d"><div class="ttname"><a href="observables_8hpp.html#a5538d7c94b5304619e9c67222160395d">compute_moment</a></div><div class="ttdeci">double compute_moment(const std::vector&lt; double &gt; &amp;x, int power)</div><div class="ttdoc">Compute the field moment ( \langle x^p \rangle ).</div><div class="ttdef"><b>Definition:</b> observables.cpp:30</div></div>
+<div class="ttc" id="aobservables_8hpp_html_abe35447f79e785a8b627d7727e25798e"><div class="ttname"><a href="observables_8hpp.html#abe35447f79e785a8b627d7727e25798e">compute_action</a></div><div class="ttdeci">double compute_action(const std::vector&lt; double &gt; &amp;x, double a, double eta)</div><div class="ttdoc">Compute the Euclidean lattice action.</div><div class="ttdef"><b>Definition:</b> observables.cpp:13</div></div>
+<div class="ttc" id="aobservables_8hpp_html_aeed0c03aeb504df0d07fc49d4dc18662"><div class="ttname"><a href="observables_8hpp.html#aeed0c03aeb504df0d07fc49d4dc18662">compute_correlator_power</a></div><div class="ttdeci">std::vector&lt; double &gt; compute_correlator_power(const std::vector&lt; double &gt; &amp;x, int power)</div><div class="ttdoc">Compute the power correlator ( C_p(\tau) ).</div><div class="ttdef"><b>Definition:</b> observables.cpp:41</div></div>
 </div><!-- fragment --></div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>

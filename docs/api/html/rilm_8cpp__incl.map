@@ -1,7 +1,10 @@
-<map id="/home/marcobenazzi/instantons/src/rilm.cpp" name="/home/marcobenazzi/instantons/src/rilm.cpp">
-<area shape="rect" id="node1" title=" " alt="" coords="49,5,224,47"/>
-<area shape="rect" id="node2" href="$rilm_8hpp.html" title="Random Instanton Liquid Model (RILM)." alt="" coords="5,95,81,121"/>
-<area shape="rect" id="node4" title=" " alt="" coords="105,95,168,121"/>
-<area shape="rect" id="node5" title=" " alt="" coords="193,95,265,121"/>
-<area shape="rect" id="node3" title=" " alt="" coords="12,169,75,196"/>
+<map id="/home/marcobenazzi/instantons/src/models/rilm.cpp" name="/home/marcobenazzi/instantons/src/models/rilm.cpp">
+<area shape="rect" id="node1" title=" " alt="" coords="186,5,355,61"/>
+<area shape="rect" id="node2" href="$rilm_8hpp.html" title="Random Instanton Liquid Model utilities." alt="" coords="25,109,153,136"/>
+<area shape="rect" id="node3" title=" " alt="" coords="5,184,77,211"/>
+<area shape="rect" id="node4" title=" " alt="" coords="106,184,169,211"/>
+<area shape="rect" id="node5" title=" " alt="" coords="228,109,313,136"/>
+<area shape="rect" id="node6" title=" " alt="" coords="338,109,401,136"/>
+<area shape="rect" id="node7" title=" " alt="" coords="425,109,505,136"/>
+<area shape="rect" id="node8" title=" " alt="" coords="530,109,617,136"/>
 </map>

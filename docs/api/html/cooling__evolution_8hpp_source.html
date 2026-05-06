@@ -5,7 +5,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
 <meta name="generator" content="Doxygen 1.9.1"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>Monte Carlo Instantons: /home/marcobenazzi/instantons/src/cooling_evolution.hpp Source File</title>
+<title>Monte Carlo Instantons: /home/marcobenazzi/instantons/src/analysis/cooling_evolution.hpp Source File</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -61,7 +61,7 @@ $(function() {
 
 <div id="nav-path" class="navpath">
   <ul>
-<li class="navelem"><a class="el" href="dir_68267d1309a1af8e8297ef4c3efbcdba.html">src</a></li>  </ul>
+<li class="navelem"><a class="el" href="dir_68267d1309a1af8e8297ef4c3efbcdba.html">src</a></li><li class="navelem"><a class="el" href="dir_2eec376824a17f48dc36b4bd0c810e01.html">analysis</a></li>  </ul>
 </div>
 </div><!-- top -->
 <div class="header">
@@ -70,17 +70,17 @@ $(function() {
 </div><!--header-->
 <div class="contents">
 <a href="cooling__evolution_8hpp.html">Go to the documentation of this file.</a><div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;<span class="preprocessor">#pragma once</span></div>
-<div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="lattice_8hpp.html">lattice.hpp</a>&quot;</span></div>
+<div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="lattice_8hpp.html">core/lattice.hpp</a>&quot;</span></div>
 <div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160;<span class="preprocessor">#include &lt;random&gt;</span></div>
 <div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;<span class="preprocessor">#include &lt;string&gt;</span></div>
 <div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160; </div>
-<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;<span class="keywordtype">void</span> <a class="code" href="cooling__evolution_8hpp.html#af3dae1c541f3ce39f06a1538a12fcfbc">run_cooling_evolution</a>(<span class="keyword">const</span> <a class="code" href="classLattice.html">Lattice</a> &amp;original, <span class="keywordtype">int</span> max_sweeps, <span class="keywordtype">double</span> <a class="code" href="namespaceparams.html#a0e40590be171a5c19db1fe4da173a837">a</a>,</div>
-<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;                           <span class="keyword">const</span> std::string &amp;output_filename,</div>
-<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;                           std::mt19937 &amp;gen);</div>
+<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;<span class="keywordtype">void</span> <a class="code" href="cooling__evolution_8hpp.html#af3dae1c541f3ce39f06a1538a12fcfbc">run_cooling_evolution</a>(<span class="keyword">const</span> <a class="code" href="classLattice.html">Lattice</a> &amp;original, <span class="keywordtype">int</span> max_sweeps, <span class="keywordtype">double</span> <a class="code" href="namespaceparams.html#a0e40590be171a5c19db1fe4da173a837">a</a>,</div>
+<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;                           <span class="keyword">const</span> std::string &amp;output_filename,</div>
+<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;                           std::mt19937 &amp;gen);</div>
 <div class="ttc" id="aclassLattice_html"><div class="ttname"><a href="classLattice.html">Lattice</a></div><div class="ttdef"><b>Definition:</b> lattice.hpp:17</div></div>
-<div class="ttc" id="acooling__evolution_8hpp_html_af3dae1c541f3ce39f06a1538a12fcfbc"><div class="ttname"><a href="cooling__evolution_8hpp.html#af3dae1c541f3ce39f06a1538a12fcfbc">run_cooling_evolution</a></div><div class="ttdeci">void run_cooling_evolution(const Lattice &amp;original, int max_sweeps, double a, const std::string &amp;output_filename, std::mt19937 &amp;gen)</div><div class="ttdoc">Perform cooling sweeps and monitor instanton density.</div><div class="ttdef"><b>Definition:</b> cooling_evolution.cpp:23</div></div>
+<div class="ttc" id="acooling__evolution_8hpp_html_af3dae1c541f3ce39f06a1538a12fcfbc"><div class="ttname"><a href="cooling__evolution_8hpp.html#af3dae1c541f3ce39f06a1538a12fcfbc">run_cooling_evolution</a></div><div class="ttdeci">void run_cooling_evolution(const Lattice &amp;original, int max_sweeps, double a, const std::string &amp;output_filename, std::mt19937 &amp;gen)</div><div class="ttdoc">Measure instanton density during cooling evolution.</div><div class="ttdef"><b>Definition:</b> cooling_evolution.cpp:11</div></div>
 <div class="ttc" id="alattice_8hpp_html"><div class="ttname"><a href="lattice_8hpp.html">lattice.hpp</a></div><div class="ttdoc">Representation of a one-dimensional Euclidean lattice configuration.</div></div>
-<div class="ttc" id="anamespaceparams_html_a0e40590be171a5c19db1fe4da173a837"><div class="ttname"><a href="namespaceparams.html#a0e40590be171a5c19db1fe4da173a837">params::a</a></div><div class="ttdeci">constexpr double a</div><div class="ttdoc">Lattice spacing in Euclidean time.</div><div class="ttdef"><b>Definition:</b> parameters.hpp:37</div></div>
+<div class="ttc" id="anamespaceparams_html_a0e40590be171a5c19db1fe4da173a837"><div class="ttname"><a href="namespaceparams.html#a0e40590be171a5c19db1fe4da173a837">params::a</a></div><div class="ttdeci">constexpr double a</div><div class="ttdoc">Euclidean lattice spacing.</div><div class="ttdef"><b>Definition:</b> parameters.hpp:24</div></div>
 </div><!-- fragment --></div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>

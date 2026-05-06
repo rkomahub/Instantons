@@ -5,7 +5,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
 <meta name="generator" content="Doxygen 1.9.1"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>Monte Carlo Instantons: /home/marcobenazzi/instantons/src/qmidens.cpp File Reference</title>
+<title>Monte Carlo Instantons: /home/marcobenazzi/instantons/src/analysis/qmidens.cpp File Reference</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -61,7 +61,7 @@ $(function() {
 
 <div id="nav-path" class="navpath">
   <ul>
-<li class="navelem"><a class="el" href="dir_68267d1309a1af8e8297ef4c3efbcdba.html">src</a></li>  </ul>
+<li class="navelem"><a class="el" href="dir_68267d1309a1af8e8297ef4c3efbcdba.html">src</a></li><li class="navelem"><a class="el" href="dir_2eec376824a17f48dc36b4bd0c810e01.html">analysis</a></li>  </ul>
 </div>
 </div><!-- top -->
 <div class="header">
@@ -71,12 +71,14 @@ $(function() {
 <div class="title">qmidens.cpp File Reference</div>  </div>
 </div><!--header-->
 <div class="contents">
-<div class="textblock"><code>#include &quot;<a class="el" href="qmidens_8hpp_source.html">qmidens.hpp</a>&quot;</code><br />
-<code>#include &quot;<a class="el" href="instanton_8hpp_source.html">instanton.hpp</a>&quot;</code><br />
-<code>#include &quot;<a class="el" href="io_8hpp_source.html">io.hpp</a>&quot;</code><br />
-<code>#include &quot;<a class="el" href="observables_8hpp_source.html">observables.hpp</a>&quot;</code><br />
-<code>#include &quot;<a class="el" href="parameters_8hpp_source.html">parameters.hpp</a>&quot;</code><br />
-<code>#include &quot;<a class="el" href="potential_8hpp_source.html">potential.hpp</a>&quot;</code><br />
+<div class="textblock"><code>#include &quot;<a class="el" href="qmidens_8hpp_source.html">analysis/qmidens.hpp</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="instanton_8hpp_source.html">core/instanton.hpp</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="observables_8hpp_source.html">core/observables.hpp</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="potential_8hpp_source.html">core/potential.hpp</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="io_8hpp_source.html">utils/io.hpp</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="parameters_8hpp_source.html">utils/parameters.hpp</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="periodic_8hpp_source.html">utils/periodic.hpp</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="statistics_8hpp_source.html">utils/statistics.hpp</a>&quot;</code><br />
 <code>#include &lt;cmath&gt;</code><br />
 <code>#include &lt;fstream&gt;</code><br />
 <code>#include &lt;iostream&gt;</code><br />
@@ -85,21 +87,24 @@ $(function() {
 </div><div class="textblock"><div class="dynheader">
 Include dependency graph for qmidens.cpp:</div>
 <div class="dyncontent">
-<div class="center"><img src="qmidens_8cpp__incl.png" border="0" usemap="#a_2home_2marcobenazzi_2instantons_2src_2qmidens_8cpp" alt=""/></div>
-<map name="a_2home_2marcobenazzi_2instantons_2src_2qmidens_8cpp" id="a_2home_2marcobenazzi_2instantons_2src_2qmidens_8cpp">
-<area shape="rect" title=" " alt="" coords="457,5,661,47"/>
-<area shape="rect" href="qmidens_8hpp.html" title="Non&#45;Gaussian correction to the instanton density via adiabatic switching." alt="" coords="5,95,112,121"/>
-<area shape="rect" title=" " alt="" coords="68,169,140,196"/>
-<area shape="rect" href="instanton_8hpp.html" title="Instanton identification utilities." alt="" coords="187,95,298,121"/>
-<area shape="rect" title=" " alt="" coords="343,169,406,196"/>
-<area shape="rect" href="io_8hpp.html" title=" " alt="" coords="527,95,590,121"/>
-<area shape="rect" href="observables_8hpp.html" title="Measurement of physical observables from Euclidean configurations." alt="" coords="374,95,503,121"/>
-<area shape="rect" href="parameters_8hpp.html" title="Global simulation parameters for the Euclidean lattice instanton simulation." alt="" coords="615,95,740,121"/>
-<area shape="rect" href="potential_8hpp.html" title="Double well potential definition." alt="" coords="765,95,873,121"/>
-<area shape="rect" title=" " alt="" coords="897,95,959,121"/>
-<area shape="rect" title=" " alt="" coords="983,95,1057,121"/>
-<area shape="rect" title=" " alt="" coords="1081,95,1161,121"/>
-<area shape="rect" title=" " alt="" coords="469,169,528,196"/>
+<div class="center"><img src="qmidens_8cpp__incl.png" border="0" usemap="#a_2home_2marcobenazzi_2instantons_2src_2analysis_2qmidens_8cpp" alt=""/></div>
+<map name="a_2home_2marcobenazzi_2instantons_2src_2analysis_2qmidens_8cpp" id="a_2home_2marcobenazzi_2instantons_2src_2analysis_2qmidens_8cpp">
+<area shape="rect" title=" " alt="" coords="562,5,737,61"/>
+<area shape="rect" href="qmidens_8hpp.html" title="Non&#45;Gaussian instanton density correction via adiabatic switching." alt="" coords="53,109,217,136"/>
+<area shape="rect" title=" " alt="" coords="5,184,77,211"/>
+<area shape="rect" href="instanton_8hpp.html" title="Instanton identification utilities." alt="" coords="343,184,486,211"/>
+<area shape="rect" title=" " alt="" coords="383,259,446,285"/>
+<area shape="rect" href="observables_8hpp.html" title="Measurement routines for Euclidean lattice configurations." alt="" coords="394,109,555,136"/>
+<area shape="rect" href="io_8hpp.html" title="CSV input/output utilities." alt="" coords="562,184,657,211"/>
+<area shape="rect" href="potential_8hpp.html" title="Double well potential of the Euclidean quantum system." alt="" coords="579,109,719,136"/>
+<area shape="rect" href="parameters_8hpp.html" title="Global parameters for the Euclidean lattice simulation." alt="" coords="744,109,901,136"/>
+<area shape="rect" href="periodic_8hpp.html" title="Small utilities for periodic one&#45;dimensional lattices." alt="" coords="977,109,1111,136"/>
+<area shape="rect" title=" " alt="" coords="1114,184,1177,211"/>
+<area shape="rect" href="statistics_8hpp.html" title="Basic statistical utilities for Monte Carlo measurements." alt="" coords="127,184,268,211"/>
+<area shape="rect" title=" " alt="" coords="1187,109,1261,136"/>
+<area shape="rect" title=" " alt="" coords="1285,109,1365,136"/>
+<area shape="rect" title=" " alt="" coords="580,259,639,285"/>
+<area shape="rect" title=" " alt="" coords="1001,184,1087,211"/>
 </map>
 </div>
 </div><table class="memberdecls">
@@ -108,11 +113,14 @@ Functions</h2></td></tr>
 <tr class="memitem:a6c0f6bde918f788a947987cb13dc2bbf"><td class="memItemLeft" align="right" valign="top">double&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="qmidens_8cpp.html#a6c0f6bde918f788a947987cb13dc2bbf">simpson_integral</a> (int n_alpha, int sweeps, double dx, std::mt19937 &amp;gen, std::ofstream *log=nullptr)</td></tr>
 <tr class="separator:a6c0f6bde918f788a947987cb13dc2bbf"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a9e9eaa9710967df20f59542c119a89a9"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="qmidens_8cpp.html#a9e9eaa9710967df20f59542c119a89a9">run_qmidens_analysis</a> (std::mt19937 &amp;gen)</td></tr>
-<tr class="memdesc:a9e9eaa9710967df20f59542c119a89a9"><td class="mdescLeft">&#160;</td><td class="mdescRight">Non-Gaussian correction to instanton density.  <a href="qmidens_8cpp.html#a9e9eaa9710967df20f59542c119a89a9">More...</a><br /></td></tr>
+<tr class="memdesc:a9e9eaa9710967df20f59542c119a89a9"><td class="mdescLeft">&#160;</td><td class="mdescRight">Run the adiabatic switching analysis.  <a href="qmidens_8cpp.html#a9e9eaa9710967df20f59542c119a89a9">More...</a><br /></td></tr>
 <tr class="separator:a9e9eaa9710967df20f59542c119a89a9"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aaa201f8ba3b8e05392bc4cd4c0012bcf"><td class="memItemLeft" align="right" valign="top">double&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="qmidens_8cpp.html#aaa201f8ba3b8e05392bc4cd4c0012bcf">compute_qmidens_corrected_density</a> (int sweeps, double dx_width, int n_alpha_fine, int n_alpha_coarse, std::mt19937 &amp;gen)</td></tr>
-<tr class="memdesc:aaa201f8ba3b8e05392bc4cd4c0012bcf"><td class="mdescLeft">&#160;</td><td class="mdescRight">Compute non-Gaussian corrected instanton density.  <a href="qmidens_8cpp.html#aaa201f8ba3b8e05392bc4cd4c0012bcf">More...</a><br /></td></tr>
+<tr class="memdesc:aaa201f8ba3b8e05392bc4cd4c0012bcf"><td class="mdescLeft">&#160;</td><td class="mdescRight">Compute the non-Gaussian corrected instanton density.  <a href="qmidens_8cpp.html#aaa201f8ba3b8e05392bc4cd4c0012bcf">More...</a><br /></td></tr>
 <tr class="separator:aaa201f8ba3b8e05392bc4cd4c0012bcf"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a40a29ad37e160ce392e460ce7f12e009"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="qmidens_8cpp.html#a40a29ad37e160ce392e460ce7f12e009">run_fig9_paths</a> (std::mt19937 &amp;gen)</td></tr>
+<tr class="memdesc:a40a29ad37e160ce392e460ce7f12e009"><td class="mdescLeft">&#160;</td><td class="mdescRight">Generate Monte Carlo paths used in Fig.9 (switching paths).  <a href="qmidens_8cpp.html#a40a29ad37e160ce392e460ce7f12e009">More...</a><br /></td></tr>
+<tr class="separator:a40a29ad37e160ce392e460ce7f12e009"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <h2 class="groupheader">Function Documentation</h2>
 <a id="aaa201f8ba3b8e05392bc4cd4c0012bcf"></a>
@@ -159,21 +167,45 @@ Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>Compute non-Gaussian corrected instanton density. </p>
-<p>The function estimates a correction factor by evaluating the integral over α using Simpson's rule on two grids and Richardson extrapolation: </p><pre class="fragment">ΔS ≈ (16 I_fine − I_coarse)/15
-</pre><p> The corrected density is then </p><pre class="fragment">n_corrected = n_gauss * exp(−ΔS)
-</pre><p> where n_gauss is the semiclassical Gaussian estimate.</p>
+<p>Compute the non-Gaussian corrected instanton density. </p>
+<p>The switching integral is evaluated using Simpson integration on two grids combined with Richardson extrapolation.</p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">sweeps</td><td><a class="el" href="classMetropolis.html">Metropolis</a> sweeps used at each α point. </td></tr>
+    <tr><td class="paramname">sweeps</td><td><a class="el" href="classMetropolis.html">Metropolis</a> sweeps per α value. </td></tr>
     <tr><td class="paramname">dx_width</td><td>Proposal width for <a class="el" href="classMetropolis.html">Metropolis</a> updates. </td></tr>
-    <tr><td class="paramname">n_alpha_fine</td><td>Number of α points for the fine Simpson grid (odd). </td></tr>
-    <tr><td class="paramname">n_alpha_coarse</td><td>Number of α points for the coarse Simpson grid (odd). </td></tr>
-    <tr><td class="paramname">gen</td><td>Random number generator (injected).</td></tr>
+    <tr><td class="paramname">n_alpha_fine</td><td>Number of α points for the fine grid. </td></tr>
+    <tr><td class="paramname">n_alpha_coarse</td><td>Number of α points for the coarse grid. </td></tr>
+    <tr><td class="paramname">gen</td><td>Random number generator.</td></tr>
   </table>
   </dd>
 </dl>
-<dl class="section return"><dt>Returns</dt><dd>Non-Gaussian corrected instanton density. </dd></dl>
+<dl class="section return"><dt>Returns</dt><dd>Corrected instanton density. </dd></dl>
+
+</div>
+</div>
+<a id="a40a29ad37e160ce392e460ce7f12e009"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a40a29ad37e160ce392e460ce7f12e009">&#9670;&nbsp;</a></span>run_fig9_paths()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void run_fig9_paths </td>
+          <td>(</td>
+          <td class="paramtype">std::mt19937 &amp;&#160;</td>
+          <td class="paramname"><em>gen</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Generate Monte Carlo paths used in Fig.9 (switching paths). </p>
+<p>Produces representative configurations in:</p><ul>
+<li>0-instanton sector</li>
+<li>1-instanton sector (with fixed instanton location)</li>
+</ul>
+<p>The simulation samples the switched action </p><pre class="fragment">S_alpha = (1 - alpha) S_gauss + alpha S_full
+</pre><p> and exports configurations for plotting. </p>
 
 </div>
 </div>
@@ -193,9 +225,15 @@ Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>Non-Gaussian correction to instanton density. </p>
-<p>Run the non-Gaussian correction analysis and print results.</p>
-<p>Uses adiabatic switching to compute corrections beyond the Gaussian (one-loop) approximation. </p>
+<p>Run the adiabatic switching analysis. </p>
+<p>Computes the switching integral using Simpson integration and Richardson extrapolation, then estimates the corrected instanton density.</p>
+<p>Intermediate integrand data are written to CSV files.</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">gen</td><td>Random number generator. </td></tr>
+  </table>
+  </dd>
+</dl>
 
 </div>
 </div>

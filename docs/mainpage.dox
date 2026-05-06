@@ -1,0 +1,15 @@
+/**
+ * @mainpage Monte Carlo Instantons in the Double Well Potential
+ *
+ * @section overview Overview
+ *
+ * This documentation describes the C++ implementation of Monte Carlo
+ * simulations for instantons in the quantum mechanical double well potential.
+ *
+ * @section structure Code structure
+ *
+ * - core: lattice, action, Metropolis updates
+ * - analysis: numerical experiments and figure reproduction
+ * - models: instanton liquid models
+ * - utils: input/output, statistics, periodic indexing
+ */

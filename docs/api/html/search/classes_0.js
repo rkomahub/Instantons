@@ -1,4 +1,5 @@
 var searchData=
 [
-  ['configuration_68',['Configuration',['../structConfiguration.html',1,'']]]
+  ['clioptions_132',['CliOptions',['../structCliOptions.html',1,'']]],
+  ['configuration_133',['Configuration',['../structConfiguration.html',1,'']]]
 ];

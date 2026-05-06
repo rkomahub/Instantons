@@ -5,7 +5,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
 <meta name="generator" content="Doxygen 1.9.1"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>Monte Carlo Instantons: /home/marcobenazzi/instantons/src/lattice.hpp Source File</title>
+<title>Monte Carlo Instantons: /home/marcobenazzi/instantons/src/core/lattice.hpp Source File</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -61,7 +61,7 @@ $(function() {
 
 <div id="nav-path" class="navpath">
   <ul>
-<li class="navelem"><a class="el" href="dir_68267d1309a1af8e8297ef4c3efbcdba.html">src</a></li>  </ul>
+<li class="navelem"><a class="el" href="dir_68267d1309a1af8e8297ef4c3efbcdba.html">src</a></li><li class="navelem"><a class="el" href="dir_aebb8dcc11953d78e620bbef0b9e2183.html">core</a></li>  </ul>
 </div>
 </div><!-- top -->
 <div class="header">
@@ -75,7 +75,7 @@ $(function() {
 <div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160; </div>
 <div class="line"><a name="l00017"></a><span class="lineno"><a class="line" href="classLattice.html">   17</a></span>&#160;<span class="keyword">class </span><a class="code" href="classLattice.html">Lattice</a> {</div>
 <div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;<span class="keyword">public</span>:</div>
-<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;  <a class="code" href="classLattice.html#a2d383534edc47cc338f3d60f24e2b8aa">Lattice</a>(<span class="keywordtype">int</span> <a class="code" href="namespaceparams.html#a7dbadc8421fe706511a5aac5018e394b">N</a>, <span class="keywordtype">double</span> <a class="code" href="namespaceparams.html#ae54ec1eeec1be33593631893cd26d211">eta</a>, <span class="keywordtype">bool</span> <a class="code" href="namespaceparams.html#aa0f7e5645cc848ad4748ade5368e27f5">hot_start</a>, std::mt19937 &amp;gen);</div>
+<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;  <a class="code" href="classLattice.html#a2d383534edc47cc338f3d60f24e2b8aa">Lattice</a>(<span class="keywordtype">int</span> <a class="code" href="namespaceparams.html#a7dbadc8421fe706511a5aac5018e394b">N</a>, <span class="keywordtype">double</span> <a class="code" href="namespaceparams.html#ae13c4bcf5214d22d896cabb6a2187752">eta</a>, <span class="keywordtype">bool</span> <a class="code" href="namespaceparams.html#aa0f7e5645cc848ad4748ade5368e27f5">hot_start</a>, std::mt19937 &amp;gen);</div>
 <div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160; </div>
 <div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;  <span class="keywordtype">double</span> &amp;<a class="code" href="classLattice.html#a93fadccb63486149fce78a5000e94581">operator[]</a>(<span class="keywordtype">int</span> i);</div>
 <div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;  <span class="keyword">const</span> <span class="keywordtype">double</span> &amp;<a class="code" href="classLattice.html#a93fadccb63486149fce78a5000e94581">operator[]</a>(<span class="keywordtype">int</span> i) <span class="keyword">const</span>;</div>
@@ -86,14 +86,14 @@ $(function() {
 <div class="line"><a name="l00040"></a><span class="lineno"><a class="line" href="classLattice.html#a37d64329f95b1136c4f2e970c5e2bbbd">   40</a></span>&#160;  std::vector&lt;double&gt; <a class="code" href="classLattice.html#a37d64329f95b1136c4f2e970c5e2bbbd">x</a>;</div>
 <div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;};</div>
 <div class="ttc" id="aclassLattice_html"><div class="ttname"><a href="classLattice.html">Lattice</a></div><div class="ttdef"><b>Definition:</b> lattice.hpp:17</div></div>
-<div class="ttc" id="aclassLattice_html_a239832597c26dce9742410e8b5629a2c"><div class="ttname"><a href="classLattice.html#a239832597c26dce9742410e8b5629a2c">Lattice::size</a></div><div class="ttdeci">int size() const</div><div class="ttdef"><b>Definition:</b> lattice.cpp:15</div></div>
-<div class="ttc" id="aclassLattice_html_a2d383534edc47cc338f3d60f24e2b8aa"><div class="ttname"><a href="classLattice.html#a2d383534edc47cc338f3d60f24e2b8aa">Lattice::Lattice</a></div><div class="ttdeci">Lattice(int N, double eta, bool hot_start, std::mt19937 &amp;gen)</div><div class="ttdoc">Construct a lattice configuration.</div><div class="ttdef"><b>Definition:</b> lattice.cpp:6</div></div>
+<div class="ttc" id="aclassLattice_html_a239832597c26dce9742410e8b5629a2c"><div class="ttname"><a href="classLattice.html#a239832597c26dce9742410e8b5629a2c">Lattice::size</a></div><div class="ttdeci">int size() const</div><div class="ttdef"><b>Definition:</b> lattice.cpp:14</div></div>
+<div class="ttc" id="aclassLattice_html_a2d383534edc47cc338f3d60f24e2b8aa"><div class="ttname"><a href="classLattice.html#a2d383534edc47cc338f3d60f24e2b8aa">Lattice::Lattice</a></div><div class="ttdeci">Lattice(int N, double eta, bool hot_start, std::mt19937 &amp;gen)</div><div class="ttdoc">Construct a lattice configuration.</div><div class="ttdef"><b>Definition:</b> lattice.cpp:5</div></div>
 <div class="ttc" id="aclassLattice_html_a37d64329f95b1136c4f2e970c5e2bbbd"><div class="ttname"><a href="classLattice.html#a37d64329f95b1136c4f2e970c5e2bbbd">Lattice::x</a></div><div class="ttdeci">std::vector&lt; double &gt; x</div><div class="ttdef"><b>Definition:</b> lattice.hpp:40</div></div>
-<div class="ttc" id="aclassLattice_html_a93fadccb63486149fce78a5000e94581"><div class="ttname"><a href="classLattice.html#a93fadccb63486149fce78a5000e94581">Lattice::operator[]</a></div><div class="ttdeci">double &amp; operator[](int i)</div><div class="ttdef"><b>Definition:</b> lattice.cpp:13</div></div>
-<div class="ttc" id="aclassLattice_html_aa1a8498422d26773a5111b2b0c30c236"><div class="ttname"><a href="classLattice.html#aa1a8498422d26773a5111b2b0c30c236">Lattice::get_path</a></div><div class="ttdeci">const std::vector&lt; double &gt; &amp; get_path() const</div><div class="ttdef"><b>Definition:</b> lattice.cpp:16</div></div>
-<div class="ttc" id="anamespaceparams_html_a7dbadc8421fe706511a5aac5018e394b"><div class="ttname"><a href="namespaceparams.html#a7dbadc8421fe706511a5aac5018e394b">params::N</a></div><div class="ttdeci">constexpr int N</div><div class="ttdoc">Number of lattice points in Euclidean time.</div><div class="ttdef"><b>Definition:</b> parameters.hpp:29</div></div>
-<div class="ttc" id="anamespaceparams_html_aa0f7e5645cc848ad4748ade5368e27f5"><div class="ttname"><a href="namespaceparams.html#aa0f7e5645cc848ad4748ade5368e27f5">params::hot_start</a></div><div class="ttdeci">constexpr bool hot_start</div><div class="ttdoc">Initial configuration selector.</div><div class="ttdef"><b>Definition:</b> parameters.hpp:76</div></div>
-<div class="ttc" id="anamespaceparams_html_ae54ec1eeec1be33593631893cd26d211"><div class="ttname"><a href="namespaceparams.html#ae54ec1eeec1be33593631893cd26d211">params::eta</a></div><div class="ttdeci">constexpr double eta</div><div class="ttdoc">Position of classical minima of the double well potential.</div><div class="ttdef"><b>Definition:</b> parameters.hpp:50</div></div>
+<div class="ttc" id="aclassLattice_html_a93fadccb63486149fce78a5000e94581"><div class="ttname"><a href="classLattice.html#a93fadccb63486149fce78a5000e94581">Lattice::operator[]</a></div><div class="ttdeci">double &amp; operator[](int i)</div><div class="ttdef"><b>Definition:</b> lattice.cpp:12</div></div>
+<div class="ttc" id="aclassLattice_html_aa1a8498422d26773a5111b2b0c30c236"><div class="ttname"><a href="classLattice.html#aa1a8498422d26773a5111b2b0c30c236">Lattice::get_path</a></div><div class="ttdeci">const std::vector&lt; double &gt; &amp; get_path() const</div><div class="ttdef"><b>Definition:</b> lattice.cpp:15</div></div>
+<div class="ttc" id="anamespaceparams_html_a7dbadc8421fe706511a5aac5018e394b"><div class="ttname"><a href="namespaceparams.html#a7dbadc8421fe706511a5aac5018e394b">params::N</a></div><div class="ttdeci">constexpr int N</div><div class="ttdoc">Number of Euclidean lattice sites.</div><div class="ttdef"><b>Definition:</b> parameters.hpp:19</div></div>
+<div class="ttc" id="anamespaceparams_html_aa0f7e5645cc848ad4748ade5368e27f5"><div class="ttname"><a href="namespaceparams.html#aa0f7e5645cc848ad4748ade5368e27f5">params::hot_start</a></div><div class="ttdeci">constexpr bool hot_start</div><div class="ttdoc">Initial configuration type.</div><div class="ttdef"><b>Definition:</b> parameters.hpp:57</div></div>
+<div class="ttc" id="anamespaceparams_html_ae13c4bcf5214d22d896cabb6a2187752"><div class="ttname"><a href="namespaceparams.html#ae13c4bcf5214d22d896cabb6a2187752">params::eta</a></div><div class="ttdeci">double eta</div><div class="ttdoc">Double well parameter.</div><div class="ttdef"><b>Definition:</b> parameters.hpp:32</div></div>
 </div><!-- fragment --></div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>

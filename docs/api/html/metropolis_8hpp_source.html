@@ -5,7 +5,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
 <meta name="generator" content="Doxygen 1.9.1"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>Monte Carlo Instantons: /home/marcobenazzi/instantons/src/metropolis.hpp Source File</title>
+<title>Monte Carlo Instantons: /home/marcobenazzi/instantons/src/core/metropolis.hpp Source File</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -61,7 +61,7 @@ $(function() {
 
 <div id="nav-path" class="navpath">
   <ul>
-<li class="navelem"><a class="el" href="dir_68267d1309a1af8e8297ef4c3efbcdba.html">src</a></li>  </ul>
+<li class="navelem"><a class="el" href="dir_68267d1309a1af8e8297ef4c3efbcdba.html">src</a></li><li class="navelem"><a class="el" href="dir_aebb8dcc11953d78e620bbef0b9e2183.html">core</a></li>  </ul>
 </div>
 </div><!-- top -->
 <div class="header">
@@ -71,29 +71,29 @@ $(function() {
 <div class="contents">
 <a href="metropolis_8hpp.html">Go to the documentation of this file.</a><div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;<span class="preprocessor">#pragma once</span></div>
 <div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160; </div>
-<div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="lattice_8hpp.html">lattice.hpp</a>&quot;</span></div>
+<div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="lattice_8hpp.html">core/lattice.hpp</a>&quot;</span></div>
 <div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;<span class="preprocessor">#include &lt;random&gt;</span></div>
 <div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160; </div>
-<div class="line"><a name="l00020"></a><span class="lineno"><a class="line" href="classMetropolis.html">   20</a></span>&#160;<span class="keyword">class </span><a class="code" href="classMetropolis.html">Metropolis</a> {</div>
-<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;<span class="keyword">public</span>:</div>
-<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;  <a class="code" href="classMetropolis.html#aad4dbc67a220b45aadd345385be64501">Metropolis</a>(<a class="code" href="classLattice.html">Lattice</a> &amp;lattice, std::mt19937 &amp;<a class="code" href="classMetropolis.html#abedb3300e4484f9ad38bd36faced40b5">gen</a>);</div>
+<div class="line"><a name="l00015"></a><span class="lineno"><a class="line" href="classMetropolis.html">   15</a></span>&#160;<span class="keyword">class </span><a class="code" href="classMetropolis.html">Metropolis</a> {</div>
+<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;<span class="keyword">public</span>:</div>
+<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;  <a class="code" href="classMetropolis.html#aad4dbc67a220b45aadd345385be64501">Metropolis</a>(<a class="code" href="classLattice.html">Lattice</a> &amp;lattice, std::mt19937 &amp;<a class="code" href="classMetropolis.html#abedb3300e4484f9ad38bd36faced40b5">gen</a>);</div>
+<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160; </div>
+<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;  <span class="keywordtype">void</span> <a class="code" href="classMetropolis.html#adf8050c087ad4d0172569e2a783d55ee">step</a>();</div>
 <div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160; </div>
-<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;  <span class="keywordtype">void</span> <a class="code" href="classMetropolis.html#adf8050c087ad4d0172569e2a783d55ee">step</a>();</div>
-<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160; </div>
-<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;  <span class="keywordtype">void</span> <a class="code" href="classMetropolis.html#a17d8536cb35e43a0d6715d2ae6f26ccf">cool</a>(<span class="keywordtype">int</span> n_sweeps);</div>
-<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160; </div>
-<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;<span class="keyword">private</span>:</div>
-<div class="line"><a name="l00041"></a><span class="lineno"><a class="line" href="classMetropolis.html#a8d9440df80e57bc932a8064a6beaff34">   41</a></span>&#160;  <a class="code" href="classLattice.html">Lattice</a> &amp;<a class="code" href="classMetropolis.html#a8d9440df80e57bc932a8064a6beaff34">x</a>;</div>
-<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160; </div>
-<div class="line"><a name="l00048"></a><span class="lineno"><a class="line" href="classMetropolis.html#abedb3300e4484f9ad38bd36faced40b5">   48</a></span>&#160;  std::mt19937 &amp;<a class="code" href="classMetropolis.html#abedb3300e4484f9ad38bd36faced40b5">gen</a>;</div>
-<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;};</div>
+<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;  <span class="keywordtype">void</span> <a class="code" href="classMetropolis.html#a17d8536cb35e43a0d6715d2ae6f26ccf">cool</a>(<span class="keywordtype">int</span> n_sweeps);</div>
+<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160; </div>
+<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;<span class="keyword">private</span>:</div>
+<div class="line"><a name="l00042"></a><span class="lineno"><a class="line" href="classMetropolis.html#a8d9440df80e57bc932a8064a6beaff34">   42</a></span>&#160;  <a class="code" href="classLattice.html">Lattice</a> &amp;<a class="code" href="classMetropolis.html#a8d9440df80e57bc932a8064a6beaff34">x</a>;</div>
+<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160; </div>
+<div class="line"><a name="l00045"></a><span class="lineno"><a class="line" href="classMetropolis.html#abedb3300e4484f9ad38bd36faced40b5">   45</a></span>&#160;  std::mt19937 &amp;<a class="code" href="classMetropolis.html#abedb3300e4484f9ad38bd36faced40b5">gen</a>;</div>
+<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;};</div>
 <div class="ttc" id="aclassLattice_html"><div class="ttname"><a href="classLattice.html">Lattice</a></div><div class="ttdef"><b>Definition:</b> lattice.hpp:17</div></div>
-<div class="ttc" id="aclassMetropolis_html"><div class="ttname"><a href="classMetropolis.html">Metropolis</a></div><div class="ttdef"><b>Definition:</b> metropolis.hpp:20</div></div>
-<div class="ttc" id="aclassMetropolis_html_a17d8536cb35e43a0d6715d2ae6f26ccf"><div class="ttname"><a href="classMetropolis.html#a17d8536cb35e43a0d6715d2ae6f26ccf">Metropolis::cool</a></div><div class="ttdeci">void cool(int n_sweeps)</div><div class="ttdoc">Perform n_sweeps of cooling (accept only action-decreasing updates).</div><div class="ttdef"><b>Definition:</b> metropolis.cpp:78</div></div>
-<div class="ttc" id="aclassMetropolis_html_a8d9440df80e57bc932a8064a6beaff34"><div class="ttname"><a href="classMetropolis.html#a8d9440df80e57bc932a8064a6beaff34">Metropolis::x</a></div><div class="ttdeci">Lattice &amp; x</div><div class="ttdef"><b>Definition:</b> metropolis.hpp:41</div></div>
-<div class="ttc" id="aclassMetropolis_html_aad4dbc67a220b45aadd345385be64501"><div class="ttname"><a href="classMetropolis.html#aad4dbc67a220b45aadd345385be64501">Metropolis::Metropolis</a></div><div class="ttdeci">Metropolis(Lattice &amp;lattice, std::mt19937 &amp;gen)</div><div class="ttdoc">Construct Metropolis evolver for a given lattice configuration.</div><div class="ttdef"><b>Definition:</b> metropolis.cpp:22</div></div>
-<div class="ttc" id="aclassMetropolis_html_abedb3300e4484f9ad38bd36faced40b5"><div class="ttname"><a href="classMetropolis.html#abedb3300e4484f9ad38bd36faced40b5">Metropolis::gen</a></div><div class="ttdeci">std::mt19937 &amp; gen</div><div class="ttdoc">Random number generator used for updates.</div><div class="ttdef"><b>Definition:</b> metropolis.hpp:48</div></div>
-<div class="ttc" id="aclassMetropolis_html_adf8050c087ad4d0172569e2a783d55ee"><div class="ttname"><a href="classMetropolis.html#adf8050c087ad4d0172569e2a783d55ee">Metropolis::step</a></div><div class="ttdeci">void step()</div><div class="ttdoc">Perform one full Metropolis sweep.</div><div class="ttdef"><b>Definition:</b> metropolis.cpp:39</div></div>
+<div class="ttc" id="aclassMetropolis_html"><div class="ttname"><a href="classMetropolis.html">Metropolis</a></div><div class="ttdef"><b>Definition:</b> metropolis.hpp:15</div></div>
+<div class="ttc" id="aclassMetropolis_html_a17d8536cb35e43a0d6715d2ae6f26ccf"><div class="ttname"><a href="classMetropolis.html#a17d8536cb35e43a0d6715d2ae6f26ccf">Metropolis::cool</a></div><div class="ttdeci">void cool(int n_sweeps)</div><div class="ttdoc">Perform cooling sweeps.</div><div class="ttdef"><b>Definition:</b> metropolis.cpp:56</div></div>
+<div class="ttc" id="aclassMetropolis_html_a8d9440df80e57bc932a8064a6beaff34"><div class="ttname"><a href="classMetropolis.html#a8d9440df80e57bc932a8064a6beaff34">Metropolis::x</a></div><div class="ttdeci">Lattice &amp; x</div><div class="ttdef"><b>Definition:</b> metropolis.hpp:42</div></div>
+<div class="ttc" id="aclassMetropolis_html_aad4dbc67a220b45aadd345385be64501"><div class="ttname"><a href="classMetropolis.html#aad4dbc67a220b45aadd345385be64501">Metropolis::Metropolis</a></div><div class="ttdeci">Metropolis(Lattice &amp;lattice, std::mt19937 &amp;gen)</div><div class="ttdoc">Construct a Metropolis evolver.</div><div class="ttdef"><b>Definition:</b> metropolis.cpp:26</div></div>
+<div class="ttc" id="aclassMetropolis_html_abedb3300e4484f9ad38bd36faced40b5"><div class="ttname"><a href="classMetropolis.html#abedb3300e4484f9ad38bd36faced40b5">Metropolis::gen</a></div><div class="ttdeci">std::mt19937 &amp; gen</div><div class="ttdoc">Random number generator (non-owning reference).</div><div class="ttdef"><b>Definition:</b> metropolis.hpp:45</div></div>
+<div class="ttc" id="aclassMetropolis_html_adf8050c087ad4d0172569e2a783d55ee"><div class="ttname"><a href="classMetropolis.html#adf8050c087ad4d0172569e2a783d55ee">Metropolis::step</a></div><div class="ttdeci">void step()</div><div class="ttdoc">Perform one full Metropolis sweep.</div><div class="ttdef"><b>Definition:</b> metropolis.cpp:29</div></div>
 <div class="ttc" id="alattice_8hpp_html"><div class="ttname"><a href="lattice_8hpp.html">lattice.hpp</a></div><div class="ttdoc">Representation of a one-dimensional Euclidean lattice configuration.</div></div>
 </div><!-- fragment --></div><!-- contents -->
 <!-- start footer part -->

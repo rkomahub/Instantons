@@ -5,7 +5,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
 <meta name="generator" content="Doxygen 1.9.1"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>Monte Carlo Instantons: /home/marcobenazzi/instantons/src/qmidens.hpp Source File</title>
+<title>Monte Carlo Instantons: /home/marcobenazzi/instantons/src/analysis/qmidens.hpp Source File</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -61,7 +61,7 @@ $(function() {
 
 <div id="nav-path" class="navpath">
   <ul>
-<li class="navelem"><a class="el" href="dir_68267d1309a1af8e8297ef4c3efbcdba.html">src</a></li>  </ul>
+<li class="navelem"><a class="el" href="dir_68267d1309a1af8e8297ef4c3efbcdba.html">src</a></li><li class="navelem"><a class="el" href="dir_2eec376824a17f48dc36b4bd0c810e01.html">analysis</a></li>  </ul>
 </div>
 </div><!-- top -->
 <div class="header">
@@ -72,15 +72,18 @@ $(function() {
 <a href="qmidens_8hpp.html">Go to the documentation of this file.</a><div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;<span class="preprocessor">#pragma once</span></div>
 <div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160;<span class="preprocessor">#include &lt;random&gt;</span></div>
 <div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160; </div>
-<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;<span class="keywordtype">void</span> <a class="code" href="qmidens_8hpp.html#a9e9eaa9710967df20f59542c119a89a9">run_qmidens_analysis</a>(std::mt19937 &amp;gen);</div>
-<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160; </div>
-<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;<span class="keywordtype">double</span> <a class="code" href="qmidens_8hpp.html#aaa201f8ba3b8e05392bc4cd4c0012bcf">compute_qmidens_corrected_density</a>(<span class="keywordtype">int</span> <a class="code" href="namespaceparams.html#a0b4de2d813a2f6290d83835f7c092a0e">sweeps</a>, <span class="keywordtype">double</span> <a class="code" href="namespaceparams.html#abd6f3c4c7bbcd9aee0e148e680893ecf">dx_width</a>,</div>
-<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;                                         <span class="keywordtype">int</span> n_alpha_fine, <span class="keywordtype">int</span> n_alpha_coarse,</div>
-<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;                                         std::mt19937 &amp;gen);</div>
-<div class="ttc" id="anamespaceparams_html_a0b4de2d813a2f6290d83835f7c092a0e"><div class="ttname"><a href="namespaceparams.html#a0b4de2d813a2f6290d83835f7c092a0e">params::sweeps</a></div><div class="ttdeci">constexpr int sweeps</div><div class="ttdoc">Number of full Metropolis sweeps.</div><div class="ttdef"><b>Definition:</b> parameters.hpp:57</div></div>
-<div class="ttc" id="anamespaceparams_html_abd6f3c4c7bbcd9aee0e148e680893ecf"><div class="ttname"><a href="namespaceparams.html#abd6f3c4c7bbcd9aee0e148e680893ecf">params::dx_width</a></div><div class="ttdeci">constexpr double dx_width</div><div class="ttdoc">Width of Gaussian proposal distribution.</div><div class="ttdef"><b>Definition:</b> parameters.hpp:68</div></div>
-<div class="ttc" id="aqmidens_8hpp_html_a9e9eaa9710967df20f59542c119a89a9"><div class="ttname"><a href="qmidens_8hpp.html#a9e9eaa9710967df20f59542c119a89a9">run_qmidens_analysis</a></div><div class="ttdeci">void run_qmidens_analysis(std::mt19937 &amp;gen)</div><div class="ttdoc">Run the non-Gaussian correction analysis and print results.</div><div class="ttdef"><b>Definition:</b> qmidens.cpp:138</div></div>
-<div class="ttc" id="aqmidens_8hpp_html_aaa201f8ba3b8e05392bc4cd4c0012bcf"><div class="ttname"><a href="qmidens_8hpp.html#aaa201f8ba3b8e05392bc4cd4c0012bcf">compute_qmidens_corrected_density</a></div><div class="ttdeci">double compute_qmidens_corrected_density(int sweeps, double dx_width, int n_alpha_fine, int n_alpha_coarse, std::mt19937 &amp;gen)</div><div class="ttdoc">Compute non-Gaussian corrected instanton density.</div><div class="ttdef"><b>Definition:</b> qmidens.cpp:169</div></div>
+<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;<span class="keywordtype">void</span> <a class="code" href="qmidens_8hpp.html#a9e9eaa9710967df20f59542c119a89a9">run_qmidens_analysis</a>(std::mt19937 &amp;gen);</div>
+<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160; </div>
+<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;<span class="keywordtype">double</span> <a class="code" href="qmidens_8hpp.html#aaa201f8ba3b8e05392bc4cd4c0012bcf">compute_qmidens_corrected_density</a>(<span class="keywordtype">int</span> <a class="code" href="namespaceparams.html#a0b4de2d813a2f6290d83835f7c092a0e">sweeps</a>, <span class="keywordtype">double</span> <a class="code" href="namespaceparams.html#abd6f3c4c7bbcd9aee0e148e680893ecf">dx_width</a>,</div>
+<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;                                         <span class="keywordtype">int</span> n_alpha_fine, <span class="keywordtype">int</span> n_alpha_coarse,</div>
+<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;                                         std::mt19937 &amp;gen);</div>
+<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160; </div>
+<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;<span class="keywordtype">void</span> <a class="code" href="qmidens_8hpp.html#a40a29ad37e160ce392e460ce7f12e009">run_fig9_paths</a>(std::mt19937 &amp;gen);</div>
+<div class="ttc" id="anamespaceparams_html_a0b4de2d813a2f6290d83835f7c092a0e"><div class="ttname"><a href="namespaceparams.html#a0b4de2d813a2f6290d83835f7c092a0e">params::sweeps</a></div><div class="ttdeci">constexpr int sweeps</div><div class="ttdoc">Number of Metropolis sweeps.</div><div class="ttdef"><b>Definition:</b> parameters.hpp:37</div></div>
+<div class="ttc" id="anamespaceparams_html_abd6f3c4c7bbcd9aee0e148e680893ecf"><div class="ttname"><a href="namespaceparams.html#abd6f3c4c7bbcd9aee0e148e680893ecf">params::dx_width</a></div><div class="ttdeci">constexpr double dx_width</div><div class="ttdoc">Proposal width for Metropolis updates.</div><div class="ttdef"><b>Definition:</b> parameters.hpp:42</div></div>
+<div class="ttc" id="aqmidens_8hpp_html_a40a29ad37e160ce392e460ce7f12e009"><div class="ttname"><a href="qmidens_8hpp.html#a40a29ad37e160ce392e460ce7f12e009">run_fig9_paths</a></div><div class="ttdeci">void run_fig9_paths(std::mt19937 &amp;gen)</div><div class="ttdoc">Generate Monte Carlo paths used in Fig.9 (switching paths).</div><div class="ttdef"><b>Definition:</b> qmidens.cpp:551</div></div>
+<div class="ttc" id="aqmidens_8hpp_html_a9e9eaa9710967df20f59542c119a89a9"><div class="ttname"><a href="qmidens_8hpp.html#a9e9eaa9710967df20f59542c119a89a9">run_qmidens_analysis</a></div><div class="ttdeci">void run_qmidens_analysis(std::mt19937 &amp;gen)</div><div class="ttdoc">Run the adiabatic switching analysis.</div><div class="ttdef"><b>Definition:</b> qmidens.cpp:436</div></div>
+<div class="ttc" id="aqmidens_8hpp_html_aaa201f8ba3b8e05392bc4cd4c0012bcf"><div class="ttname"><a href="qmidens_8hpp.html#aaa201f8ba3b8e05392bc4cd4c0012bcf">compute_qmidens_corrected_density</a></div><div class="ttdeci">double compute_qmidens_corrected_density(int sweeps, double dx_width, int n_alpha_fine, int n_alpha_coarse, std::mt19937 &amp;gen)</div><div class="ttdoc">Compute the non-Gaussian corrected instanton density.</div><div class="ttdef"><b>Definition:</b> qmidens.cpp:528</div></div>
 </div><!-- fragment --></div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
