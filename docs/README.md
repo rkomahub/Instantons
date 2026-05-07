@@ -1,14 +1,10 @@
 # Monte Carlo Instantons in the Double Well Potential
 
-Numerical simulations of instantons in the quantum mechanical double well potential using **Euclidean lattice Monte Carlo**.
+Numerical simulations of instantons in the quantum mechanical double well potential using **Euclidean lattice Monte Carlo**. The implementation follows:
 
-The implementation follows:
+**T. Schäfer** - *Instantons and Monte Carlo Methods in Quantum Mechanics*
 
-**T. Schäfer**
-*Instantons and Monte Carlo Methods in Quantum Mechanics*
 [arXiv:hep-lat/0411010](https://arxiv.org/abs/hep-lat/0411010)
-
----
 
 # Overview
 
@@ -21,8 +17,6 @@ This project studies tunneling and instanton physics using several complementary
 * **Correlation functions** and energy gap extraction
 
 The code aims to reproduce the figures and numerical experiments presented in Schäfer’s lecture notes.
-
----
 
 # Physical Model
 
@@ -63,29 +57,25 @@ $$
 S_0 = \frac{4\eta^3}{3}
 $$
 
----
-
 # Computational Layers
 
 The project contains four conceptual layers.
 
 ### 1. Spectral quantum mechanics
 
-Direct diagonalization of the Hamiltonian.
+    Direct diagonalization of the Hamiltonian.
 
 ### 2. Full Monte Carlo path integral
 
-Metropolis sampling of Euclidean paths.
+    Metropolis sampling of Euclidean paths.
 
 ### 3. Semiclassical instanton extraction
 
-Cooling and instanton density measurements.
+    Cooling and instanton density measurements.
 
-### 4. Instanton liquid models
+### 4. Instanton liquid effective models
 
-Analytical multi-instanton configurations (RILM, IILM, streamline).
-
----
+    Analytical multi-instanton configurations (RILM, IILM, streamline).
 
 # Repository Structure
 
@@ -138,8 +128,6 @@ Analytical multi-instanton configurations (RILM, IILM, streamline).
 │       ├── statistics.*
 ````
 
----
-
 # Build
 
 ### Configure
@@ -161,8 +149,6 @@ bin/montecarlo
 bin/test_*
 ```
 
----
-
 # Command Line Interface
 
 The main executable runs different numerical experiments.
@@ -183,8 +169,6 @@ Example
 ```bash
 ./bin/montecarlo eta-scan --etas 1.0,1.2,1.4,1.6
 ```
-
----
 
 # Main Commands
 
@@ -225,8 +209,6 @@ Example
 python3 plots/plot_fig7.py
 ```
 
----
-
 # Figure Reproduction Map
 
 | Schäfer figure | Method                           |
@@ -247,8 +229,6 @@ python3 plots/plot_fig7.py
 | Fig.14–16      | IA interaction and streamline    |
 | Fig.17         | instanton liquid positions       |
 
----
-
 # Testing
 
 Run all unit tests
@@ -265,8 +245,6 @@ Tests verify:
 * boundary conditions
 * potential symmetry
 
----
-
 # Documentation
 
 Generate API documentation with
@@ -280,8 +258,6 @@ Then open
 ```text
 docs/api/html/index.html
 ```
-
----
 
 # Rebuild
 
@@ -299,10 +275,8 @@ cmake -S . -B build
 cmake --build build -j
 ```
 
----
-
 # Author
 
-Marco Benazzi
-Theoretical Physics MSc Project
+Marco Benazzi, Theoretical Physics MSc Project
+
 Started: 2025
